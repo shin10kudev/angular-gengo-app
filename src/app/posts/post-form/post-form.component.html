@@ -1,0 +1,10 @@
+<h3>New Post</h3>
+
+<label class="label">Title: </label>
+
+<input placeholder="Post Title" class="input"
+[(ngModel)]="post.title"
+required minlength="2" maxlength="23"
+#title='ngModel' autofocus>
+
+<button class="button is-primary" (click)='createPost()'>Create</button>

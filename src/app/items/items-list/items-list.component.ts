@@ -14,7 +14,6 @@ export class ItemsListComponent implements OnInit {
 
   showSpinner: boolean = true;
 
-
   constructor(private itemSvc: ItemService) { }
 
   ngOnInit() {

@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-// import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from "angularfire2";
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { Item } from './item';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Item } from './item';
 
 @Injectable()
 export class ItemService {
 
-  private basePath: string = '/items';
+  // private basePath: string = '/items';
 
   items: FirebaseListObservable<Item[]> = null; //  list of objects
-  item: FirebaseObjectObservable<Item> = null; //   single object
+  // item: FirebaseObjectObservable<Item> = null; //   single object
   userId: string;
 
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
@@ -30,19 +29,17 @@ export class ItemService {
   }
 
   // Return a single observable item
-  getItem(key: string): FirebaseObjectObservable<Item> {
-    const itemPath =  `${this.basePath}/${key}`;
-    this.item = this.db.object(itemPath)
-    return this.item
-  }
+  // getItem(key: string): FirebaseObjectObservable<Item> {
+  //   const itemPath =  `${this.basePath}/${key}`;
+  //   this.item = this.db.object(itemPath)
+  //   return this.item
+  // }
 
-  // Create a bramd new item
+  // Create a brand new item
   createItem(item: Item): void  {
-    // item.userId = this.userId
     this.items.push(item)
       .catch(error => this.handleError(error))
   }
-
 
   // Update an exisiting item
   updateItem(key: string, value: any): void {

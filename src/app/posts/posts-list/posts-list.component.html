@@ -1,0 +1,9 @@
+<post-form></post-form>
+
+<hr>
+
+<div *ngFor="let post of posts | async" class="card">
+  <post-detail [post]='post'></post-detail>
+</div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>

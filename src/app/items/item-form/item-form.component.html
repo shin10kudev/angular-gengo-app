@@ -11,11 +11,6 @@ required minlength="2" maxlength="23"
   <span *ngIf='title.errors; then errors else valid'>template renders here...</span>
 </div>
 
-<input placeholder="Item Body" class="input"
-[(ngModel)]="item.body"
-required minlength="2" maxlength="23"
-#body='ngModel'>
-
 <button class="button is-primary" (click)='createItem()' [disabled]="!title.valid">Create</button>
 
 <ng-template #valid>

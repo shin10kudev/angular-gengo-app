@@ -1,6 +1,7 @@
-export class Item {
+export class Post {
   $key: string;
   title: string;
-  active: boolean = true;
+  body: string;
+  file:　File;
   timeStamp: Date = new Date();
 }

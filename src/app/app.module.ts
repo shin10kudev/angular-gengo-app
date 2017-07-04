@@ -40,11 +40,15 @@ import { FooterNavComponent } from './ui/footer-nav/footer-nav.component';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
-
 // FireStarter Translations
 import { TranslateService } from './text-translate/shared/translate.service';
 import { TextTranslateComponent } from './text-translate/text-translate.component';
 
+// Firestarter Posts
+import { PostService } from './posts/shared/post.service';
+import { PostsListComponent } from './posts/posts-list/posts-list.component';
+import { PostFormComponent } from './posts/post-form/post-form.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -65,7 +69,10 @@ export const firebaseConfig = environment.firebaseConfig;
     UserFormComponent,
     LoadingSpinnerComponent,
     ReadmePageComponent,
-    TextTranslateComponent
+    TextTranslateComponent,
+    PostDetailComponent,
+    PostFormComponent,
+    PostsListComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +91,8 @@ export const firebaseConfig = environment.firebaseConfig;
     ItemService,
     UploadService,
     NavService,
-    TranslateService
+    TranslateService,
+    PostService
   ],
   bootstrap: [
     AppComponent
