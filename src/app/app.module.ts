@@ -41,6 +41,11 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
 
+// FireStarter Translations
+import { TranslateService } from './text-translate/shared/translate.service';
+import { TextTranslateComponent } from './text-translate/text-translate.component';
+
+
 export const firebaseConfig = environment.firebaseConfig;
 
 ///// End FireStarter
@@ -59,7 +64,8 @@ export const firebaseConfig = environment.firebaseConfig;
     FooterNavComponent,
     UserFormComponent,
     LoadingSpinnerComponent,
-    ReadmePageComponent
+    ReadmePageComponent,
+    TextTranslateComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +84,7 @@ export const firebaseConfig = environment.firebaseConfig;
     ItemService,
     UploadService,
     NavService,
-
+    TranslateService
   ],
   bootstrap: [
     AppComponent

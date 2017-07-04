@@ -19,6 +19,4 @@ export class UploadsListComponent implements OnInit {
     this.uploads = this.upSvc.getUploads({limitToLast: 5})
     this.uploads.subscribe(() => this.showSpinner = false)
   }
-
-
 }

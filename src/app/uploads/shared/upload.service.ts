@@ -21,7 +21,6 @@ export class UploadService {
     return this.uploads
   }
 
-
   deleteUpload(upload: Upload) {
     this.deleteFileData(upload.$key)
     .then( () => {
@@ -53,8 +52,6 @@ export class UploadService {
     );
   }
 
-
-
   // Writes the file details to the realtime db
   private saveFileData(upload: Upload) {
     this.db.list(`${this.basePath}/`).push(upload);
@@ -71,6 +68,4 @@ export class UploadService {
     const storageRef = firebase.storage().ref();
     storageRef.child(`${this.basePath}/${name}`).delete()
   }
-
-
 }
