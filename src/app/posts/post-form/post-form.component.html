@@ -7,4 +7,21 @@
 required minlength="2" maxlength="23"
 #title='ngModel' autofocus>
 
+<textarea placeholder="Post Body" class="input" cols="10" rows="5"
+[(ngModel)]="post.body"
+required minlength="2" maxlength="500"
+#body='ngModel'></textarea>
+
+<div class="box">
+  <label>
+     <input type="file" class="button" (change)="detectFiles($event)">
+  </label>
+
+  <button class="button is-primary"
+          [disabled]="!selectedFiles"
+          (click)="uploadPostImage()">
+    Upload Single
+  </button>
+</div>
+
 <button class="button is-primary" (click)='createPost()'>Create</button>

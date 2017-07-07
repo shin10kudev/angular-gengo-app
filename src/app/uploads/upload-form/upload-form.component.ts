@@ -38,7 +38,4 @@ export class UploadFormComponent implements OnInit {
       this.upSvc.pushUpload(this.currentUpload)}
     )
   }
-
-
-
 }

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-// import { AngularFire, AngularFireDatabase, FirebaseListObservable } from 'angularfire2';
 import { Upload } from './upload';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
-
 
 @Injectable()
 export class UploadService {
@@ -12,7 +10,6 @@ export class UploadService {
 
   private basePath:string = '/uploads';
   uploads: FirebaseListObservable<Upload[]>;
-
 
   getUploads(query={}) {
     this.uploads = this.db.list(this.basePath, {

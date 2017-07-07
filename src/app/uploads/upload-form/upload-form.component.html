@@ -6,32 +6,29 @@
 
 
 <div class="box">
-
   <h3>Single File Upload</h3>
 
-    <label>
-       <input type="file" class="button" (change)="detectFiles($event)">
-    </label>
+  <label>
+     <input type="file" class="button" (change)="detectFiles($event)">
+  </label>
 
-    <button class="button is-primary"
-            [disabled]="!selectedFiles"
-            (click)="uploadSingle()">
-      Upload Single
-    </button>
+  <button class="button is-primary"
+          [disabled]="!selectedFiles"
+          (click)="uploadSingle()">
+    Upload Single
+  </button>
 
-    <hr>
+  <hr>
 
-    <h3>Multiple File Upload</h3>
+  <h3>Multiple File Upload</h3>
 
-    <label>
-       <input type="file" class="button" (change)="detectFiles($event)" multiple>
-    </label>
+  <label>
+     <input type="file" class="button" (change)="detectFiles($event)" multiple>
+  </label>
 
-
-      <button class="button is-primary"
-              [disabled]="!selectedFiles"
-              (click)="uploadMulti()">
-
-        Upload Multiple
-      </button>
+  <button class="button is-primary"
+          [disabled]="!selectedFiles"
+          (click)="uploadMulti()">
+    Upload Multiple
+  </button>
 </div>

@@ -1,19 +1,13 @@
 @import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-
-
 ///// Content
-
 body {
   font-family: 'Roboto', sans-serif;
 }
 
-
 .footer {
-  // flex: 1;
   border-top: 1px solid $gray-lightest;
-  // padding: 40px;
   min-height: 100px;
   text-align: center;
 }
@@ -30,7 +24,6 @@ body {
 }
 
 ///// Social Buttons
-
 .input {
   margin-bottom: 5px;
 }
@@ -44,7 +37,6 @@ body {
   .btn-block {
     margin-bottom: 10px;
   }
-
 }
 
 .btn-twitter {
@@ -69,3 +61,6 @@ body {
   box-shadow: none;
   opacity: .6;
 }
+
+// Components
+.card { margin-bottom: 10px; padding: 10px; }
