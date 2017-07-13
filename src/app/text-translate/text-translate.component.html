@@ -1,8 +1,11 @@
-<h1>Translate Your Text</h1>
-<textarea  rows="8" cols="40" class="input" [(ngModel)]="userText">
+<h2>Translate Your Text</h2>
+
+<textarea class="textarea"
+  placeholder="Type in English"
+  [(ngModel)]="userText">
 </textarea>
 
-<button (click)="handleTranslation()" class="button is-primary">Run Translation</button>
+<button class="button is-primary" (click)="handleTranslation()">Run Translation</button>
 
 <h3>Japanese</h3>
 

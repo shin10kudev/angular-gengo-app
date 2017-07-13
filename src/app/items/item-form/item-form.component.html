@@ -1,10 +1,10 @@
-<h3>New Task Form</h3>
+<h3>Phrase to Learn</h3>
 
-<label class="label">Name: </label>
+<label class="label">Phrase: </label>
 
-<input placeholder="Item Title" class="input"
+<input placeholder="Text" class="input"
 [(ngModel)]="item.title"
-required minlength="2" maxlength="23"
+required minlength="2" maxlength="100"
 #title='ngModel' autofocus>
 
 <div *ngIf="title.dirty">

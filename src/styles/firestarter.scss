@@ -23,11 +23,12 @@ body {
   margin-top: 5px;
 }
 
-///// Social Buttons
-.input {
+.input,
+.textarea {
   margin-bottom: 5px;
 }
 
+///// Social Buttons
 .btn-social {
   color: #fff;
   &:hover {

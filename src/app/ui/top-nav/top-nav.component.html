@@ -6,21 +6,7 @@
   </div>
 
   <div class="nav-center">
-    <a class="nav-item" href="https://github.com/codediodeio/angular-firestarter">
-      <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA">
-      <span class="icon">
-        <i class="fa fa-youtube"></i>
-      </span>
-    </a>
-    <a class="nav-item" href="https://twitter.com/angularfirebase">
-      <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>
+
   </div>
 
   <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
@@ -37,17 +23,11 @@
     <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser">
       Login
     </a>
-    <a class="nav-item" routerLink="/" *ngIf="auth.currentUser">
-      Home
-    </a>
     <a class="nav-item" routerLink="/items">
       Items
     </a>
     <a class="nav-item" routerLink="/posts">
       Posts
-    </a>
-    <a class="nav-item" routerLink="/uploads">
-      Uploads
     </a>
     <a class="nav-item" routerLink="/translate">
       Translate
@@ -56,11 +36,11 @@
     <div class="nav-item">
       <div class="field is-grouped">
         <p class="control">
-          <a class="button is-primary" href="https://angularfirebase.com">
+          <a class="button is-primary" href="/posts">
             <span class="icon">
-              <i class="fa fa-code"></i>
+              <i class="fa fa-pencil-square-o"></i>
             </span>
-            <span>Build Me</span>
+            <span>Post</span>
           </a>
         </p>
       </div>

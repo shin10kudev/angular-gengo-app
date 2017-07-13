@@ -1,9 +1,12 @@
-<h3>{{ post.title || 'title missing' }}</h3>
-
-<div class="card-content">
-  {{ post.body || 'body missing' }}
-</div>
-
-<div class="card-footer">
-  <span class="button is-small is-danger card-footer-item" (click)='deletePost()'>Delete</span>
+<div class="md-card">
+  <img ng-src="assets/images/washedout.png" class="md-card-image" alt="Washed Out" src="assets/images/washedout.png">
+  <div class="md-card-title">
+    <span class="md-headline">{{ post.title || 'title missing' }}</span>
+  </div>
+  <div class="md-card-content">
+    <p>{{ post.body || 'body missing' }}</p>
+  </div>
+  <div class="layout-align-end-center layout-row">
+    <span class="button is-small is-danger card-footer-item" >Delete</span>
+  </div>
 </div>
