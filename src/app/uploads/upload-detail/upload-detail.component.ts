@@ -19,5 +19,4 @@ export class UploadDetailComponent implements OnInit {
   deleteUpload(upload) {
     this.upSvc.deleteUpload(this.upload)
   }
-
 }

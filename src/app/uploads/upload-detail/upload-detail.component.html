@@ -1,2 +1,13 @@
-<img ng-src="upload.url" alt="" src="{{upload.url}}">
-<button (click)='deleteUpload(upload)' class="button is-danger is-small">Delete</button><br>
+<div class="md-card">
+  <img ng-src="upload.url" class="md-card-image" alt="post image" src="{{upload.url}}">
+  <div class="md-card-title">
+    <span class="md-headline">{{ upload.title || 'title missing' }}</span>
+  </div>
+  <div class="md-card-content">
+    <p>{{ upload.body || 'body missing' }}</p>
+    <p>{{ upload.translation}}</p>
+  </div>
+  <div class="md-card-actions">
+    <span class="button is-small is-danger float-right" (click)='deleteUpload(upload)'>Delete</span>
+  </div>
+</div>

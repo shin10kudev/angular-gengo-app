@@ -1,19 +1,36 @@
-<div *ngIf="currentUpload">
-    <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-
-    Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-</div>
+<h3>New Post</h3>
 
 <div class="box">
-  <h3>Single File Upload</h3>
+  <input placeholder="Post Title" class="input"
+  [(ngModel)]="upload.title"
+  required minlength="2" maxlength="23"
+  #title='ngModel' autofocus>
 
-  <label>
-     <input type="file" class="button" (change)="detectFiles($event)">
+  <textarea placeholder="Post Body" class="textarea"
+  [(ngModel)]="upload.body"
+  required minlength="2" maxlength="500"
+  #body='ngModel'></textarea>
+
+  <label style="margin-bottom: 5px; display: block;">
+    <input type="file" class="button" (change)="detectFiles($event)">
   </label>
+
+  <a (click)="isTranslate=true" *ngIf="!isTranslate">Add Translation?</a>
+
+  <div *ngIf="isTranslate">
+    <textarea placeholder="Translation (optional)" class="textarea"
+    [(ngModel)]="upload.translation"
+    required minlength="2" maxlength="500"
+    #translation='ngModel'></textarea>
+    <button class="is-danger" (click)="isTranslate=false">Cancel</button>
+  </div>
+
+  <hr>
 
   <button class="button is-primary"
           [disabled]="!selectedFiles"
           (click)="uploadSingle()">
-    Upload Single
+    Create Post
   </button>
 </div>
+

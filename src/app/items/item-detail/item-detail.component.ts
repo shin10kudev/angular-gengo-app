@@ -12,14 +12,15 @@ export class ItemDetailComponent implements OnInit {
 
   @Input() item: Item;
 
+  isEdit: boolean = false;
+
   constructor(private itemSvc: ItemService) { }
 
   ngOnInit() {
   }
 
-  updateTimeStamp() {
-    let date = new Date()
-    this.itemSvc.updateItem(this.item.$key, { timeStamp: date })
+  updateItemTitle() {
+    this.itemSvc.updateItem(this.item.$key, { title: this.item.title })
   }
 
   updateActive(value: boolean) {

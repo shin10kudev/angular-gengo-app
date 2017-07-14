@@ -1,13 +1,11 @@
 <h3>New Post</h3>
 
-<label class="label">Title: </label>
-
 <input placeholder="Post Title" class="input"
 [(ngModel)]="post.title"
 required minlength="2" maxlength="23"
 #title='ngModel' autofocus>
 
-<textarea placeholder="Post Body" class="input" cols="10" rows="5"
+<textarea placeholder="Post Body" class="textarea" cols="10" rows="5"
 [(ngModel)]="post.body"
 required minlength="2" maxlength="500"
 #body='ngModel'></textarea>

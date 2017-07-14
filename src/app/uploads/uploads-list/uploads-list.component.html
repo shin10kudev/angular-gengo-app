@@ -1,11 +1,9 @@
-<h3>File Uploads</h3>
+<upload-form></upload-form>
+
+<hr>
 
 <div *ngFor="let upload of uploads | async">
   <upload-detail [upload]='upload'></upload-detail>
 </div>
 
 <loading-spinner *ngIf="showSpinner"></loading-spinner>
-
-<hr>
-
-<upload-form></upload-form>

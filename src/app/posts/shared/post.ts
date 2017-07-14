@@ -3,6 +3,6 @@ export class Post {
   title: string;
   body: string;
   translation: string;
-  file:　File;
+  imageUrl: string;
   timeStamp: Date = new Date();
 }
