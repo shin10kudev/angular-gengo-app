@@ -17,7 +17,7 @@ export class UploadsListComponent implements OnInit {
   constructor(private upSvc: UploadService) { }
 
   ngOnInit() {
-    this.uploads = this.upSvc.getUploads({limitToLast: 5, orderByChild: 'createdAt'})
+    this.uploads = this.upSvc.getUploads({limitToLast: 5})
     this.uploads.subscribe(() => this.showSpinner = false)
   }
 }
