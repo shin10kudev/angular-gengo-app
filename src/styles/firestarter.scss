@@ -64,4 +64,11 @@ body {
 }
 
 // Components
-.card { margin-bottom: 10px; padding: 10px; }
+.card {
+  margin-bottom: 10px;
+  padding: 10px;
+
+  h3 {
+    padding: 10px 5px 0;
+  }
+}

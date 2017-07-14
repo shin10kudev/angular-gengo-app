@@ -12,11 +12,12 @@ export class UploadsListComponent implements OnInit {
 
   uploads: FirebaseListObservable<Upload[]>;
   showSpinner = true;
+  isAddPost: boolean = false;
 
   constructor(private upSvc: UploadService) { }
 
   ngOnInit() {
-    this.uploads = this.upSvc.getUploads({limitToLast: 5})
+    this.uploads = this.upSvc.getUploads({limitToLast: 5, orderByChild: 'createdAt'})
     this.uploads.subscribe(() => this.showSpinner = false)
   }
 }

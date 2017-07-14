@@ -4,10 +4,10 @@
     {{ item.title || 'missing title' }}
   </h3>
   <div class="card-footer">
-    <span class="button is-small is-info card-footer-item" (click)="isEdit=true">Update Item</span>
-    <span class="button is-small is-success card-footer-item" *ngIf='item.active' (click)='updateActive(false)'>Mark Complete</span>
-    <span class="button is-small is-warning card-footer-item" *ngIf='!item.active' (click)='updateActive(true)'>Mark Incomplete</span>
-    <span class="button is-small is-danger card-footer-item" (click)='deleteItem()'>Delete</span>
+    <span class="button is-small is-default" (click)="isEdit=true">Update Item</span>
+    <span class="button is-small is-info" *ngIf='item.active' (click)='updateActive(false)'>Mark Complete</span>
+    <span class="button is-small is-warning" *ngIf='!item.active' (click)='updateActive(true)'>Mark Incomplete</span>
+    <span class="button is-small is-danger" (click)='deleteItem()'>Delete</span>
   </div>
 </div>
 
@@ -19,7 +19,7 @@
   #title='ngModel' autofocus="true">
 
   <div class="card-footer">
-    <span class="button is-small is-warning card-footer-item" (click)="isEdit=false">Cancel</span>
-    <span class="button is-small is-success card-footer-item" (click)='updateItemTitle()'>Update</span>
+    <span class="button is-small is-primary" (click)='updateItemTitle()'>Update</span>
+    <span class="button is-small is-default" (click)="isEdit=false">Cancel</span>
   </div>
 </div>

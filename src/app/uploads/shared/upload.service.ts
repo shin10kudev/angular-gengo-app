@@ -60,6 +60,8 @@ export class UploadService {
 
   // Writes the file details to the realtime db
   private saveFileData(upload: Upload) {
+    let date = new Date();
+    upload.timeStamp = date;
     this.db.list(`${this.basePath}/${this.userId}`).push(upload);
   }
 

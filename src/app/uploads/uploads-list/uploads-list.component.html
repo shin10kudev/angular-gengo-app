@@ -1,4 +1,9 @@
-<upload-form></upload-form>
+<a (click)="isAddPost=true" *ngIf="!isAddPost">New Post</a>
+
+<div *ngIf="isAddPost">
+  <upload-form></upload-form>
+  <a style="display: inline-block; margin-top: 5px" (click)="isAddPost=false">Cancel</a>
+</div>
 
 <hr>
 

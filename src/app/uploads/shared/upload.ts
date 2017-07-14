@@ -7,5 +7,5 @@ export class Upload {
   body: string;
   translation: string;
   progress: number;
-  createdAt: Date = new Date();
+  timeStamp: Date = new Date();
 }

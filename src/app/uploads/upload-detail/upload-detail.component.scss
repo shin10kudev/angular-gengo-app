@@ -14,6 +14,19 @@
   margin-bottom: 8px;
 }
 
+.md-card-image {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  border-radius: 2px 2px 0 0;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex: 0 0 auto;
+  height: auto;
+  width: 100%;
+}
+
 .md-card-title {
   padding: 24px 16px 16px;
   display: -webkit-box;
