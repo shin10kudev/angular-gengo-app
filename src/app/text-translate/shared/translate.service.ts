@@ -17,6 +17,6 @@ export class TranslateService {
     // create new translation, then return it as an object observable
     const data = { 'english': text }
     const key = this.db.list(`/translations/${this.userId}`).push(data).key
-    return this.db.object(`translations/${key}`)
+    return this.db.object(`translations/${this.userId}/${key}`)
   }
 }

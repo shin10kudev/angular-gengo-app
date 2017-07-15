@@ -20,7 +20,12 @@ export class ItemDetailComponent implements OnInit {
   }
 
   updateItemTitle() {
-    this.itemSvc.updateItem(this.item.$key, { title: this.item.title })
+    this.itemSvc.updateItem(
+      this.item.$key,
+      {
+        title: this.item.title,
+        translation: this.item.translation
+      })
   }
 
   updateActive(value: boolean) {

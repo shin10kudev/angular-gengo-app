@@ -1,3 +1,4 @@
+@charset 'utf-8';
 @import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -66,9 +67,23 @@ body {
 // Components
 .card {
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 16px;
 
   h3 {
-    padding: 10px 5px 0;
+    padding-left: 10px;
+    border-left: 5px solid #f9e13f;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding-top: 1px;
   }
+
+  .input {
+    margin-bottom: 1em;
+  }
+}
+
+.translation-text {
+  margin-bottom: 14px;
+  font-size: 14px;
 }

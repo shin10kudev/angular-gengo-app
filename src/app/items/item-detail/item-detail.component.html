@@ -1,8 +1,12 @@
 <!-- normal view -->
 <div *ngIf="!isEdit">
-  <h3 [ngClass]="{ 'strike-out': !item.active }" (click)="isEdit=true">
-    {{ item.title || 'missing title' }}
-  </h3>
+  <div (click)="isEdit=true">
+    <h3 [ngClass]="{ 'strike-out': !item.active }">
+      {{ item.title || 'missing title' }}
+    </h3>
+    <div class="translation-text"><span [ngClass]="{ 'strike-out': !item.active }">{{ item.translation }}</span></div>
+  </div>
+
   <div class="card-footer">
     <span class="button is-small is-default" (click)="isEdit=true">Update Item</span>
     <span class="button is-small is-info" *ngIf='item.active' (click)='updateActive(false)'>Mark Complete</span>
@@ -13,10 +17,15 @@
 
 <!-- edit view -->
 <div *ngIf="isEdit">
-  <input placeholder="{{item.title}}" class="input"
+  <input placeholder="{{item.title || 'Add title' }}" class="input"
   [(ngModel)]="item.title"
   required minlength="2" maxlength="100"
-  #title='ngModel' autofocus="true">
+  #title='ngModel'>
+
+  <input placeholder="{{item.translation || 'Add translation' }}" class="input"
+  [(ngModel)]="item.translation"
+  required minlength="2" maxlength="100"
+  #translation='ngModel'>
 
   <div class="card-footer">
     <span class="button is-small is-primary" (click)='updateItemTitle()'>Update</span>

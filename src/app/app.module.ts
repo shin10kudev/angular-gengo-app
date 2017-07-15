@@ -14,41 +14,45 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 
-// FireStarter Users
+// Users
 import { AuthService } from './core/auth.service';
 import { AuthGuard} from './core/auth.guard';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 
-// FireStarter Items
+// Items
 import { ItemService } from './items/shared/item.service';
 import { ItemsListComponent } from './items/items-list/items-list.component';
 import { ItemFormComponent } from './items/item-form/item-form.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 
-// FireStarter Uploads
+// Uploads
 import { UploadService } from './uploads/shared/upload.service';
 import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
 import { UploadsListComponent } from './uploads/uploads-list/uploads-list.component';
 import { UploadDetailComponent } from './uploads/upload-detail/upload-detail.component';
 
-// FireStarter Navigation
+// Navigation
 import { NavService } from './ui/shared/nav.service';
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { FooterNavComponent } from './ui/footer-nav/footer-nav.component';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
-// FireStarter Translations
+// Translations
 import { TranslateService } from './text-translate/shared/translate.service';
 import { TextTranslateComponent } from './text-translate/text-translate.component';
 
-// Firestarter Posts
+// Posts
 import { PostService } from './posts/shared/post.service';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { PostFormComponent } from './posts/post-form/post-form.component';
 import { PostDetailComponent } from './posts/post-detail/post-detail.component';
+
+// Reactions
+import { ReactionService } from './reaction/shared/reaction.service';
+import { ReactionComponent } from './reaction/reaction.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -72,7 +76,8 @@ export const firebaseConfig = environment.firebaseConfig;
     TextTranslateComponent,
     PostDetailComponent,
     PostFormComponent,
-    PostsListComponent
+    PostsListComponent,
+    ReactionComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +97,8 @@ export const firebaseConfig = environment.firebaseConfig;
     UploadService,
     NavService,
     TranslateService,
-    PostService
+    PostService,
+    ReactionService
   ],
   bootstrap: [
     AppComponent
