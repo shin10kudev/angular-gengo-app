@@ -7,7 +7,7 @@ import { ItemsListComponent } from './items/items-list/items-list.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { UploadsListComponent } from './uploads/uploads-list/uploads-list.component';
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
-import { TextTranslateComponent } from './text-translate/text-translate.component';
+import { TranslationListComponent } from './translation/translation-list/translation-list.component';
 
 const routes: Routes = [
   { path: '', component: ReadmePageComponent },
@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'items', component: ItemsListComponent, canActivate: [AuthGuard]},
   { path: 'posts', component: PostsListComponent, canActivate: [AuthGuard]},
   { path: 'uploads', component: UploadsListComponent, canActivate: [AuthGuard]},
-  { path: 'translate', component: TextTranslateComponent, canActivate: [AuthGuard]}
+  { path: 'translate', component: TranslationListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

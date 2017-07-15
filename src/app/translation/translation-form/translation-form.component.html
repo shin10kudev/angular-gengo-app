@@ -1,0 +1,20 @@
+<h3>Phrases to translate</h3>
+
+<input placeholder="Phrase" class="input"
+[(ngModel)]="translation.english"
+required minlength="2" maxlength="100"
+#english='ngModel' autofocus>
+
+<div *ngIf="english.dirty">
+  <span *ngIf='english.errors; then errors else valid'>template renders here...</span>
+</div>
+
+<button class="button is-primary" (click)="handleTranslation()" [disabled]="!english.valid">Add</button>
+
+<ng-template #valid>
+  <p class="help is-success">looks good!</p>
+</ng-template>
+
+<ng-template #errors>
+  <p class="help is-danger">form contains errors!</p>
+</ng-template>

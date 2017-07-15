@@ -41,8 +41,10 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
 // Translations
-import { TranslateService } from './text-translate/shared/translate.service';
-import { TextTranslateComponent } from './text-translate/text-translate.component';
+import { TranslationService } from './translation/shared/translation.service';
+import { TranslationFormComponent } from './translation/translation-form/translation-form.component';
+import { TranslationListComponent } from './translation/translation-list/translation-list.component';
+import { TranslationDetailComponent } from './translation/translation-detail/translation-detail.component';
 
 // Posts
 import { PostService } from './posts/shared/post.service';
@@ -73,11 +75,13 @@ export const firebaseConfig = environment.firebaseConfig;
     UserFormComponent,
     LoadingSpinnerComponent,
     ReadmePageComponent,
-    TextTranslateComponent,
     PostDetailComponent,
     PostFormComponent,
     PostsListComponent,
-    ReactionComponent
+    ReactionComponent,
+    TranslationFormComponent,
+    TranslationListComponent,
+    TranslationDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +100,7 @@ export const firebaseConfig = environment.firebaseConfig;
     ItemService,
     UploadService,
     NavService,
-    TranslateService,
+    TranslationService,
     PostService,
     ReactionService
   ],

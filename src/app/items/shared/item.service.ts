@@ -59,7 +59,6 @@ export class ItemService {
         .catch(error => this.handleError(error))
   }
 
-
   // Default error handling for all actions
   private handleError(error) {
     console.log(error)

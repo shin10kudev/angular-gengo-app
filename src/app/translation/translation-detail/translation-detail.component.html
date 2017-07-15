@@ -1,0 +1,34 @@
+<!-- normal view -->
+<div *ngIf="!isEdit">
+  <div (click)="isEdit=true">
+    <h3 [ngClass]="{ 'strike-out': !translation.active }">
+      {{ translation.english || 'missing title' }}
+    </h3>
+    <div class="translation-text"><span [ngClass]="{ 'strike-out': !translation.active }">{{ translation.ja || defaultMessage }}</span></div>
+  </div>
+
+  <div class="card-footer">
+    <span class="button is-small is-default" (click)="isEdit=true">Update translation</span>
+    <span class="button is-small is-info" *ngIf='translation.active' (click)='updateActive(false)'>Mark Complete</span>
+    <span class="button is-small is-warning" *ngIf='!translation.active' (click)='updateActive(true)'>Mark Incomplete</span>
+    <span class="button is-small is-danger" (click)='deleteTranslation()'>Delete</span>
+  </div>
+</div>
+
+<!-- edit view -->
+<div *ngIf="isEdit">
+  <input placeholder="{{translation.english || 'Add title' }}" class="input"
+  [(ngModel)]="translation.english"
+  required minlength="2" maxlength="100"
+  #english='ngModel'>
+
+  <input placeholder="{{translation.ja || 'Add translation' }}" class="input"
+  [(ngModel)]="translation.ja"
+  required minlength="2" maxlength="100"
+  #ja='ngModel'>
+
+  <div class="card-footer">
+    <span class="button is-small is-primary" (click)='updateTranslation()'>Update</span>
+    <span class="button is-small is-default" (click)="isEdit=false">Cancel</span>
+  </div>
+</div>
