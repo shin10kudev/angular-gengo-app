@@ -29,11 +29,11 @@ export class ReactionService {
   }
 
   // Utilities
-  countReactions(reactions) {
+  countReactions(reactions: Array) {
     return _.mapValues(_.groupBy(reactions), 'length')
   }
 
-  userReaction(reactions) {
+  userReaction(reactions: Array) {
     return _.get(reactions, this.userId)
   }
 }
