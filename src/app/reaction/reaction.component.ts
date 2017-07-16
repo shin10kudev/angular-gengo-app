@@ -9,7 +9,7 @@ import * as _ from "lodash";
 })
 export class ReactionComponent implements OnInit, OnDestroy {
 
-  @Input() itemId: string;
+  @Input() postId: string;
 
   showEmojis = false;
   emojiList: string[];
@@ -24,20 +24,19 @@ export class ReactionComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.emojiList = this.reactionSvc.emojiList
 
-    this.subscription = this.reactionSvc.getReactions(this.itemId)
+    this.subscription = this.reactionSvc.getReactions(this.postId)
                          .subscribe(reactions => {
 
                            this.reactionCount = this.reactionSvc.countReactions(reactions)
                            this.userReaction  = this.reactionSvc.userReaction(reactions)
-
     })
   }
 
   react(val) {
     if (this.userReaction === val) {
-      this.reactionSvc.removeReaction(this.itemId)
+      this.reactionSvc.removeReaction(this.postId)
     } else {
-      this.reactionSvc.updateReaction(this.itemId, val)
+      this.reactionSvc.updateReaction(this.postId, val)
     }
   }
 
@@ -46,7 +45,7 @@ export class ReactionComponent implements OnInit, OnDestroy {
   }
 
   emojiPath(emoji) {
-   return `assets/reactions/${emoji}.svg`
+   return `assets/images/reactions/${emoji}.svg`
   }
 
   hasReactions(index) {
