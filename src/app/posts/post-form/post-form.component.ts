@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Post } from '../shared/post';
 import { PostService } from '../shared/post.service';
+import { Post } from '../shared/post';
+import * as _ from "lodash";
 
 @Component({
   selector: 'post-form',
@@ -11,15 +11,23 @@ import { PostService } from '../shared/post.service';
 
 export class PostFormComponent implements OnInit {
 
+  selectedFiles: FileList;
   post: Post = new Post();
+  isTranslate: boolean = false;
 
   constructor(private postSvc: PostService) { }
 
   ngOnInit() {
   }
 
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   createPost() {
-    this.postSvc.createPost(this.post)
-    this.post = new Post() // reset post
+    let file = this.selectedFiles.item(0)
+    this.post.file = file
+    this.postSvc.pushUpload(this.post)
+    this.post = new Post();
   }
 }

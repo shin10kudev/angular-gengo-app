@@ -1,0 +1,73 @@
+.md-card {
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  background-color: rgb(255,255,255);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+  box-sizing: border-box;
+  color: rgba(0,0,0,0.87);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.md-card-image {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  border-radius: 2px 2px 0 0;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex: 0 0 auto;
+  height: auto;
+  width: 100%;
+}
+
+.md-card-title {
+  padding: 24px 16px 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+
+  .md-headline {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+}
+
+.md-card-content {
+  display: block;
+  padding: 16px;
+}
+
+.md-card-title + .md-card-content {
+  padding-top: 0;
+}
+
+.md-card-content > p {
+  word-break: break-all;
+}
+
+.md-card-content > p:last-child {
+  margin-bottom: 0;
+}
+
+.md-card-content > p:first-child {
+  margin-top: 0;
+}
+
+.md-card-actions {
+  padding: 16px;
+}

@@ -1,12 +1,14 @@
 <div class="md-card">
-  <img ng-src="assets/images/washedout.png" class="md-card-image" alt="Washed Out" src="assets/images/washedout.png">
+  <img ng-src="post.url" class="md-card-image" alt="post image" src="{{post.url}}">
   <div class="md-card-title">
     <span class="md-headline">{{ post.title || 'title missing' }}</span>
   </div>
   <div class="md-card-content">
     <p>{{ post.body || 'body missing' }}</p>
+    <p>{{ post.translation}}</p>
   </div>
-  <div class="layout-align-end-center layout-row">
-    <span class="button is-small is-danger card-footer-item" >Delete</span>
+  <div class="md-card-actions">
+    <span class="button is-small is-danger float-right" (click)='deletePost(post)'>Delete</span>
   </div>
+  <reaction [postId]="post.$key"></reaction>
 </div>

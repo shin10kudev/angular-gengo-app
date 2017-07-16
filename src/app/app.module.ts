@@ -21,24 +21,18 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 
-// Items
-import { ItemService } from './items/shared/item.service';
-import { ItemsListComponent } from './items/items-list/items-list.component';
-import { ItemFormComponent } from './items/item-form/item-form.component';
-import { ItemDetailComponent } from './items/item-detail/item-detail.component';
-
-// Uploads
-import { UploadService } from './uploads/shared/upload.service';
-import { UploadFormComponent } from './uploads/upload-form/upload-form.component';
-import { UploadsListComponent } from './uploads/uploads-list/uploads-list.component';
-import { UploadDetailComponent } from './uploads/upload-detail/upload-detail.component';
-
 // Navigation
 import { NavService } from './ui/shared/nav.service';
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { FooterNavComponent } from './ui/footer-nav/footer-nav.component';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
+
+// Items
+import { ItemService } from './items/shared/item.service';
+import { ItemsListComponent } from './items/items-list/items-list.component';
+import { ItemFormComponent } from './items/item-form/item-form.component';
+import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 
 // Translations
 import { TranslationService } from './translation/shared/translation.service';
@@ -67,9 +61,6 @@ export const firebaseConfig = environment.firebaseConfig;
     ItemsListComponent,
     ItemFormComponent,
     ItemDetailComponent,
-    UploadFormComponent,
-    UploadsListComponent,
-    UploadDetailComponent,
     TopNavComponent,
     FooterNavComponent,
     UserFormComponent,
@@ -98,7 +89,6 @@ export const firebaseConfig = environment.firebaseConfig;
     AuthService,
     AuthGuard,
     ItemService,
-    UploadService,
     NavService,
     TranslationService,
     PostService,

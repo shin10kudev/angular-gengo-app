@@ -17,7 +17,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  deletePost() {
-    this.postSvc.deletePost(this.post.$key)
+  deletePost(post) {
+    this.postSvc.deletePost(this.post)
   }
 }
