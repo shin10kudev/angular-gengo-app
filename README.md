@@ -1,10 +1,14 @@
-# FireStarter - Angular4 + Firebase Starter App
+
+
+# GengoApp
+
+Angular 4 app utilizing FireStarter (Angular4 + Firebase Starter App)
 
 ## Features
 
 - Authentication w/ Router Guard
-- Realtime Database CRUD Demo
-- File Uploads to Firebase Storage Demo
+- Realtime Database CRUD
+- File Uploads to Firebase Storage
 - SASS + Bulma + FontAwesome
 - Reactive Form Validation
 
@@ -12,8 +16,8 @@
 
 Create an account at https://firebase.google.com/
 
-- `git clone https://github.com/codediodeio/angular-firestarter.git firestarter`
-- `cd firestarter`
+- clone this project
+- `cd gengo-app`
 - `npm install`
 
 Create the environment files below in `src/environments/`.
@@ -40,4 +44,8 @@ export const environment = {
 };
 ```
 
-And finally `ng serve`
+And finally `ng serve --open`
+
+## Setting up firebase functions
+
+- coming soon
