@@ -1,14 +1,18 @@
-<a (click)="isAddPost=true" *ngIf="!isAddPost">New Post</a>
+
 
 <div *ngIf="isAddPost">
   <post-form></post-form>
   <a style="display: inline-block; margin-top: 5px" (click)="isAddPost=false">Cancel</a>
 </div>
 
-<hr>
+<div *ngIf="!isAddPost">
+  <a (click)="isAddPost=true">Add Post</a>
 
-<div *ngFor="let post of posts | async">
-  <post-detail [post]='post'></post-detail>
+  <hr>
+
+  <div *ngFor="let post of posts | async">
+    <post-detail [post]='post'></post-detail>
+  </div>
+
+  <loading-spinner *ngIf="showSpinner"></loading-spinner>
 </div>
-
-<loading-spinner *ngIf="showSpinner"></loading-spinner>

@@ -10,7 +10,7 @@
   #body='ngModel'></textarea>
 
   <label style="margin-bottom: 5px; display: block;">
-    <input type="file" class="button" (change)="detectFiles($event)">
+    <input type="file" (change)="detectFiles($event)">
   </label>
 
   <a (click)="isTranslate=true" *ngIf="!isTranslate">Add Translation?</a>
