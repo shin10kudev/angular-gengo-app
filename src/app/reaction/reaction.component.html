@@ -1,11 +1,11 @@
-<div class="wrapper">
+<div class="wrapper" (mouseenter)="toggleShow(true)" (mouseleave)="toggleShow(false)">
   <div class="emojis" *ngIf="showEmojis">
     <span *ngFor="let emoji of emojiList; index as i;">
-      <img [src]="emojiPath(emoji)" width='75px' (click)="react(i)">
+      <img [src]="emojiPath(emoji)" width='50px' (click)="react(i)">
     </span>
   </div>
 
-  <span class="like" (click)="react(0)" [class.liked]="userReaction != null" (mouseenter)="toggleShow(true)" (mouseleave)="toggleShow(false)">
+  <span class="like" (click)="react(0)" [class.liked]="userReaction != null">
       Like
   </span>
 

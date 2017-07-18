@@ -1,0 +1,13 @@
+.verify-icon {
+  cursor: pointer;
+  float: right;
+
+  i {
+    font-size: 20px;
+    color: #e0e0e0;
+
+    &.golden {
+      color: #ffd600;
+    }
+  }
+}

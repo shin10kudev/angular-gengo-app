@@ -2,6 +2,6 @@ export class Translation {
   $key: string;
   english: string;
   ja: string;
-  active: boolean = true;
+  verified: boolean = false;
   timeStamp: Date = new Date();
 }

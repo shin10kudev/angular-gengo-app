@@ -27,8 +27,8 @@ export class TranslationDetailComponent implements OnInit {
       })
   }
 
-  updateActive(value: boolean) {
-    this.translationSvc.updateTranslation(this.translation.$key, { active: value })
+  updateStatus(value: boolean) {
+    this.translationSvc.updateTranslation(this.translation.$key, { verified: value })
   }
 
   deleteTranslation() {
