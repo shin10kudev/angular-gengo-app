@@ -7,9 +7,9 @@ const _ = require('lodash');
 // List of output languages.
 const LANGUAGES = ['ja'];
 
-exports.translate = functions.database.ref('/translations/{userId}/{translationId}').onWrite(event => {
+exports.translate = functions.database.ref('/translations/{userId}/{translationId}').onCreate(event => {
   const snapshot = event.data;
-  const userId = event.params.userId
+  const userId = event.params.userId;
   const promises = [];
 
   _.each(LANGUAGES, (lang) => {
@@ -17,7 +17,7 @@ exports.translate = functions.database.ref('/translations/{userId}/{translationI
       promises.push(createTranslationPromise(lang, snapshot, userId));
    })
 
-  return Promise.all(promises)
+  return Promise.all(promises);
 });
 
 // URL to the Google Translate API.
