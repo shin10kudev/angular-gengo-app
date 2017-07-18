@@ -28,12 +28,6 @@ import { FooterNavComponent } from './ui/footer-nav/footer-nav.component';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
-// Items
-import { ItemService } from './items/shared/item.service';
-import { ItemsListComponent } from './items/items-list/items-list.component';
-import { ItemFormComponent } from './items/item-form/item-form.component';
-import { ItemDetailComponent } from './items/item-detail/item-detail.component';
-
 // Translations
 import { TranslationService } from './translation/shared/translation.service';
 import { TranslationFormComponent } from './translation/translation-form/translation-form.component';
@@ -58,9 +52,6 @@ export const firebaseConfig = environment.firebaseConfig;
     AppComponent,
     UserLoginComponent,
     UserProfileComponent,
-    ItemsListComponent,
-    ItemFormComponent,
-    ItemDetailComponent,
     TopNavComponent,
     FooterNavComponent,
     UserFormComponent,
@@ -88,7 +79,6 @@ export const firebaseConfig = environment.firebaseConfig;
   providers: [
     AuthService,
     AuthGuard,
-    ItemService,
     NavService,
     TranslationService,
     PostService,

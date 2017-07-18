@@ -6,6 +6,7 @@ Angular 4 app utilizing FireStarter (Angular4 + Firebase Starter App)
 
 - (Node version 7.0.0+ recommended)[https://github.com/riywo/ndenv]
 - (Angular Cli)[https://cli.angular.io/]
+- (Firbase Tools)[https://github.com/firebase/firebase-tools]
 
 ## Features
 
@@ -51,4 +52,7 @@ And finally `ng serve --open`
 
 ## Setting up firebase functions
 
-- coming soon
+- cd `functions`
+- `npm install`
+- `firebase login`
+- `firebase deploy --only functions`

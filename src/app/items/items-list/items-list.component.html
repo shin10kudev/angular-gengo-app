@@ -1,9 +1,0 @@
-<item-form></item-form>
-
-<hr>
-
-<div *ngFor="let item of items | async" class="card">
-  <item-detail [item]='item'></item-detail>
-</div>
-
-<loading-spinner *ngIf="showSpinner"></loading-spinner>

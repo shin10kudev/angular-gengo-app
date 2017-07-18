@@ -11,9 +11,8 @@ import { TranslationListComponent } from './translation/translation-list/transla
 const routes: Routes = [
   { path: '', component: ReadmePageComponent },
   { path: 'login', component: UserLoginComponent },
-  { path: 'items', component: ItemsListComponent, canActivate: [AuthGuard]},
   { path: 'posts', component: PostsListComponent, canActivate: [AuthGuard]},
-  { path: 'translate', component: TranslationListComponent, canActivate: [AuthGuard]}
+  { path: 'phrases', component: TranslationListComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
