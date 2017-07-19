@@ -9,7 +9,7 @@ required minlength="2" maxlength="100"
   <span *ngIf='english.errors; then errors else valid'>template renders here...</span>
 </div>
 
-<button class="button is-primary" (click)="handleTranslation()" [disabled]="!english.valid">Add</button>
+<button class="button is-primary" (click)="createTranslation()" [disabled]="!english.valid">Add</button>
 
 <ng-template #valid>
   <p class="help is-success">looks good!</p>

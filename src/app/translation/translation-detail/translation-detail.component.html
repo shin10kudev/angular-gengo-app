@@ -1,14 +1,14 @@
-<div class="verify-icon">
+<div class="verify-icon" title="Verified Translation">
   <i class="fa fa-star golden" aria-hidden="true" *ngIf='translation.verified' (click)='updateStatus(false)'></i>
 </div>
-<div class="verify-icon">
+<div class="verify-icon" title="Unverified Translation">
   <i class="fa fa-star-o" aria-hidden="true" *ngIf='!translation.verified' (click)='updateStatus(true)'></i>
 </div>
 
 <!-- normal view -->
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || defaultMessage }}</h3>
-  <div class="translation-text"><span>{{ translation.english }} <span>{{ translation.timeStamp | date: 'medium' }}</span></span></div>
+  <div class="translation-text"><span>{{ translation.english }} <span>{{ translation.created_at | date: 'medium' }}</span></span></div>
 
   <div class="card-footer">
     <span class="button is-small is-default" (click)="isEdit=true">Update</span>

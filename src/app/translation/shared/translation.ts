@@ -3,5 +3,6 @@ export class Translation {
   english: string;
   ja: string;
   verified: boolean = false;
-  timeStamp: Date = new Date();
+  created_at: number = new Date().getTime()
+  updated_at: number = new Date().getTime()
 }

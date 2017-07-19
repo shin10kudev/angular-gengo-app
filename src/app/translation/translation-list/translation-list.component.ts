@@ -17,7 +17,10 @@ export class TranslationListComponent implements OnInit {
   constructor(private translationSvc: TranslationService) { }
 
   ngOnInit() {
-    this.translations = this.translationSvc.getTranslationsList({limitToLast: 5})
+    this.translations = this.translationSvc.getTranslationsList({
+       limitToLast: 15,
+       orderByChild: 'created_at'
+     })
     this.translations.subscribe(() => this.showSpinner = false)
   }
 }

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/auth.guard';
 
 import { UserLoginComponent } from './users/user-login/user-login.component';
-import { ItemsListComponent } from './items/items-list/items-list.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 import { TranslationListComponent } from './translation/translation-list/translation-list.component';
@@ -19,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

@@ -7,5 +7,6 @@ export class Post {
   name: string;
   url: string;
   progress: number;
-  timeStamp: Date = new Date();
+  created_at: number = new Date().getTime();
+  updated_at: number = new Date().getTime();
 }

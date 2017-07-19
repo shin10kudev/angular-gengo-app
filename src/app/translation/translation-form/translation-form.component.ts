@@ -14,10 +14,10 @@ export class TranslationFormComponent {
   translation: Translation = new Translation();
   currentTranslation;
 
-  constructor(private translationSvc: TranslationService) { }
+  constructor(private translationSvc: TranslationService) {}
 
-  handleTranslation() {
-    this.currentTranslation = this.translationSvc.createTranslation(this.translation)
-    this.translation = new Translation() // reset translation
+  createTranslation() {
+    this.currentTranslation = this.translationSvc.createTranslation(this.translation);
+    this.translation = new Translation(); // reset translation
   }
 }
