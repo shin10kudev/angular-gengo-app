@@ -17,3 +17,20 @@
 .button { border-radius: 0; margin: 10px 5px; }
 
 .strike-out { text-decoration: line-through; color: darkred; }
+
+.sub-footer {
+  border-top: 1px dashed #ddd;
+  color: #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: right;
+
+  .fa-icon {
+    position: relative;
+    top: 3px;
+  }
+}
+
+.date-time {
+  font-size: 14px;
+}

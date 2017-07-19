@@ -8,15 +8,9 @@
 <!-- normal view -->
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || defaultMessage }}</h3>
-  <div class="translation-text"><span>{{ translation.english }} <span>{{ translation.created_at | date: 'medium' }}</span></span></div>
-
-  <div class="card-footer">
-    <span class="button is-small is-default" (click)="isEdit=true">Update</span>
-    <span class="button is-small is-danger" (click)='deleteTranslation()'>Delete</span>
-  </div>
+  <div class="translation-text">{{ translation.english }}</div>
 </div>
 
-<!-- edit view -->
 <div *ngIf="isEdit">
   <input placeholder="{{translation.ja || 'Add translation' }}" class="input"
   [(ngModel)]="translation.ja"
@@ -27,8 +21,18 @@
   [(ngModel)]="translation.english"
   required minlength="2" maxlength="100"
   #english='ngModel'>
+</div>
 
-  <div class="card-footer">
+<div class="sub-footer">
+  <i class="fa fa-clock-o fa-icon" aria-hidden="true"></i> <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
+</div>
+
+<div class="card-footer">
+  <div *ngIf="!isEdit">
+    <span class="button is-small is-default" (click)="isEdit=true">Update</span>
+    <span class="button is-small is-danger" (click)='deleteTranslation()'>Delete</span>
+  </div>
+  <div *ngIf="isEdit">
     <span class="button is-small is-primary" (click)='updateTranslation()'>Update</span>
     <span class="button is-small is-default" (click)="isEdit=false">Cancel</span>
   </div>
