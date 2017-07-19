@@ -11,23 +11,22 @@ import * as _ from "lodash";
 
 export class PostFormComponent implements OnInit {
 
-  selectedFiles: FileList;
   post: Post = new Post();
+  selectedFiles: FileList;
   isTranslate: boolean = false;
 
-  constructor(private postSvc: PostService) { }
+  constructor(private postSvc: PostService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 
   createPost() {
-    let file = this.selectedFiles.item(0)
-    this.post.file = file
-    this.postSvc.pushUpload(this.post)
+    let file = this.selectedFiles.item(0);
+    this.post.file = file;
+    this.postSvc.pushUpload(this.post);
     this.post = new Post();
   }
 }

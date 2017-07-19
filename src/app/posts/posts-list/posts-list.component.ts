@@ -18,7 +18,10 @@ export class PostsListComponent implements OnInit {
   constructor(private postSvc: PostService) { }
 
   ngOnInit() {
-    this.posts = this.postSvc.getPosts({limitToLast: 5})
+    this.posts = this.postSvc.getPosts({
+      limitToLast: 15,
+      orderByChild: 'created_at'
+    })
     this.posts.subscribe(() => this.showSpinner = false)
   }
 }

@@ -1,5 +1,9 @@
-.nav-item img {
-  max-height: 40px;
+.nav-item {
+  overflow: hidden;
+
+  img {
+    max-height: 40px;
+  }
 }
 
 .float-right {
