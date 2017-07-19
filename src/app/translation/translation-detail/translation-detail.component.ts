@@ -19,16 +19,23 @@ export class TranslationDetailComponent implements OnInit {
   }
 
   updateTranslation() {
+    let date = new Date()
     this.translationSvc.updateTranslation(
       this.translation.$key,
       {
         english: this.translation.english,
-        ja: this.translation.ja
+        ja: this.translation.ja,
+        timeStamp: date
       })
   }
 
   updateStatus(value: boolean) {
-    this.translationSvc.updateTranslation(this.translation.$key, { verified: value })
+    let date = new Date()
+    this.translationSvc.updateTranslation(
+      this.translation.$key, {
+        verified: value,
+        timeStamp: date
+    })
   }
 
   deleteTranslation() {

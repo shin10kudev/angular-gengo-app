@@ -8,7 +8,7 @@
 <!-- normal view -->
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || defaultMessage }}</h3>
-  <div class="translation-text"><span>{{ translation.english }}</span></div>
+  <div class="translation-text"><span>{{ translation.english }} <span>{{ translation.timeStamp | date: 'medium' }}</span></span></div>
 
   <div class="card-footer">
     <span class="button is-small is-default" (click)="isEdit=true">Update</span>
