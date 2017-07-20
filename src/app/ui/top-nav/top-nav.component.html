@@ -5,9 +5,7 @@
     </a>
   </div>
 
-  <div class="nav-center">
-
-  </div>
+  <div class="nav-center"></div>
 
   <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
   <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
@@ -22,6 +20,9 @@
   <div class="nav-right nav-menu" [ngClass]="{'is-active': show}">
     <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser">
       Login
+    </a>
+    <a class="nav-item" routerLink="/mistakes">
+      Mistakes
     </a>
     <a class="nav-item" routerLink="/phrases">
       Phrases

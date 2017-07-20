@@ -4,12 +4,12 @@ import { TranslationService } from '../shared/translation.service';
 import { Translation } from '../shared/translation';
 
 @Component({
-  selector: 'translation-list',
-  templateUrl: './translation-list.component.html',
-  styleUrls: ['./translation-list.component.scss']
+  selector: 'translations-list',
+  templateUrl: './translations-list.component.html',
+  styleUrls: ['./translations-list.component.scss']
 })
 
-export class TranslationListComponent implements OnInit {
+export class TranslationsListComponent implements OnInit {
 
   translations: FirebaseListObservable<Translation[]>;
   showSpinner: boolean = true;

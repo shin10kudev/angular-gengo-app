@@ -29,10 +29,10 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
 // Translations
-import { TranslationService } from './translation/shared/translation.service';
-import { TranslationFormComponent } from './translation/translation-form/translation-form.component';
-import { TranslationListComponent } from './translation/translation-list/translation-list.component';
-import { TranslationDetailComponent } from './translation/translation-detail/translation-detail.component';
+import { TranslationService } from './translations/shared/translation.service';
+import { TranslationsListComponent } from './translations/translations-list/translations-list.component';
+import { TranslationFormComponent } from './translations/translation-form/translation-form.component';
+import { TranslationDetailComponent } from './translations/translation-detail/translation-detail.component';
 
 // Posts
 import { PostService } from './posts/shared/post.service';
@@ -43,6 +43,10 @@ import { PostDetailComponent } from './posts/post-detail/post-detail.component';
 // Reactions
 import { ReactionService } from './reaction/shared/reaction.service';
 import { ReactionComponent } from './reaction/reaction.component';
+
+// Mistakes
+import { MistakeService } from './mistakes/shared/mistake.service';
+import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -62,8 +66,9 @@ export const firebaseConfig = environment.firebaseConfig;
     PostsListComponent,
     ReactionComponent,
     TranslationFormComponent,
-    TranslationListComponent,
-    TranslationDetailComponent
+    TranslationsListComponent,
+    TranslationDetailComponent,
+    MistakesListComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +87,8 @@ export const firebaseConfig = environment.firebaseConfig;
     NavService,
     TranslationService,
     PostService,
-    ReactionService
+    ReactionService,
+    MistakeService
   ],
   bootstrap: [
     AppComponent
