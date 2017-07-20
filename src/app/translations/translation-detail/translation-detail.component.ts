@@ -18,6 +18,7 @@ export class TranslationDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Update translation
   updateTranslation() {
     let date = new Date().getTime();
     this.translationSvc.updateTranslation(
@@ -29,15 +30,18 @@ export class TranslationDetailComponent implements OnInit {
       })
   }
 
+  // Update translation status
   updateStatus(value: boolean) {
     let date = new Date().getTime();
     this.translationSvc.updateTranslation(
-      this.translation.$key, {
+      this.translation.$key,
+      {
         verified: value,
         updated_at: date
-    })
+      })
   }
 
+  // Delete translation
   deleteTranslation() {
     this.translationSvc.deleteTranslation(this.translation.$key)
   }

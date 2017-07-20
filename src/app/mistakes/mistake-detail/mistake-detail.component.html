@@ -1,0 +1,39 @@
+<div class="verify-icon" title="Verified correction">
+  <i class="fa fa-star golden" aria-hidden="true" *ngIf='mistake.verified' (click)='updateStatus(false)'></i>
+</div>
+<div class="verify-icon" title="Unverified correction">
+  <i class="fa fa-star-o" aria-hidden="true" *ngIf='!mistake.verified' (click)='updateStatus(true)'></i>
+</div>
+
+<!-- normal view -->
+<div *ngIf="!isEdit">
+  <h3>{{ mistake.content || defaultMessage }}</h3>
+  <p class="sub-text">{{ mistake.correction }}</p>
+</div>
+
+<div *ngIf="isEdit">
+  <input placeholder="{{mistake.content || 'Add mistake' }}" class="input"
+  [(ngModel)]="mistake.content"
+  required minlength="2" maxlength="100"
+  #content='ngModel'>
+
+  <input placeholder="{{mistake.correction || 'Add correction' }}" class="input"
+  [(ngModel)]="mistake.correction"
+  required minlength="2" maxlength="100"
+  #correction='ngModel'>
+</div>
+
+<div class="sub-footer">
+  <i class="fa fa-clock-o fa-icon" aria-hidden="true"></i> <span class="date-time">{{ mistake.created_at | date: 'short' }}</span>
+</div>
+
+<div class="card-footer">
+  <div *ngIf="!isEdit">
+    <span class="button is-small is-default" (click)="isEdit=true">Update</span>
+    <span class="button is-small is-danger" (click)='deleteMistake()'>Delete</span>
+  </div>
+  <div *ngIf="isEdit">
+    <span class="button is-small is-primary" (click)='updateMistake()'>Update</span>
+    <span class="button is-small is-default" (click)="isEdit=false">Cancel</span>
+  </div>
+</div>

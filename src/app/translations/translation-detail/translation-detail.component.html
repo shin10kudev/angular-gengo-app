@@ -8,7 +8,7 @@
 <!-- normal view -->
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || defaultMessage }}</h3>
-  <div class="translation-text">{{ translation.english }}</div>
+  <p class="sub-text">{{ translation.english }}</p>
 </div>
 
 <div *ngIf="isEdit">

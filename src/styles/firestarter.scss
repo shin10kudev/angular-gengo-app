@@ -82,7 +82,21 @@ body {
   }
 }
 
-.translation-text {
-  margin-bottom: 14px;
+.sub-text {
+  margin-bottom: 10px;
   font-size: 14px;
+}
+
+.verify-icon {
+  cursor: pointer;
+  float: right;
+
+  i {
+    color: #e0e0e0;
+    font-size: 20px;
+
+    &.golden {
+      color: #ffd600;
+    }
+  }
 }
