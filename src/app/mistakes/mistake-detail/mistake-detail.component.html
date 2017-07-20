@@ -7,7 +7,7 @@
 
 <!-- normal view -->
 <div *ngIf="!isEdit">
-  <h3>{{ mistake.content || defaultMessage }}</h3>
+  <h3 class="strike-out">{{ mistake.content || defaultMessage }}</h3>
   <p class="sub-text">{{ mistake.correction }}</p>
 </div>
 
@@ -23,8 +23,16 @@
   #correction='ngModel'>
 </div>
 
-<div class="sub-footer">
-  <i class="fa fa-clock-o fa-icon" aria-hidden="true"></i> <span class="date-time">{{ mistake.created_at | date: 'short' }}</span>
+<div class="sub-footer clearfix">
+  <div class="count float-left">
+    <i class="fa fa-icon fa-arrow-circle-o-down" aria-hidden="true" (click)='updateCount(false)'></i>
+    <i class="fa fa-icon fa-arrow-circle-o-up" aria-hidden="true" (click)='updateCount(true)'></i>
+    | <span>{{ mistake.count }}</span>
+  </div>
+
+  <div class="float-right">
+    <i class="fa fa-clock-o fa-icon" aria-hidden="true"></i> <span class="date-time">{{ mistake.updated_at | date: 'short' }}</span>
+  </div>
 </div>
 
 <div class="card-footer">

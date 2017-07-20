@@ -42,6 +42,21 @@ export class MistakeDetailComponent implements OnInit {
       })
   }
 
+  // Update mistake count
+  updateCount(value: boolean) {
+    let date = new Date().getTime();
+    let countDirection = value ? (this.mistake.count + 1) : (this.mistake.count - 1);
+
+    if(countDirection < 0) countDirection = 0;
+
+    this.mistakeSvc.updateMistake(
+      this.mistake.$key,
+      {
+        count: countDirection,
+        updated_at: date
+      })
+  }
+
   // Delete mistake
   deleteMistake() {
     this.mistakeSvc.deleteMistake(this.mistake.$key);
