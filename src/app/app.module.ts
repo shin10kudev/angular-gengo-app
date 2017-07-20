@@ -47,6 +47,7 @@ import { ReactionComponent } from './reaction/reaction.component';
 // Mistakes
 import { MistakeService } from './mistakes/shared/mistake.service';
 import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.component';
+import { MistakeFormComponent } from './mistakes/mistake-form/mistake-form.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -68,7 +69,8 @@ export const firebaseConfig = environment.firebaseConfig;
     TranslationFormComponent,
     TranslationsListComponent,
     TranslationDetailComponent,
-    MistakesListComponent
+    MistakesListComponent,
+    MistakeFormComponent
   ],
   imports: [
     BrowserModule,

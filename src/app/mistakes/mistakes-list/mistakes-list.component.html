@@ -1,3 +1,9 @@
-<p>
-  mistakes-list works!
-</p>
+<mistake-form></mistake-form>
+
+<hr>
+
+<div *ngFor="let mistake of mistakes | async" class="card">
+  <!-- <mistake-detail [mistake]='mistake'></mistake-detail> -->
+</div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>

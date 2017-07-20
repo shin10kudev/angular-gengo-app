@@ -1,0 +1,20 @@
+<h3>Mistakes</h3>
+
+<input placeholder="What did you mistake?" class="input"
+[(ngModel)]="mistake.content"
+required minlength="2" maxlength="100"
+#content='ngModel' autofocus>
+
+<div *ngIf="content.dirty">
+  <span *ngIf='content.errors; then errors else valid'>template renders here...</span>
+</div>
+
+<button class="button is-primary" (click)="createMistake()" [disabled]="!content.valid">Add</button>
+
+<ng-template #valid>
+  <p class="help is-success">looks good!</p>
+</ng-template>
+
+<ng-template #errors>
+  <p class="help is-danger">form contains errors!</p>
+</ng-template>
