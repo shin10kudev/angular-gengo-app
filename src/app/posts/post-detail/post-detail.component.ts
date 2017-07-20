@@ -18,6 +18,12 @@ export class PostDetailComponent implements OnInit {
   }
 
   deletePost(post) {
-    this.postSvc.deletePost(this.post)
+    if(this.confirmAction('Are you sure you want to delete this post?'))
+      this.postSvc.deletePost(this.post)
+  }
+
+  // Default confirm action
+  private confirmAction(msg: string) {
+    return confirm(msg);
   }
 }

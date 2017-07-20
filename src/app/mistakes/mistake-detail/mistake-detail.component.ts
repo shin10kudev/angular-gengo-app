@@ -59,6 +59,12 @@ export class MistakeDetailComponent implements OnInit {
 
   // Delete mistake
   deleteMistake() {
-    this.mistakeSvc.deleteMistake(this.mistake.$key);
+    if(this.confirmAction('Are you sure you want to delete this entry?'))
+      this.mistakeSvc.deleteMistake(this.mistake.$key);
+  }
+
+  // Default confirm action
+  private confirmAction(msg: string) {
+    return confirm(msg);
   }
 }
