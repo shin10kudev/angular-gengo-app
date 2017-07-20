@@ -13,7 +13,6 @@ export class MistakeDetailComponent implements OnInit {
   @Input() mistake: Mistake;
   defaultMessage: string = "Retrieving data";
 
-
   constructor(private mistakeSvc: MistakeService) { }
 
   ngOnInit() {
@@ -27,6 +26,7 @@ export class MistakeDetailComponent implements OnInit {
       {
         content: this.mistake.content,
         correction: this.mistake.correction,
+        notes: this.mistake.notes,
         updated_at: date
       })
   }

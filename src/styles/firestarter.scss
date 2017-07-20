@@ -23,11 +23,6 @@ body {
   border-radius: 0px;
 }
 
-.input,
-.textarea {
-  margin-bottom: 5px;
-}
-
 ///// Social Buttons
 .btn-social {
   color: #fff;
@@ -77,8 +72,9 @@ body {
     padding-top: 1px;
   }
 
-  .input {
-    margin-bottom: 1em;
+  .input,
+  .textarea {
+    margin-bottom: 0.5em;
   }
 }
 

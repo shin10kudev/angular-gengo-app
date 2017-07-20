@@ -5,7 +5,6 @@
   <i class="fa fa-star-o" aria-hidden="true" *ngIf='!translation.verified' (click)='updateStatus(true)'></i>
 </div>
 
-<!-- normal view -->
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || defaultMessage }}</h3>
   <p class="sub-text">{{ translation.english }}</p>

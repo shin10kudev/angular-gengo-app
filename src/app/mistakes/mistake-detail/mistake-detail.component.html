@@ -5,7 +5,6 @@
   <i class="fa fa-star-o" aria-hidden="true" *ngIf='!mistake.verified' (click)='updateStatus(true)'></i>
 </div>
 
-<!-- normal view -->
 <div *ngIf="!isEdit">
   <h3 class="strike-out">{{ mistake.content || defaultMessage }}</h3>
   <p class="sub-text">{{ mistake.correction }}</p>
@@ -21,6 +20,16 @@
   [(ngModel)]="mistake.correction"
   required minlength="2" maxlength="100"
   #correction='ngModel'>
+
+  <textarea placeholder="{{mistake.notes || 'Add notes' }}" class="textarea"
+  [(ngModel)]="mistake.notes"
+  required minlength="2" maxlength="500"
+  #notes='ngModel'></textarea>
+</div>
+
+<div class="sub-footer">
+  <p class="notes">{{ mistake.notes }}</p>
+  <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
 </div>
 
 <div class="sub-footer clearfix">
