@@ -1,8 +1,10 @@
-<div class="verify-icon" title="Verified correction">
-  <i class="fa fa-star golden" aria-hidden="true" *ngIf='mistake.verified' (click)='updateStatus(false)'></i>
-</div>
-<div class="verify-icon" title="Unverified correction">
-  <i class="fa fa-star-o" aria-hidden="true" *ngIf='!mistake.verified' (click)='updateStatus(true)'></i>
+<div *ngIf="!isEdit">
+  <div class="verify-icon" title="Verified correction">
+    <i class="fa fa-star golden" aria-hidden="true" *ngIf='mistake.verified' (click)='updateStatus(false)'></i>
+  </div>
+  <div class="verify-icon" title="Unverified correction">
+    <i class="fa fa-star-o" aria-hidden="true" *ngIf='!mistake.verified' (click)='updateStatus(true)'></i>
+  </div>
 </div>
 
 <div *ngIf="!isEdit">
