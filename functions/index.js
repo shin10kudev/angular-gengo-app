@@ -1,8 +1,15 @@
+'use strict';
 var functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 const request = require('request-promise');
 const _ = require('lodash');
+
+// Translate function (Google Translate API)
+// *****************************************************************************************
+// *****************************************************************************************
+// *****************************************************************************************
+// *****************************************************************************************
 
 // List of output languages.
 const LANGUAGES = ['ja'];
