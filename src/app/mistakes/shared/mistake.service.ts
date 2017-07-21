@@ -8,7 +8,6 @@ export class MistakeService {
 
   private basePath: string = '/mistakes';
   userId: string;
-
   mistakes: FirebaseListObservable<Mistake[]> = null; //  list of objects
 
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
@@ -34,8 +33,8 @@ export class MistakeService {
   }
 
   // Update a mistake
-  updateMistake(key: string, value: any): void {
-    this.mistakes.update(key, value)
+  updateMistake(key: string, mistake: Mistake): void {
+    this.mistakes.update(key, mistake)
       .catch(error => this.handleError(error))
   }
 

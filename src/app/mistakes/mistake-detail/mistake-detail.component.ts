@@ -21,40 +21,33 @@ export class MistakeDetailComponent implements OnInit {
   // Update mistake
   updateMistake() {
     let date = new Date().getTime();
-    this.mistakeSvc.updateMistake(
-      this.mistake.$key,
-      {
-        content: this.mistake.content,
-        correction: this.mistake.correction,
-        notes: this.mistake.notes,
-        updated_at: date
-      })
+    this.mistake.updated_at = date;
+    this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 
   // Update mistake status
   updateStatus(value: boolean) {
     let date = new Date().getTime();
-    this.mistakeSvc.updateMistake(
-      this.mistake.$key,
-      {
-        verified: value,
-        updated_at: date
-      })
+    this.mistake.updated_at = date;
+    this.mistake.verified = value;
+    this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 
-  // Update mistake count
-  updateCount(value: boolean) {
+  // Increase mistake count
+  increaseCount() {
     let date = new Date().getTime();
-    let countDirection = value ? (this.mistake.count + 1) : (this.mistake.count - 1);
+    this.mistake.updated_at = date;
+    this.mistake.count++;
+    this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
+  }
 
-    if(countDirection < 0) countDirection = 0;
-
-    this.mistakeSvc.updateMistake(
-      this.mistake.$key,
-      {
-        count: countDirection,
-        updated_at: date
-      })
+  // Decrease mistake count
+  decreaseCount() {
+    if(this.mistake.count === 0) return;
+    let date = new Date().getTime();
+    this.mistake.updated_at = date;
+    this.mistake.count--;
+    this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 
   // Delete mistake
