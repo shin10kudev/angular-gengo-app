@@ -18,8 +18,7 @@ export class TranslationsListComponent implements OnInit {
 
   ngOnInit() {
     this.translations = this.translationSvc.getTranslationsList({
-       limitToLast: 15,
-       orderByChild: 'created_at'
+       limitToLast: 15
      })
     this.translations.subscribe(() => this.showSpinner = false)
   }

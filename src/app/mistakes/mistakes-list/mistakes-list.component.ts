@@ -18,8 +18,7 @@ export class MistakesListComponent implements OnInit {
 
   ngOnInit() {
     this.mistakes = this.mistakeSvc.getMistakesList({
-      limitToLast: 15,
-      orderByChild: "created_at"
+      limitToLast: 15
     });
     this.mistakes.subscribe(() => this.showSpinner = false);
   }

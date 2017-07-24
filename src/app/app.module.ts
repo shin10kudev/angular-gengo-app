@@ -14,6 +14,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 
+// Custom Pipes
+import { ReversePipe } from './shared/pipes/reverse.pipe';
+
 // Users
 import { AuthService } from './core/auth.service';
 import { AuthGuard} from './core/auth.guard';
@@ -72,7 +75,8 @@ export const firebaseConfig = environment.firebaseConfig;
     TranslationDetailComponent,
     MistakesListComponent,
     MistakeFormComponent,
-    MistakeDetailComponent
+    MistakeDetailComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
 
 <hr>
 
-<div *ngFor="let mistake of mistakes | async" class="card">
+<div *ngFor="let mistake of mistakes | async | reverse" class="card">
   <mistake-detail [mistake]='mistake'></mistake-detail>
 </div>
 
