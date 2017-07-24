@@ -32,8 +32,8 @@ export class TranslationService {
   }
 
   // Update an exisiting translation
-  updateTranslation(key: string, value: any): void {
-    this.translations.update(key, value)
+  updateTranslation(key: string, translation: Translation): void {
+    this.translations.update(key, translation)
       .catch(error => this.handleError(error))
   }
 

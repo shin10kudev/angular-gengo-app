@@ -23,24 +23,16 @@ export class TranslationDetailComponent implements OnInit {
   // Update translation
   updateTranslation() {
     let date = firebase.database.ServerValue.TIMESTAMP;
-    this.translationSvc.updateTranslation(
-      this.translation.$key,
-      {
-        english: this.translation.english,
-        ja: this.translation.ja,
-        updated_at: date
-      })
+    this.translation.updated_at = date;
+    this.translationSvc.updateTranslation(this.translation.$key, this.translation)
   }
 
   // Update translation status
   updateStatus(value: boolean) {
     let date = firebase.database.ServerValue.TIMESTAMP;
-    this.translationSvc.updateTranslation(
-      this.translation.$key,
-      {
-        verified: value,
-        updated_at: date
-      })
+    this.translation.updated_at = date;
+    this.translation.verified = value;
+    this.translationSvc.updateTranslation(this.translation.$key, this.translation)
   }
 
   // Delete translation

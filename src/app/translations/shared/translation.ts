@@ -5,6 +5,7 @@ export class Translation {
   english: string;
   ja: string;
   verified: boolean = false;
+  notes: string;
   created_at: any = firebase.database.ServerValue.TIMESTAMP;
   updated_at: any = firebase.database.ServerValue.TIMESTAMP;
 }
