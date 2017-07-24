@@ -1,15 +1,35 @@
-<h3>Phrases to Learn</h3>
+<h3>Phrases to Learn
+  <div class="floating-actions">
+    <a [ngClass]="{ 'active': !isJapaneseInput }" (click)="isJapaneseInput=false">English</a> |
+    <a [ngClass]="{ 'active': isJapaneseInput }" (click)="isJapaneseInput=true">Japanese</a>
+  </div>
+</h3>
 
-<input placeholder="Type in English" class="input"
-[(ngModel)]="translation.english"
-required minlength="2" maxlength="100"
-#english='ngModel' autofocus>
+<div *ngIf="!isJapaneseInput">
+  <input placeholder="Type in English" class="input"
+  [(ngModel)]="translation.english"
+  required minlength="2" maxlength="100"
+  #english='ngModel' autofocus>
 
-<div *ngIf="english.dirty">
-  <span *ngIf='english.errors; then errors else valid'>template renders here...</span>
+  <div *ngIf="english.dirty">
+    <span *ngIf='english.errors; then errors else valid'>template renders here...</span>
+  </div>
+
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!english.valid">Add</button>
 </div>
 
-<button class="button is-primary" (click)="createTranslation()" [disabled]="!english.valid">Add</button>
+<div *ngIf="isJapaneseInput">
+  <input placeholder="Type in Japanese" class="input"
+  [(ngModel)]="translation.ja"
+  required minlength="2" maxlength="100"
+  #ja='ngModel' autofocus>
+
+  <div *ngIf="ja.dirty">
+    <span *ngIf='ja.errors; then errors else valid'>template renders here...</span>
+  </div>
+
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add</button>
+</div>
 
 <ng-template #valid>
   <p class="help is-success">looks good!</p>

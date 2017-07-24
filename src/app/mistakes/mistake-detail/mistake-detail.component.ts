@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as firebase from 'firebase';
 import { MistakeService } from '../shared/mistake.service';
 import { Mistake } from '../shared/mistake';
 
@@ -20,14 +21,14 @@ export class MistakeDetailComponent implements OnInit {
 
   // Update mistake
   updateMistake() {
-    let date = new Date().getTime();
+    let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 
   // Update mistake status
   updateStatus(value: boolean) {
-    let date = new Date().getTime();
+    let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
     this.mistake.verified = value;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
@@ -35,7 +36,7 @@ export class MistakeDetailComponent implements OnInit {
 
   // Increase mistake count
   increaseCount() {
-    let date = new Date().getTime();
+    let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
     this.mistake.count++;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
@@ -44,7 +45,7 @@ export class MistakeDetailComponent implements OnInit {
   // Decrease mistake count
   decreaseCount() {
     if(this.mistake.count === 0) return;
-    let date = new Date().getTime();
+    let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
     this.mistake.count--;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);

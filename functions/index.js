@@ -19,10 +19,13 @@ exports.translate = functions.database.ref('/translations/{userId}/{translationI
   const userId = event.params.userId;
   const promises = [];
 
+  // Abort if ja is detected
+  if(snapshot.val().ja) return;
+
   _.each(LANGUAGES, (lang) => {
-      console.log(lang)
+      console.log(lang);
       promises.push(createTranslationPromise(lang, snapshot, userId));
-   })
+  });
 
   return Promise.all(promises);
 });

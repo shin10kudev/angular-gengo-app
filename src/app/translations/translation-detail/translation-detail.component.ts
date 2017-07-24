@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as firebase from 'firebase';
 import { TranslationService } from '../shared/translation.service';
 import { Translation } from '../shared/translation';
 
@@ -11,7 +12,8 @@ import { Translation } from '../shared/translation';
 export class TranslationDetailComponent implements OnInit {
 
   @Input() translation: Translation;
-  defaultMessage: string = "Running translation in the cloud..."
+  translationMsg: string = "Running translation in the cloud..."
+  defaultMsg: string = "Awaiting translation..."
 
   constructor(private translationSvc: TranslationService) { }
 
@@ -20,7 +22,7 @@ export class TranslationDetailComponent implements OnInit {
 
   // Update translation
   updateTranslation() {
-    let date = new Date().getTime();
+    let date = firebase.database.ServerValue.TIMESTAMP;
     this.translationSvc.updateTranslation(
       this.translation.$key,
       {
@@ -32,7 +34,7 @@ export class TranslationDetailComponent implements OnInit {
 
   // Update translation status
   updateStatus(value: boolean) {
-    let date = new Date().getTime();
+    let date = firebase.database.ServerValue.TIMESTAMP;
     this.translationSvc.updateTranslation(
       this.translation.$key,
       {

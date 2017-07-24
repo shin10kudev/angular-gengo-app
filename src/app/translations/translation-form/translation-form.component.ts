@@ -13,6 +13,7 @@ export class TranslationFormComponent {
 
   translation: Translation = new Translation();
   currentTranslation;
+  isJapaneseInput: boolean = false;
 
   constructor(private translationSvc: TranslationService) {}
 

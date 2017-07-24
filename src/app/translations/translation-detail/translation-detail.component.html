@@ -8,8 +8,8 @@
 </div>
 
 <div *ngIf="!isEdit">
-  <h3>{{ translation.ja || defaultMessage }}</h3>
-  <p class="sub-text">{{ translation.english }}</p>
+  <h3>{{ translation.ja || translationMsg }}</h3>
+  <p class="sub-text">{{ translation.english || defaultMsg }}</p>
 </div>
 
 <div *ngIf="isEdit">

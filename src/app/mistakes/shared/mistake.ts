@@ -1,3 +1,5 @@
+import * as firebase from 'firebase';
+
 export class Mistake {
   $key: string;
   content: string;
@@ -5,6 +7,6 @@ export class Mistake {
   notes: string;
   verified: boolean = false;
   count: number = 0;
-  created_at: number = new Date().getTime()
-  updated_at: number = new Date().getTime()
+  created_at: any = firebase.database.ServerValue.TIMESTAMP;
+  updated_at: any = firebase.database.ServerValue.TIMESTAMP;
 }

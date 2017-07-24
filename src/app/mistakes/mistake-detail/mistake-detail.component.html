@@ -8,8 +8,8 @@
 </div>
 
 <div *ngIf="!isEdit">
-  <h3 class="strike-out">{{ mistake.content || defaultMessage }}</h3>
-  <p class="sub-text">{{ mistake.correction }}</p>
+  <h3>{{ mistake.correction }}</h3>
+  <p class="sub-text strike-out">{{ mistake.content || defaultMessage }}</p>
 </div>
 
 <div *ngIf="isEdit">
