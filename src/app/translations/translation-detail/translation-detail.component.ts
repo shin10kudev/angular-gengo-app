@@ -13,7 +13,7 @@ export class TranslationDetailComponent implements OnInit {
 
   @Input() translation: Translation;
   translationMsg: string = "Running translation in the cloud..."
-  defaultMsg: string = "Awaiting translation..."
+  defaultMsg: string = "Input translation..."
 
   constructor(private translationSvc: TranslationService) { }
 

@@ -9,16 +9,17 @@
 
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || translationMsg }}</h3>
-  <p class="sub-text">{{ translation.english || defaultMsg }}</p>
+  <p *ngIf="translation.english" class="sub-text">{{ translation.english }}</p>
+  <p><a *ngIf="!translation.english" (click)="isEdit=true" class="sub-text">{{ defaultMsg }}</a></p>
 </div>
 
 <div *ngIf="isEdit">
-  <input placeholder="{{translation.ja || 'Add translation' }}" class="input"
+  <input placeholder="{{translation.ja || 'Add Japanese' }}" class="input"
   [(ngModel)]="translation.ja"
   required minlength="2" maxlength="100"
   #ja='ngModel'>
 
-  <input placeholder="{{translation.english || 'Add title' }}" class="input"
+  <input placeholder="{{translation.english || 'Add English' }}" class="input"
   [(ngModel)]="translation.english"
   required minlength="2" maxlength="100"
   #english='ngModel'>
@@ -40,7 +41,7 @@
 
 <div class="card-footer">
   <div *ngIf="!isEdit">
-    <span class="button is-small is-default" (click)="isEdit=true">Update</span>
+    <span class="button is-small is-default" (click)="isEdit=true">Edit</span>
     <span class="button is-small is-danger" (click)='deleteTranslation()'>Delete</span>
   </div>
   <div *ngIf="isEdit">
