@@ -7,21 +7,21 @@
 
 <div *ngIf="!isJapaneseInput">
   <input placeholder="Type in English" class="input"
-  [(ngModel)]="translation.english"
-  required minlength="2" maxlength="100"
-  #english='ngModel' autofocus>
+  [(ngModel)]="translation.en"
+  required minlength="1" maxlength="100"
+  #en='ngModel' autofocus>
 
-  <div *ngIf="english.dirty">
-    <span *ngIf='english.errors; then errors else valid'>template renders here...</span>
+  <div *ngIf="en.dirty">
+    <span *ngIf='en.errors; then errors else valid'>template renders here...</span>
   </div>
 
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!english.valid">Add</button>
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add</button>
 </div>
 
 <div *ngIf="isJapaneseInput">
   <input placeholder="Type in Japanese" class="input"
   [(ngModel)]="translation.ja"
-  required minlength="2" maxlength="100"
+  required minlength="1" maxlength="100"
   #ja='ngModel' autofocus>
 
   <div *ngIf="ja.dirty">

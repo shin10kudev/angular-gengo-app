@@ -2,7 +2,7 @@
 
 <hr>
 
-<div *ngFor="let translation of translations | async | reverse" class="card">
+<div *ngFor="let translation of translations | async" class="card">
   <translation-detail [translation]='translation'></translation-detail>
 </div>
 

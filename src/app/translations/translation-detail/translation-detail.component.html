@@ -9,8 +9,8 @@
 
 <div *ngIf="!isEdit">
   <h3>{{ translation.ja || translationMsg }}</h3>
-  <p *ngIf="translation.english" class="sub-text">{{ translation.english }}</p>
-  <p><a *ngIf="!translation.english" (click)="isEdit=true" class="sub-text">{{ defaultMsg }}</a></p>
+  <p *ngIf="translation.en" class="sub-text">{{ translation.en }}</p>
+  <p><a *ngIf="!translation.en" (click)="isEdit=true" class="sub-text">{{ defaultMsg }}</a></p>
 </div>
 
 <div *ngIf="isEdit">
@@ -19,10 +19,10 @@
   required minlength="2" maxlength="100"
   #ja='ngModel'>
 
-  <input placeholder="{{translation.english || 'Add English' }}" class="input"
-  [(ngModel)]="translation.english"
+  <input placeholder="{{translation.en || 'Add English' }}" class="input"
+  [(ngModel)]="translation.en"
   required minlength="2" maxlength="100"
-  #english='ngModel'>
+  #en='ngModel'>
 
   <textarea placeholder="{{translation.notes || 'Add notes' }}" class="textarea"
   [(ngModel)]="translation.notes"
