@@ -8,20 +8,21 @@
 </div>
 
 <div *ngIf="!isEdit">
-  <h3>{{ mistake.correction }}</h3>
+  <h3 *ngIf="mistake.correction">{{ mistake.correction }}</h3>
+  <a class="sub-text" *ngIf="!mistake.correction" (click)="isEdit=true">Add correction</a>
   <p class="sub-text strike-out">{{ mistake.content || defaultMessage }}</p>
 </div>
 
 <div *ngIf="isEdit">
-  <input placeholder="{{mistake.content || 'Add mistake' }}" class="input"
-  [(ngModel)]="mistake.content"
-  required minlength="2" maxlength="100"
-  #content='ngModel'>
-
   <input placeholder="{{mistake.correction || 'Add correction' }}" class="input"
   [(ngModel)]="mistake.correction"
   required minlength="2" maxlength="100"
   #correction='ngModel'>
+
+  <input placeholder="{{mistake.content || 'Add mistake' }}" class="input"
+  [(ngModel)]="mistake.content"
+  required minlength="2" maxlength="100"
+  #content='ngModel'>
 
   <textarea placeholder="{{mistake.notes || 'Add notes' }}" class="textarea"
   [(ngModel)]="mistake.notes"
