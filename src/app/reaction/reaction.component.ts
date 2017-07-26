@@ -11,7 +11,7 @@ export class ReactionComponent implements OnInit, OnDestroy {
 
   @Input() postId: string;
 
-  showEmojis = false;
+  showEmojis: boolean = false;
   emojiList: string[];
 
   reactionCount: any;
