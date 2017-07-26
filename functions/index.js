@@ -15,15 +15,15 @@ exports.translate = functions.database.ref('/translations/{userId}/{translationI
   const promises = [];
 
   if(snapshot.val().en) {
-    var text = snapshot.val().en;
     var source = 'en';
     var target = 'ja';
+    var text = snapshot.val().en;
     promises.push(createTranslationPromise(source, target, text, snapshot, userId));
   }
   else if(snapshot.val().ja) {
-    var text = snapshot.val().ja;
     var source = 'ja';
     var target = 'en';
+    var text = snapshot.val().ja;
     promises.push(createTranslationPromise(source, target, text, snapshot, userId));
   } else {
     return;
