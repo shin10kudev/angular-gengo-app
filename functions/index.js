@@ -16,11 +16,15 @@ exports.translate = functions.database.ref('/translations/{userId}/{translationI
 
   if(snapshot.val().en) {
     var text = snapshot.val().en;
-    promises.push(createTranslationPromise('en', 'ja', text, snapshot, userId));
+    var source = 'en';
+    var target = 'ja';
+    promises.push(createTranslationPromise(source, target, text, snapshot, userId));
   }
   else if(snapshot.val().ja) {
     var text = snapshot.val().ja;
-    promises.push(createTranslationPromise('ja', 'en', text, snapshot, userId));
+    var source = 'ja';
+    var target = 'en';
+    promises.push(createTranslationPromise(source, target, text, snapshot, userId));
   } else {
     return;
   }
