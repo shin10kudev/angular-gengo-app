@@ -2,7 +2,18 @@
 
 <hr>
 
-<div *ngFor="let mistake of mistakes | async | reverse" class="card">
+<h3>Unverified mistakes</h3>
+
+<div *ngFor="let mistake of mistakes | async | reverse | unverifiedMistake" class="card">
+  <mistake-detail [mistake]='mistake'></mistake-detail>
+</div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+
+
+<h3>Verified mistakes</h3>
+
+<div *ngFor="let mistake of mistakes | async | reverse | verifiedMistake" class="card">
   <mistake-detail [mistake]='mistake'></mistake-detail>
 </div>
 
