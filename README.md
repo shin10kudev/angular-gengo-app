@@ -1,12 +1,14 @@
 # GengoApp
 
-Angular 4 app utilizing FireStarter (Angular4 + Firebase Starter App)
+Angular 4 app utilizing [FireStarter](https://github.com/codediodeio/angular-firestarter) (Angular4 + Firebase Starter App)
+
+More info at: [angularfirebase.com/](https://angularfirebase.com/)
 
 ## Requirements
 
-- (Node version 7.0.0+ recommended)[https://github.com/riywo/ndenv]
-- (Angular Cli)[https://cli.angular.io/]
-- (Firbase Tools)[https://github.com/firebase/firebase-tools]
+- [Node version 7.0.0+ recommended](https://github.com/riywo/ndenv)
+- [Angular Cli](https://cli.angular.io/)
+- [Firbase Tools](https://github.com/firebase/firebase-tools)
 
 ## Features
 
