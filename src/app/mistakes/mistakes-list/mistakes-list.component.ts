@@ -83,7 +83,7 @@ export class MistakesListComponent implements OnInit {
 
   // Filter numbers greater than rule
   filterGreaterThan(property: string, rule: number) {
-    this.filters[property] = val => val > rule;
+    this.filters[property] = val => val >= rule;
     this.applyFilters();
   }
 
@@ -91,6 +91,11 @@ export class MistakesListComponent implements OnInit {
   removeFilter(property: string) {
     delete this.filters[property];
     this[property] = null;
+    this.applyFilters();
+  }
+
+  resetFilters() {
+    this.filters = {};
     this.applyFilters();
   }
 }
