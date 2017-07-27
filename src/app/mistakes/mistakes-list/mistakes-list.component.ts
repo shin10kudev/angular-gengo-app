@@ -17,6 +17,7 @@ export class MistakesListComponent implements OnInit {
   // Unwrapped arrays from firebase
   mistakes: any;
   filteredMistakes: any;
+  mistakesCount: number;
 
   // Filter-able properties
   verified: boolean;
@@ -43,6 +44,7 @@ export class MistakesListComponent implements OnInit {
 
   private applyFilters() {
     this.filteredMistakes = _.filter(this.mistakes, _.conforms(this.filters) );
+    this.mistakesCount = this.filteredMistakes.length;
   }
 
   // Filter property by equality to rule
