@@ -23,6 +23,7 @@ export class MistakesListComponent implements OnInit {
   unverified: boolean;
   errorCount: number;
   content: string;
+  correction: string;
 
   // Active filter rules
   filters = {};
@@ -46,10 +47,7 @@ export class MistakesListComponent implements OnInit {
 
   // Filter property by equality to rule
   filterExact(property: string, rule: any) {
-    _.debounce(
-      this.filters[property] = val => val == rule,
-      500
-      )
+    this.filters[property] = val => val == rule;
     this.applyFilters();
   }
 

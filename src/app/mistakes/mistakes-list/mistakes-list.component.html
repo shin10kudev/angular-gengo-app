@@ -6,15 +6,15 @@
 </div>
 
 <div *ngIf="isFilter">
-  <p><b>Filters:</b></p>
+  <h3>Filters</h3>
 
-  <label for="content">Search by Title</label>
+  <label for="correction">Search mistakes by title</label>
   <input type="text"
-         [(ngModel)]="content"
-         (keyup.enter)="filterPartial('content', content)">
+         [(ngModel)]="correction"
+         (change)="filterPartial('correction', correction)">
 
-  <button *ngIf="content"
-          (click)="removeFilter('content')">
+  <button *ngIf="correction"
+          (click)="removeFilter('correction')">
 
           Remove Filter
         </button>
