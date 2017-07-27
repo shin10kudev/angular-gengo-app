@@ -24,7 +24,14 @@
   <label>Verified?</label>
   <input type="checkbox"
          [(ngModel)]="verified"
-         (change)="filterBoolean('verified', verified)">
+         (change)="filterBooleanTrue('verified', verified); unverified=false;">
+
+  <br>
+
+  <label>UnVerified?</label>
+  <input type="checkbox"
+         [(ngModel)]="unverified"
+         (change)="filterBooleanFalse('verified', unverified); verified=false;">
 
   <br>
 

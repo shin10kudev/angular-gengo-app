@@ -22,4 +22,8 @@ export class MistakeFormComponent implements OnInit {
     this.mistakeSvc.createMistake(this.mistake);
     this.mistake = new Mistake(); // reset form
   }
+
+  cancelMistake() {
+    this.mistake = new Mistake(); // reset form
+  }
 }

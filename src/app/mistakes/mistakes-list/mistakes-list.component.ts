@@ -20,6 +20,7 @@ export class MistakesListComponent implements OnInit {
 
   // Filter-able properties
   verified: boolean;
+  unverified: boolean;
   errorCount: number;
   content: string;
 
@@ -54,18 +55,28 @@ export class MistakesListComponent implements OnInit {
 
   // Filter property by partial equality to rule
   filterPartial(property: string, rule: any) {
+    const delay = 500;
     _.debounce(
       this.filters[property] = val => val.indexOf(rule) >= 0,
-      500
-      )
+      delay
+     )
     this.applyFilters();
   }
 
   // Filter properties that resolve to true
-  filterBoolean(property: string, rule: boolean) {
+  filterBooleanTrue(property: string, rule: boolean) {
     if(!rule) this.removeFilter(property)
     else {
       this.filters[property] = val => val;
+      this.applyFilters();
+    }
+  }
+
+  // Filter properties that resolve to true
+  filterBooleanFalse(property: string, rule: boolean) {
+    if(!rule) this.removeFilter(property)
+    else {
+      this.filters[property] = val => !val;
       this.applyFilters();
     }
   }
