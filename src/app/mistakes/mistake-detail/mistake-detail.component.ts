@@ -35,20 +35,20 @@ export class MistakeDetailComponent implements OnInit {
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 
-  // Increase mistake count
-  increaseCount() {
+  // Increase mistake errorCount
+  increaseErrorCount() {
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
-    this.mistake.count++;
+    this.mistake.errorCount++;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 
-  // Decrease mistake count
-  decreaseCount() {
-    if(this.mistake.count === 0) return;
+  // Decrease mistake errorCount
+  decreaseErrorCount() {
+    if(this.mistake.errorCount === 0) return;
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
-    this.mistake.count--;
+    this.mistake.errorCount--;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 

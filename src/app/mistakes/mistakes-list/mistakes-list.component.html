@@ -2,18 +2,43 @@
 
 <hr>
 
-<h3>Unverified mistakes</h3>
+<p><b>Filters:</b></p>
 
-<div *ngFor="let mistake of mistakes | async | reverse | unverifiedMistake" class="card">
-  <mistake-detail [mistake]='mistake'></mistake-detail>
-</div>
+<label for="content">Search by Title</label>
+<input type="text"
+       [(ngModel)]="content"
+       (keyup.enter)="filterPartial('content', content)">
 
-<loading-spinner *ngIf="showSpinner"></loading-spinner>
+<button *ngIf="content"
+        (click)="removeFilter('content')">
 
+        Remove Filter
+      </button>
 
-<h3>Verified mistakes</h3>
+<br>
 
-<div *ngFor="let mistake of mistakes | async | reverse | verifiedMistake" class="card">
+<label>Verified?</label>
+<input type="checkbox"
+       [(ngModel)]="verified"
+       (change)="filterBoolean('verified', verified)">
+
+<br>
+
+<label for="errorCount">Error Count</label>
+<input type="number"
+       id="errorCount"
+       [(ngModel)]="errorCount"
+       (change)="filterGreaterThan('errorCount', errorCount)">
+
+<button *ngIf="errorCount"
+        (click)="removeFilter('errorCount')">
+
+        Remove Filter
+      </button>
+
+<hr>
+
+<div *ngFor="let mistake of filteredMistakes" class="card">
   <mistake-detail [mistake]='mistake'></mistake-detail>
 </div>
 
