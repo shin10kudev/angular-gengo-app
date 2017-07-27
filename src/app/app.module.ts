@@ -53,7 +53,6 @@ import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.co
 import { MistakeFormComponent } from './mistakes/mistake-form/mistake-form.component';
 import { MistakeDetailComponent } from './mistakes/mistake-detail/mistake-detail.component';
 import { VerifiedMistakePipe } from './mistakes/shared/verified-mistake.pipe';
-import { UnverifiedMistakePipe } from './mistakes/shared/unverified-mistake.pipe';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -79,8 +78,7 @@ export const firebaseConfig = environment.firebaseConfig;
     MistakeFormComponent,
     MistakeDetailComponent,
     ReversePipe,
-    VerifiedMistakePipe,
-    UnverifiedMistakePipe
+    VerifiedMistakePipe
   ],
   imports: [
     BrowserModule,
