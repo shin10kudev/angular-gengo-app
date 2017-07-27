@@ -1,9 +1,12 @@
 <div *ngIf="!isEdit">
-  <div class="verify-icon" title="Verified Translation">
-    <i class="fa fa-star golden" aria-hidden="true" *ngIf='translation.verified' (click)='updateStatus(false)'></i>
-  </div>
-  <div class="verify-icon" title="Unverified Translation">
-    <i class="fa fa-star-o" aria-hidden="true" *ngIf='!translation.verified' (click)='updateStatus(true)'></i>
+
+  <div class="verify-icon is-pulled-right">
+    <span class="icon" title="Verified translation" *ngIf='translation.verified' (click)='updateStatus(false)'>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </span>
+    <span class="icon" title="Unverified translation" *ngIf='!translation.verified' (click)='updateStatus(true)'>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    </span>
   </div>
 </div>
 
@@ -35,8 +38,11 @@
   <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
 </div>
 
-<div class="sub-footer text-right">
-  <i class="fa fa-clock-o fa-icon" aria-hidden="true"></i> <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
+<div class="sub-footer has-text-right">
+  <span class="icon is-small">
+    <i class="fa fa-clock-o" aria-hidden="true"></i>
+  </span>
+  <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
 </div>
 
 <div class="card-footer">

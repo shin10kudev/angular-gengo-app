@@ -6,59 +6,15 @@
   }
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: " ";
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.float-right {
-  float: right !important;
-}
-
-.float-left {
-  float: left !important;
-}
-
-.text-right {
-  text-align: right !important;
-}
-
-.text-left {
-  text-align: left !important;
-}
-
-.text-center {
-  text-align: center !important;
-}
-
 .button { border-radius: 0; margin: 10px 5px; }
 
 .strike-out { text-decoration: line-through; color: darkred; }
-
-// Icons
-.fa-icon {
-  position: relative;
-  top: 3px;
-}
 
 .sub-footer {
   border-top: 1px dashed #ddd;
   color: #ccc;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.count {
-  user-select: none;
-
-  .fa-icon {
-    cursor: pointer;
-  }
 }
 
 .date-time {

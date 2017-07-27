@@ -1,9 +1,9 @@
-<h3>New Phrases
-  <div class="floating-actions">
-    <a [ngClass]="{ 'active': !isJapaneseInput }" (click)="isJapaneseInput=false">English</a> |
-    <a [ngClass]="{ 'active': isJapaneseInput }" (click)="isJapaneseInput=true">Japanese</a>
-  </div>
-</h3>
+<div class="tabs is-boxed">
+  <ul>
+    <li [ngClass]="{ 'is-active': !isJapaneseInput }"><a (click)="isJapaneseInput=false">English</a></li>
+    <li [ngClass]="{ 'is-active': isJapaneseInput }"><a (click)="isJapaneseInput=true">Japanese</a></li>
+  </ul>
+</div>
 
 <div *ngIf="!isJapaneseInput">
   <input placeholder="Type in English" class="input"
@@ -15,7 +15,7 @@
     <span *ngIf='en.errors; then errors else valid'>template renders here...</span>
   </div>
 
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add</button>
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add Phrase</button>
 </div>
 
 <div *ngIf="isJapaneseInput">
@@ -28,7 +28,7 @@
     <span *ngIf='ja.errors; then errors else valid'>template renders here...</span>
   </div>
 
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add</button>
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add Phrase</button>
 </div>
 
 <ng-template #valid>

@@ -58,4 +58,8 @@
   <mistake-detail [mistake]='mistake'></mistake-detail>
 </div>
 
+<div *ngIf="filteredMistakes?.length < 1 && !showSpinner">
+  <p>No results</p>
+</div>
+
 <loading-spinner *ngIf="showSpinner"></loading-spinner>

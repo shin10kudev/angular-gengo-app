@@ -8,7 +8,7 @@
     <p>{{ post.translation}}</p>
   </div>
   <div class="md-card-actions">
-    <span class="button is-small is-danger float-right" (click)='deletePost(post)'>Delete</span>
+    <span class="button is-small is-danger is-pulled-right" (click)='deletePost(post)'>Delete</span>
   </div>
   <reaction [postId]="post.$key"></reaction>
 </div>

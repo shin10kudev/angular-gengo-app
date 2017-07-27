@@ -1,9 +1,11 @@
 <div *ngIf="!isEdit">
-  <div class="verify-icon" title="Verified correction">
-    <i class="fa fa-star golden" aria-hidden="true" *ngIf='mistake.verified' (click)='updateStatus(false)'></i>
-  </div>
-  <div class="verify-icon" title="Unverified correction">
-    <i class="fa fa-star-o" aria-hidden="true" *ngIf='!mistake.verified' (click)='updateStatus(true)'></i>
+  <div class="verify-icon is-pulled-right">
+    <span class="icon" title="Verified correction" *ngIf='mistake.verified' (click)='updateStatus(false)'>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </span>
+    <span class="icon" title="Unverified correction" *ngIf='!mistake.verified' (click)='updateStatus(true)'>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    </span>
   </div>
 </div>
 
@@ -35,15 +37,22 @@
   <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
 </div>
 
-<div class="sub-footer clearfix">
-  <div class="count float-left">
-    <i class="fa fa-icon fa-arrow-circle-o-down" aria-hidden="true" (click)='decreaseErrorCount()'></i>
-    <i class="fa fa-icon fa-arrow-circle-o-up" aria-hidden="true" (click)='increaseErrorCount()'></i>
-    | <span>{{ mistake.errorCount }}</span>
+<div class="sub-footer is-clearfix">
+  <div class="error-count is-pulled-left">
+    <span class="icon" (click)='decreaseErrorCount()'>
+      <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+    </span>
+    <span class="icon" (click)='increaseErrorCount()'>
+      <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
+    </span> |
+    <span>{{ mistake.errorCount }}</span>
   </div>
 
-  <div class="float-right">
-    <i class="fa fa-clock-o fa-icon" aria-hidden="true"></i> <span class="date-time">{{ mistake.updated_at | date: 'short' }}</span>
+  <div class="is-pulled-right">
+    <span class="icon is-small">
+      <i class="fa fa-clock-o" aria-hidden="true"></i>
+    </span>
+    <span class="date-time">{{ mistake.updated_at | date: 'short' }}</span>
   </div>
 </div>
 
