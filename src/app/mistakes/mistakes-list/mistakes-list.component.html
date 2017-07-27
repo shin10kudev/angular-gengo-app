@@ -1,42 +1,51 @@
-<mistake-form></mistake-form>
+<div *ngIf="!isFilter">
+  <mistake-form></mistake-form>
+  <hr>
+  <a (click)="isFilter=true">Show Filters</a>
+  <hr>
+</div>
 
-<hr>
+<div *ngIf="isFilter">
+  <p><b>Filters:</b></p>
 
-<p><b>Filters:</b></p>
+  <label for="content">Search by Title</label>
+  <input type="text"
+         [(ngModel)]="content"
+         (keyup.enter)="filterPartial('content', content)">
 
-<label for="content">Search by Title</label>
-<input type="text"
-       [(ngModel)]="content"
-       (keyup.enter)="filterPartial('content', content)">
+  <button *ngIf="content"
+          (click)="removeFilter('content')">
 
-<button *ngIf="content"
-        (click)="removeFilter('content')">
+          Remove Filter
+        </button>
 
-        Remove Filter
-      </button>
+  <br>
 
-<br>
+  <label>Verified?</label>
+  <input type="checkbox"
+         [(ngModel)]="verified"
+         (change)="filterBoolean('verified', verified)">
 
-<label>Verified?</label>
-<input type="checkbox"
-       [(ngModel)]="verified"
-       (change)="filterBoolean('verified', verified)">
+  <br>
 
-<br>
+  <label for="errorCount">Error Count</label>
+  <input type="number"
+         id="errorCount"
+         [(ngModel)]="errorCount"
+         (change)="filterGreaterThan('errorCount', errorCount)">
 
-<label for="errorCount">Error Count</label>
-<input type="number"
-       id="errorCount"
-       [(ngModel)]="errorCount"
-       (change)="filterGreaterThan('errorCount', errorCount)">
+  <button *ngIf="errorCount"
+          (click)="removeFilter('errorCount')">
 
-<button *ngIf="errorCount"
-        (click)="removeFilter('errorCount')">
+          Remove Filter
+        </button>
 
-        Remove Filter
-      </button>
+  <hr>
 
-<hr>
+  <a (click)="isFilter=false">Cancel</a>
+
+  <hr>
+</div>
 
 <div *ngFor="let mistake of filteredMistakes" class="card">
   <mistake-detail [mistake]='mistake'></mistake-detail>

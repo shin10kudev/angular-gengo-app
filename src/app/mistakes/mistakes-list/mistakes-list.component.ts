@@ -28,6 +28,7 @@ export class MistakesListComponent implements OnInit {
 
   // Misc. properties
   showSpinner: boolean = true;
+  isFilter: boolean = false;
 
   ngOnInit() {
     this.mistakeSvc.getMistakesList({ limitToLast: 20 })
