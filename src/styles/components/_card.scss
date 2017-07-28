@@ -1,0 +1,42 @@
+// Card styles
+
+.card {
+  margin-bottom: 12px;
+
+  h3 {
+    padding-left: 10px;
+    border-left: 5px solid #f9e13f;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding-top: 1px;
+    margin-bottom: 10px;
+  }
+
+  .field:last-child {
+    margin-bottom: 12px;
+  }
+}
+
+.date-time {
+  font-size: 14px;
+}
+
+.sub-footer {
+  border-top: 1px dashed #ddd;
+  color: #ccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.verify-icon {
+  cursor: pointer;
+
+  .fa-star {
+    color: #ffd600;
+  }
+
+  .fa-star-o {
+    color: #e0e0e0;
+  }
+}

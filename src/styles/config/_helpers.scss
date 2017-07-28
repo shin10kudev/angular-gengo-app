@@ -1,0 +1,13 @@
+// Helper styles
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.strike-out {
+  color: indianred;
+  font-weight: normal !important;
+  text-decoration: line-through;
+}

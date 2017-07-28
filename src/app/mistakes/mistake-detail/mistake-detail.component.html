@@ -11,9 +11,9 @@
   </div>
 
   <div *ngIf="!isEdit">
-    <h3 *ngIf="mistake.correction">{{ mistake.correction }}</h3>
+    <h3 class="strike-out">{{ mistake.content || defaultMessage }}</h3>
+    <p class="sub-text" *ngIf="mistake.correction"><b>{{ mistake.correction }}</b></p>
     <a class="sub-text" *ngIf="!mistake.correction" (click)="isEdit=true">Add correction</a>
-    <p class="sub-text strike-out">{{ mistake.content || defaultMessage }}</p>
   </div>
 
   <div *ngIf="isEdit">

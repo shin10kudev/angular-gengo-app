@@ -1,0 +1,25 @@
+// Global styles
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer {
+  border-top: 1px solid $gray-lightest;
+  min-height: 100px;
+  text-align: center;
+}
+
+.nav-item {
+  overflow: hidden;
+
+  img {
+    max-height: 40px;
+  }
+}
+
+.box {
+  border-radius: 0px;
+}
