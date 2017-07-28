@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="sub-footer">
+  <div class="sub-footer" *ngIf="!isEdit">
     <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
     <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
   </div>
