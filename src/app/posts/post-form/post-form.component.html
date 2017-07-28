@@ -1,13 +1,17 @@
 <div class="box">
-  <input placeholder="Post Title" class="input"
-  [(ngModel)]="post.title"
-  required minlength="2" maxlength="23"
-  #title='ngModel' autofocus>
+  <div class="field">
+    <input placeholder="Post Title" class="input"
+    [(ngModel)]="post.title"
+    required minlength="2" maxlength="23"
+    #title='ngModel' autofocus>
+  </div>
 
-  <textarea placeholder="Post Body" class="textarea"
-  [(ngModel)]="post.body"
-  required minlength="2" maxlength="500"
-  #body='ngModel'></textarea>
+  <div class="field">
+    <textarea placeholder="Post Body" class="textarea"
+    [(ngModel)]="post.body"
+    required minlength="2" maxlength="500"
+    #body='ngModel'></textarea>
+  </div>
 
   <label style="margin-bottom: 5px; display: block;">
     <input type="file" (change)="detectFiles($event)">
@@ -16,11 +20,13 @@
   <a (click)="isTranslate=true" *ngIf="!isTranslate">Add Translation?</a>
 
   <div *ngIf="isTranslate">
-    <textarea placeholder="Translation (optional)" class="textarea"
-    [(ngModel)]="post.translation"
-    required minlength="2" maxlength="500"
-    #translation='ngModel'></textarea>
-    <button class="is-danger" (click)="isTranslate=false">Cancel</button>
+    <div class="field">
+      <textarea placeholder="Translation (optional)" class="textarea"
+      [(ngModel)]="post.translation"
+      required minlength="2" maxlength="500"
+      #translation='ngModel'></textarea>
+    </div>
+    <button class="button is-small is-danger" (click)="isTranslate=false">Cancel</button>
   </div>
 
   <hr>

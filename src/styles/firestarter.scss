@@ -58,15 +58,9 @@ body {
   opacity: .6;
 }
 
-.input,
-.textarea {
-  margin-bottom: 0.5em;
-}
-
 // Components
 .card {
   margin-bottom: 10px;
-  padding: 16px;
 
   h3 {
     padding-left: 10px;
@@ -75,11 +69,11 @@ body {
     font-weight: bold;
     line-height: 1.5em;
     padding-top: 1px;
+    margin-bottom: 10px;
   }
 
-  .input,
-  .textarea {
-    margin-bottom: 0.5em;
+  .field:last-child {
+    margin-bottom: 12px;
   }
 }
 

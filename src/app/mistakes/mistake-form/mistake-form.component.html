@@ -1,12 +1,14 @@
-<h3>Mistakes</h3>
+<h3 class="title is-3">Mistakes</h3>
 
-<input placeholder="What mistake did you make?" class="input"
-[(ngModel)]="mistake.content"
-required minlength="2" maxlength="100"
-#content='ngModel' autofocus>
+<div class="field">
+  <input placeholder="What mistake did you make?" class="input"
+  [(ngModel)]="mistake.content"
+  required minlength="2" maxlength="100"
+  #content='ngModel' autofocus>
 
-<div *ngIf="content.dirty">
-  <span *ngIf='content.errors; then errors else valid'>template renders here...</span>
+  <div *ngIf="content.dirty">
+    <span *ngIf='content.errors; then errors else valid'>template renders here...</span>
+  </div>
 </div>
 
 <button class="button is-primary" (click)="createMistake()" [disabled]="!content.valid">Add</button>

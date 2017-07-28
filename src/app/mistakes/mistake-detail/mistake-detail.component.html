@@ -1,68 +1,75 @@
-<div *ngIf="!isEdit">
-  <div class="verify-icon is-pulled-right">
-    <span class="icon" title="Verified correction" *ngIf='mistake.verified' (click)='updateStatus(false)'>
-      <i class="fa fa-star" aria-hidden="true"></i>
-    </span>
-    <span class="icon" title="Unverified correction" *ngIf='!mistake.verified' (click)='updateStatus(true)'>
-      <i class="fa fa-star-o" aria-hidden="true"></i>
-    </span>
-  </div>
-</div>
-
-<div *ngIf="!isEdit">
-  <h3 *ngIf="mistake.correction">{{ mistake.correction }}</h3>
-  <a class="sub-text" *ngIf="!mistake.correction" (click)="isEdit=true">Add correction</a>
-  <p class="sub-text strike-out">{{ mistake.content || defaultMessage }}</p>
-</div>
-
-<div *ngIf="isEdit">
-  <input placeholder="{{mistake.correction || 'Add correction' }}" class="input"
-  [(ngModel)]="mistake.correction"
-  required minlength="2" maxlength="100"
-  #correction='ngModel'>
-
-  <input placeholder="{{mistake.content || 'Add mistake' }}" class="input"
-  [(ngModel)]="mistake.content"
-  required minlength="2" maxlength="100"
-  #content='ngModel'>
-
-  <textarea placeholder="{{mistake.notes || 'Add notes' }}" class="textarea"
-  [(ngModel)]="mistake.notes"
-  required minlength="2" maxlength="500"
-  #notes='ngModel'></textarea>
-</div>
-
-<div class="sub-footer">
-  <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
-  <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
-</div>
-
-<div class="sub-footer is-clearfix">
-  <div class="error-count is-pulled-left">
-    <span class="icon" (click)='decreaseErrorCount()'>
-      <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
-    </span>
-    <span class="icon" (click)='increaseErrorCount()'>
-      <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
-    </span> |
-    <span>{{ mistake.errorCount }}</span>
-  </div>
-
-  <div class="is-pulled-right">
-    <span class="icon is-small">
-      <i class="fa fa-clock-o" aria-hidden="true"></i>
-    </span>
-    <span class="date-time">{{ mistake.updated_at | date: 'short' }}</span>
-  </div>
-</div>
-
-<div class="card-footer">
+<div class="card-content">
   <div *ngIf="!isEdit">
-    <span class="button is-small is-default" (click)="isEdit=true">Edit</span>
-    <span class="button is-small is-danger" (click)='deleteMistake()'>Delete</span>
+    <div class="verify-icon is-pulled-right">
+      <span class="icon" title="Verified correction" *ngIf='mistake.verified' (click)='updateStatus(false)'>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      </span>
+      <span class="icon" title="Unverified correction" *ngIf='!mistake.verified' (click)='updateStatus(true)'>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </span>
+    </div>
   </div>
+
+  <div *ngIf="!isEdit">
+    <h3 *ngIf="mistake.correction">{{ mistake.correction }}</h3>
+    <a class="sub-text" *ngIf="!mistake.correction" (click)="isEdit=true">Add correction</a>
+    <p class="sub-text strike-out">{{ mistake.content || defaultMessage }}</p>
+  </div>
+
   <div *ngIf="isEdit">
-    <span class="button is-small is-primary" (click)='updateMistake()'>Update</span>
-    <span class="button is-small is-default" (click)="isEdit=false">Cancel</span>
+    <div class="field">
+      <input placeholder="{{mistake.correction || 'Add correction' }}" class="input"
+      [(ngModel)]="mistake.correction"
+      required minlength="2" maxlength="100"
+      #correction='ngModel'>
+    </div>
+
+    <div class="field">
+      <input placeholder="{{mistake.content || 'Add mistake' }}" class="input"
+      [(ngModel)]="mistake.content"
+      required minlength="2" maxlength="100"
+      #content='ngModel'>
+    </div>
+
+    <div class="field">
+      <textarea placeholder="{{mistake.notes || 'Add notes' }}" class="textarea"
+      [(ngModel)]="mistake.notes"
+      required minlength="2" maxlength="500"
+      #notes='ngModel'></textarea>
+    </div>
   </div>
+
+  <div class="sub-footer">
+    <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
+    <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
+  </div>
+
+  <div class="sub-footer is-clearfix">
+    <div class="error-count is-pulled-left">
+      <span class="icon" (click)='decreaseErrorCount()'>
+        <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+      </span>
+      <span class="icon" (click)='increaseErrorCount()'>
+        <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
+      </span> |
+      <span>{{ mistake.errorCount }}</span>
+    </div>
+
+    <div class="is-pulled-right">
+      <span class="icon is-small">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </span>
+      <span class="date-time">{{ mistake.updated_at | date: 'short' }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="card-footer" *ngIf="!isEdit">
+  <a class="card-footer-item" (click)="isEdit=true">Edit</a>
+  <a class="card-footer-item" (click)='deleteMistake()'>Delete</a>
+</div>
+
+<div class="card-footer" *ngIf="isEdit">
+  <a class="card-footer-item" (click)='updateMistake()'>Update</a>
+  <a class="card-footer-item" (click)="isEdit=false">Cancel</a>
 </div>
