@@ -44,8 +44,8 @@ import { PostFormComponent } from './posts/post-form/post-form.component';
 import { PostDetailComponent } from './posts/post-detail/post-detail.component';
 
 // Reactions
-import { ReactionService } from './reaction/shared/reaction.service';
-import { ReactionComponent } from './reaction/reaction.component';
+// import { ReactionService } from './reaction/shared/reaction.service';
+// import { ReactionComponent } from './reaction/reaction.component';
 
 // Mistakes
 import { MistakeService } from './mistakes/shared/mistake.service';
@@ -70,7 +70,6 @@ export const firebaseConfig = environment.firebaseConfig;
     PostDetailComponent,
     PostFormComponent,
     PostsListComponent,
-    ReactionComponent,
     TranslationFormComponent,
     TranslationsListComponent,
     TranslationDetailComponent,
@@ -97,7 +96,6 @@ export const firebaseConfig = environment.firebaseConfig;
     NavService,
     TranslationService,
     PostService,
-    ReactionService,
     MistakeService
   ],
   bootstrap: [

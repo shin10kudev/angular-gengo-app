@@ -53,11 +53,11 @@
 </div>
 
 <div class="card-footer" *ngIf="!isEdit">
-  <span class="card-footer-item" (click)="isEdit=true">Edit</span>
-  <span class="card-footer-item" (click)='deleteTranslation()'>Delete</span>
+  <a class="card-footer-item" (click)="isEdit=true">Edit</a>
+  <a class="card-footer-item" (click)='deleteTranslation()'>Delete</a>
 </div>
 
 <div class="card-footer" *ngIf="isEdit">
-  <span class="card-footer-item" (click)='updateTranslation()'>Update</span>
-  <span class="card-footer-item" (click)="isEdit=false">Cancel</span>
+  <a class="card-footer-item" (click)='updateTranslation()'>Update</a>
+  <a class="card-footer-item" (click)="isEdit=false">Cancel</a>
 </div>

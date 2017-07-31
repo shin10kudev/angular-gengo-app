@@ -1,19 +1,28 @@
 {
   "rules": {
-    ".read": true,
-    ".write": false,
-
-    "uploads": {
-      ".write": "auth != null"
+    "mistakes": {
+      "$uid": {
+      ".read": "$uid === auth.uid",
+      ".write": "$uid === auth.uid"
+      }
     },
-   "items": {
-      ".write": "auth != null"
+    "posts": {
+      "$uid": {
+      ".read": "$uid === auth.uid",
+      ".write": "$uid === auth.uid"
+      }
+    },
+    "translations": {
+      "$uid": {
+      ".read": "$uid === auth.uid",
+      ".write": "$uid === auth.uid"
+      }
     },
     "users": {
-      ".write": "auth != null"
+      "$uid": {
+      ".read": "$uid === auth.uid",
+      ".write": "$uid === auth.uid"
+      }
     }
-
-
-
   }
 }
