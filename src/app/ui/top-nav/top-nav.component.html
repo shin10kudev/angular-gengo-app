@@ -25,8 +25,14 @@
     <a class="nav-item" routerLink="/mistakes" *ngIf="auth.currentUser" (click)="toggleCollapse()">
       Mistakes
     </a>
+    <a class="nav-item is-hidden-desktop" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+      Posts
+    </a>
+    <a class="nav-item is-hidden-desktop" routerLink="/posts" *ngIf="auth.currentUser" (click)="logout()">
+      Signout
+    </a>
 
-    <div class="nav-item" *ngIf="auth.currentUser">
+    <div class="nav-item is-hidden-touch" *ngIf="auth.currentUser">
       <div class="field is-grouped">
         <p class="control">
           <a class="button is-primary" routerLink="/posts" (click)="toggleCollapse()">

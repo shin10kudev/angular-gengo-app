@@ -35,4 +35,8 @@ export class TopNavComponent implements OnInit {
   toggleCollapse() {
     this.show = !this.show
   }
+
+  logout() {
+    this.auth.signOut();
+  }
 }

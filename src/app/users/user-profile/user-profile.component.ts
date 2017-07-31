@@ -8,7 +8,6 @@ import { AuthService } from "../../core/auth.service";
 })
 export class UserProfileComponent implements OnInit {
 
-
   constructor(public auth: AuthService) { }
 
   ngOnInit() {

@@ -47,6 +47,6 @@ export class UserLoginComponent implements OnInit {
   /// Shared
   private afterSignIn(): void {
     // Do after login stuff here, such router redirects, toast messages, etc.
-    this.router.navigate(['/']);
+    this.router.navigate(['/phrases']);
   }
 }
