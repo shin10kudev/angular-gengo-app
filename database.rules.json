@@ -1,5 +1,7 @@
 {
   "rules": {
+    ".read": true,
+    ".write": false,
     "mistakes": {
       "$uid": {
       ".read": "$uid === auth.uid",
@@ -19,10 +21,7 @@
       }
     },
     "users": {
-      "$uid": {
-      ".read": "$uid === auth.uid",
-      ".write": "$uid === auth.uid"
-      }
+      ".write": "auth != null"
     }
   }
 }

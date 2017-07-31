@@ -25,8 +25,7 @@ import { AuthService } from "../../core/auth.service";
 })
 export class TopNavComponent implements OnInit {
 
-  // collapse:string = "closed";
-  show:boolean = false;
+  show: boolean = false;
 
   constructor(public auth: AuthService) { }
 
@@ -35,8 +34,5 @@ export class TopNavComponent implements OnInit {
 
   toggleCollapse() {
     this.show = !this.show
-    // this.collapse = this.collapse == "open" ? 'closed' : 'open';
-
   }
-
 }

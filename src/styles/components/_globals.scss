@@ -31,6 +31,18 @@ body {
 
 .image {
   &.is-round {
-    border-radius: 50%;
+    img {
+      border-radius: 50%;
+    }
   }
+
+  &.is-inline {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+}
+
+.notification {
+  padding: 10px;
 }

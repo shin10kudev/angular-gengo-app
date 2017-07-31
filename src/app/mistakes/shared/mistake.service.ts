@@ -46,6 +46,6 @@ export class MistakeService {
 
   // Default error handling for all actions
   private handleError(error) {
-    console.log(error)
+    console.log(error);
   }
 }

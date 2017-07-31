@@ -10,7 +10,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
-  newUser = true; // to toggle login or signup form
+  newUser = false; // to toggle login or signup form
   passReset = false; // set to true when password reset is triggered
 
   constructor(private fb: FormBuilder, private auth: AuthService) {}
@@ -33,7 +33,7 @@ export class UserFormComponent implements OnInit {
 
    resetPassword() {
      this.auth.resetPassword(this.userForm.value['email'])
-     .then(() => this.passReset = true)
+      .then(() => this.passReset = true)
    }
 
    buildForm(): void {
@@ -78,16 +78,20 @@ export class UserFormComponent implements OnInit {
    };
 
    validationMessages = {
-     'email': {
-       'required':      'Email is required.',
-       'email':         'Email must be a valid email'
-     },
-     'password': {
-       'required':      'Password is required.',
-       'pattern':       'Password must be include at one letter and one number.',
-       'minlength':     'Password must be at least 4 characters long.',
-       'maxlength':     'Password cannot be more than 40 characters long.',
-     }
-   };
+    'email': {
+     'required':      'Email is required.',
+     'email':         'Email must be a valid email'
+    },
+    'password': {
+     'required':      'Password is required.',
+     'pattern':       'Password must be include at one letter and one number.',
+     'minlength':     'Password must be at least 4 characters long.',
+     'maxlength':     'Password cannot be more than 40 characters long.',
+    }
+  };
 
+  // Default error handling for all actions
+  private handleError(error) {
+    console.log(error);
+  }
 }
