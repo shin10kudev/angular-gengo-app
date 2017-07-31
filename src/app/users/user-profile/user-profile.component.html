@@ -1,12 +1,12 @@
 <!-- User logged in -->
-<div class="box" *ngIf="auth.currentUser">
+<div class="is-hidden-touch box" *ngIf="auth.currentUser">
+  <img class="image is-round is-48x48" [src]="auth.currentUser.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
   <h3>{{ auth.currentUserDisplayName }}</h3>
-  <img class="card-img-top" [src]="auth.currentUser.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
   <p><a (click)="logout()">Logout</a></p>
 </div>
 
 <!-- User NOT logged in -->
-<div class="box" *ngIf="!auth.currentUser">
+<div class="is-hidden-touch box" *ngIf="!auth.currentUser">
   <h3>Howdy, {{ auth.currentUserDisplayName }}</h3>
   <p class="card-text">Login to get started...</p>
   <button class="button" routerLink="/login">Login</button>

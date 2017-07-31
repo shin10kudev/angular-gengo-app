@@ -17,9 +17,20 @@ body {
 
   img {
     max-height: 40px;
+    margin-right: 5px;
   }
 }
 
 .box {
   border-radius: 0px;
+}
+
+.section {
+  padding: 2rem 1rem;
+}
+
+.image {
+  &.is-round {
+    border-radius: 50%;
+  }
 }

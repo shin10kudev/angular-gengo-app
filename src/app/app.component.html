@@ -1,18 +1,20 @@
 <top-nav></top-nav>
 
-  <div class="columns">
+  <div class="section">
+    <div class="container">
+      <div class="columns">
+        <aside class="column is-3">
+          <user-profile></user-profile>
+        </aside>
 
-    <aside class="column is-3 is-offset-1">
-      <user-profile></user-profile>
-    </aside>
+        <main class="column is-6">
+          <router-outlet></router-outlet>
+        </main>
 
-    <main class="column is-5">
-      <router-outlet></router-outlet>
-    </main>
-
-    <aside class="column is-3">
-    </aside>
-
+        <aside class="column is-3">
+        </aside>
+      </div>
+    </div>
   </div>
 
 <footer-nav></footer-nav>
