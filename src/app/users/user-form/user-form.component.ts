@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../core/auth.service";
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'user-form',
@@ -10,10 +11,12 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
-  newUser = false; // to toggle login or signup form
-  passReset = false; // set to true when password reset is triggered
+  newUser: boolean = false; // to toggle login or signup form
+  passReset: boolean = false; // set to true when password reset is triggered
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {}
+  constructor(private fb: FormBuilder,
+              private auth: AuthService,
+              private router: Router) {}
 
    ngOnInit(): void {
      this.buildForm();
@@ -25,10 +28,12 @@ export class UserFormComponent implements OnInit {
 
    signup(): void {
      this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password'])
+      .then(() => this.afterSignIn());
    }
 
    login(): void {
      this.auth.emailLogin(this.userForm.value['email'], this.userForm.value['password'])
+      .then(() => this.afterSignIn());
    }
 
    resetPassword() {
@@ -93,5 +98,11 @@ export class UserFormComponent implements OnInit {
   // Default error handling for all actions
   private handleError(error) {
     console.log(error);
+  }
+
+  /// Shared
+  private afterSignIn(): void {
+    // Do after login stuff here, such router redirects, toast messages, etc.
+    this.router.navigate(['/phrases']);
   }
 }
