@@ -14,11 +14,15 @@ export class TranslationDetailComponent implements OnInit {
   @Input() translation: Translation;
   translationMsg: string = "Running translation in the cloud..."
   defaultMsg: string = "Input translation..."
-  isEdit: boolean = false;
+  edit: boolean = false;
 
   constructor(private translationSvc: TranslationService) { }
 
   ngOnInit() {
+  }
+
+  toggleEdit() {
+    this.edit = !this.edit;
   }
 
   // Update translation

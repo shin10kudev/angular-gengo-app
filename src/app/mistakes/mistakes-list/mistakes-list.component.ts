@@ -31,7 +31,7 @@ export class MistakesListComponent implements OnInit {
 
   // Misc. properties
   showSpinner: boolean = true;
-  isFilter: boolean = false;
+  filter: boolean = false;
 
   ngOnInit() {
     this.mistakeSvc.getMistakesList({ limitToLast: 20 })
@@ -45,6 +45,10 @@ export class MistakesListComponent implements OnInit {
   private applyFilters() {
     this.filteredMistakes = _.filter(this.mistakes, _.conforms(this.filters) );
     this.mistakesCount = this.filteredMistakes.length;
+  }
+
+  toggleFilters() {
+    this.filter = !this.filter;
   }
 
   // Filter property by equality to rule

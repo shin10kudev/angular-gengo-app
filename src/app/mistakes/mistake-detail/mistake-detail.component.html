@@ -1,5 +1,5 @@
 <div class="card-content">
-  <div *ngIf="!isEdit">
+  <div *ngIf="!edit">
     <div class="verify-icon is-pulled-right">
       <span class="icon" title="Verified correction" *ngIf='mistake.verified' (click)='updateStatus(false)'>
         <i class="fa fa-star" aria-hidden="true"></i>
@@ -10,13 +10,13 @@
     </div>
   </div>
 
-  <div *ngIf="!isEdit">
+  <div *ngIf="!edit">
     <h3 class="strike-out">{{ mistake.content || defaultMessage }}</h3>
     <p class="sub-text" *ngIf="mistake.correction"><b>{{ mistake.correction }}</b></p>
-    <a class="sub-text" *ngIf="!mistake.correction" (click)="isEdit=true">Add correction</a>
+    <a class="sub-text" *ngIf="!mistake.correction" (click)="toggleEdit()">Add correction</a>
   </div>
 
-  <div *ngIf="isEdit">
+  <div *ngIf="edit">
     <div class="field">
       <input placeholder="{{mistake.correction || 'Add correction' }}" class="input"
       [(ngModel)]="mistake.correction"
@@ -39,9 +39,9 @@
     </div>
   </div>
 
-  <div class="sub-footer" *ngIf="!isEdit">
+  <div class="sub-footer" *ngIf="!edit">
     <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
-    <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
+    <p class="sub-text" style="margin-bottom: 0" *ngIf="!edit"><a (click)="toggleEdit()">Add notes</a></p>
   </div>
 
   <div class="sub-footer is-clearfix">
@@ -64,12 +64,12 @@
   </div>
 </div>
 
-<div class="card-footer" *ngIf="!isEdit">
-  <a class="card-footer-item" (click)="isEdit=true">Edit</a>
+<div class="card-footer" *ngIf="!edit">
+  <a class="card-footer-item" (click)="toggleEdit()">Edit</a>
   <a class="card-footer-item" (click)='deleteMistake()'>Delete</a>
 </div>
 
-<div class="card-footer" *ngIf="isEdit">
+<div class="card-footer" *ngIf="edit">
   <a class="card-footer-item" (click)='updateMistake()'>Update</a>
-  <a class="card-footer-item" (click)="isEdit=false">Cancel</a>
+  <a class="card-footer-item" (click)="toggleEdit()">Cancel</a>
 </div>

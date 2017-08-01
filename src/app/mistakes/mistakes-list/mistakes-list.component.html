@@ -2,14 +2,14 @@
   <h3>My Mistakes</h3>
 </div>
 
-<div *ngIf="!isFilter">
+<div *ngIf="!filter">
   <mistake-form></mistake-form>
   <hr>
-  <a (click)="isFilter=true">Show Filters</a>
+  <a (click)="toggleFilters()">Show Filters</a>
   <hr>
 </div>
 
-<div *ngIf="isFilter">
+<div *ngIf="filter">
   <h3>Filters</h3>
 
   <label for="correction">Search mistakes by title</label>
@@ -53,7 +53,7 @@
   <hr>
 
   <p>Returned Results: <b>{{ mistakesCount }}</b></p>
-  <a (click)="isFilter=false; resetFilters()">Cancel</a>
+  <a (click)="toggleFilters(); resetFilters()">Cancel</a>
 
   <hr>
 </div>
