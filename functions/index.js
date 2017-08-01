@@ -37,7 +37,7 @@ function createTranslateUrl(source, target, text) {
   return `https://www.googleapis.com/language/translate/v2?key=${functions.config().firebase.apiKey}&source=${source}&target=${target}&q=${text}`;
 }
 
-// Process English - Japanese Translation
+// Process Translation
 function createTranslationPromise(source, target, text, snapshot, userId) {
   const key = snapshot.key;
   const translation = {}
