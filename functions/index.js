@@ -47,10 +47,6 @@ function createTranslationPromise(source, target, text, snapshot, userId) {
         if (response.statusCode === 200) {
           const resData = JSON.parse(response.body).data;
 
-          console.log(target);
-          console.log(translation[target]);
-          console.log(resData.translations[0].translatedText);
-
           translation[target] = resData.translations[0].translatedText
 
           return admin.database().ref(`/translations/${userId}/${key}`)
