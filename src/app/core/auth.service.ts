@@ -48,7 +48,7 @@ export class AuthService {
   get currentUserDisplayName(): string {
     if (!this.authState) { return 'Guest' }
     else if (this.currentUserAnonymous) { return 'Anonymous' }
-    else { return this.authState['displayName'] || 'Display Name' }
+    else { return this.authState['displayName'] || 'User' }
   }
 
   //// Social Auth ////

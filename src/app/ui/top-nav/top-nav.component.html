@@ -1,7 +1,7 @@
 <nav class="nav">
   <div class="nav-left">
     <a class="nav-item" routerLink="/">
-      <img src="assets/images/logo.png" width="40px" height="40px" alt="GengoApp logo"/> GengoApp
+      <img src="assets/images/logo.svg" width="40px" height="40px" alt="GengoApp logo"/> GengoApp
     </a>
   </div>
 
@@ -16,9 +16,7 @@
   <!-- This "nav-menu" is hidden on mobile -->
   <!-- Add the modifier "is-active" to display it on mobile -->
   <div class="nav-right nav-menu" [ngClass]="{'is-active': show }">
-    <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
-      Login/Sign Up?
-    </a>
+    <!-- sign-in -->
     <a class="nav-item" routerLink="/phrases" *ngIf="auth.currentUser" (click)="toggleCollapse()">
       Phrases
     </a>
@@ -31,7 +29,6 @@
     <a class="nav-item is-hidden-desktop" *ngIf="auth.currentUser" (click)="signout()">
       Sign out
     </a>
-
     <div class="nav-item is-hidden-touch" *ngIf="auth.currentUser">
       <div class="field is-grouped">
         <p class="control">
@@ -44,5 +41,10 @@
         </p>
       </div>
     </div>
+
+    <!-- sign-out -->
+    <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
+      Login/Signup?
+    </a>
   </div>
 </nav>
