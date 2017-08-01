@@ -28,11 +28,3 @@
   <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add Phrase</button>
   <button class="button is-default" *ngIf="translation.ja" (click)="cancelTranslation()">Cancel</button>
 </div>
-
-<ng-template #valid>
-  <p class="help is-success">looks good!</p>
-</ng-template>
-
-<ng-template #errors>
-  <p class="help is-danger">form contains errors!</p>
-</ng-template>

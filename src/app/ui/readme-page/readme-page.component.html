@@ -6,7 +6,9 @@
     <li>Track and annotate mistakes</li>
     <li>Write posts (with photos) in the language of your choice</li>
   </ul>
-  <p><b>Get started now</b></p>
-  <a class="button is-primary" routerLink="/login">Login</a>
-  <a class="button is-default" routerLink="/login">Sign Up</a>
+  <div *ngIf="!auth.currentUser">
+    <p><b>Get started now</b></p>
+    <a class="button is-primary" routerLink="/login">Login</a>
+    <a class="button is-default" routerLink="/login">Sign Up</a>
+  </div>
 </div>

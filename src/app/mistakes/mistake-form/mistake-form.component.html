@@ -7,11 +7,3 @@
 
 <button class="button is-primary" (click)="createMistake()" [disabled]="!content.valid">Add</button>
 <button class="button is-default" *ngIf="mistake.content" (click)="cancelMistake()">Cancel</button>
-
-<ng-template #valid>
-  <p class="help is-success">looks good!</p>
-</ng-template>
-
-<ng-template #errors>
-  <p class="help is-danger">form contains errors!</p>
-</ng-template>
