@@ -11,13 +11,10 @@
     [(ngModel)]="translation.en"
     required minlength="1" maxlength="100"
     #en='ngModel' autofocus>
-
-    <div *ngIf="en.dirty">
-      <span *ngIf='en.errors; then errors else valid'>template renders here...</span>
-    </div>
   </div>
 
   <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add Phrase</button>
+  <button class="button is-default" *ngIf="translation.en" (click)="cancelTranslation()">Cancel</button>
 </div>
 
 <div *ngIf="isJapaneseInput">
@@ -26,13 +23,10 @@
     [(ngModel)]="translation.ja"
     required minlength="1" maxlength="100"
     #ja='ngModel' autofocus>
-
-    <div *ngIf="ja.dirty">
-      <span *ngIf='ja.errors; then errors else valid'>template renders here...</span>
-    </div>
   </div>
 
   <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add Phrase</button>
+  <button class="button is-default" *ngIf="translation.ja" (click)="cancelTranslation()">Cancel</button>
 </div>
 
 <ng-template #valid>

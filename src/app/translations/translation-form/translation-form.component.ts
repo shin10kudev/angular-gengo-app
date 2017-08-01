@@ -21,4 +21,8 @@ export class TranslationFormComponent {
     this.currentTranslation = this.translationSvc.createTranslation(this.translation);
     this.translation = new Translation(); // reset translation
   }
+
+  cancelTranslation() {
+    this.translation = new Translation(); // reset form
+  }
 }
