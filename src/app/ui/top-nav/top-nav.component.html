@@ -17,7 +17,7 @@
   <!-- Add the modifier "is-active" to display it on mobile -->
   <div class="nav-right nav-menu" [ngClass]="{'is-active': show }">
     <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
-      Login/Signup?
+      Login/Sign Up?
     </a>
     <a class="nav-item" routerLink="/phrases" *ngIf="auth.currentUser" (click)="toggleCollapse()">
       Phrases
@@ -28,8 +28,8 @@
     <a class="nav-item is-hidden-desktop" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
       Posts
     </a>
-    <a class="nav-item is-hidden-desktop" routerLink="/posts" *ngIf="auth.currentUser" (click)="logout()">
-      Signout
+    <a class="nav-item is-hidden-desktop" *ngIf="auth.currentUser" (click)="signout()">
+      Sign out
     </a>
 
     <div class="nav-item is-hidden-touch" *ngIf="auth.currentUser">

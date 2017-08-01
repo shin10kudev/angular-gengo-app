@@ -13,7 +13,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout() {
+  signout() {
     this.auth.signOut();
   }
 }

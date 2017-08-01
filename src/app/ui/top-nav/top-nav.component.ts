@@ -36,7 +36,7 @@ export class TopNavComponent implements OnInit {
     this.show = !this.show
   }
 
-  logout() {
+  signout() {
     this.auth.signOut();
   }
 }
