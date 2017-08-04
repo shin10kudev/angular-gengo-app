@@ -1,11 +1,11 @@
 <div class="tabs is-boxed">
   <ul>
-    <li [ngClass]="{ 'is-active': !isJapaneseInput }"><a (click)="isJapaneseInput=false">English</a></li>
-    <li [ngClass]="{ 'is-active': isJapaneseInput }"><a (click)="isJapaneseInput=true">Japanese</a></li>
+    <li [ngClass]="{ 'is-active': !inputType }"><a (click)="toggleInputType()">English</a></li>
+    <li [ngClass]="{ 'is-active': inputType }"><a (click)="toggleInputType()">Japanese</a></li>
   </ul>
 </div>
 
-<div *ngIf="!isJapaneseInput">
+<div *ngIf="!inputType">
   <div class="field">
     <input placeholder="Type in English" class="input"
     [(ngModel)]="translation.en"
@@ -17,7 +17,7 @@
   <button class="button is-default" *ngIf="translation.en" (click)="cancelTranslation()">Cancel</button>
 </div>
 
-<div *ngIf="isJapaneseInput">
+<div *ngIf="inputType">
   <div class="field">
     <input placeholder="Type in Japanese" class="input"
     [(ngModel)]="translation.ja"

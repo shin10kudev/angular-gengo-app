@@ -13,11 +13,15 @@ export class MistakeDetailComponent implements OnInit {
 
   @Input() mistake: Mistake;
   defaultMessage: string = "Retrieving data";
-  isEdit: boolean = false;
+  edit: boolean = false;
 
   constructor(private mistakeSvc: MistakeService) { }
 
   ngOnInit() {
+  }
+
+  toggleEdit() {
+    this.edit = !this.edit;
   }
 
   // Update mistake

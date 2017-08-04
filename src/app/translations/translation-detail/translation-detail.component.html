@@ -1,5 +1,5 @@
 <div class="card-content">
-  <div *ngIf="!isEdit">
+  <div *ngIf="!edit">
     <div class="verify-icon is-pulled-right">
       <span class="icon" title="Verified translation" *ngIf='translation.verified' (click)='updateStatus(false)'>
         <i class="fa fa-star" aria-hidden="true"></i>
@@ -10,13 +10,13 @@
     </div>
   </div>
 
-  <div *ngIf="!isEdit">
+  <div *ngIf="!edit">
     <h3>{{ translation.ja || translationMsg }}</h3>
     <p *ngIf="translation.en" class="sub-text">{{ translation.en }}</p>
-    <p><a *ngIf="!translation.en" (click)="isEdit=true" class="sub-text">{{ defaultMsg }}</a></p>
+    <p><a *ngIf="!translation.en" (click)="toggleEdit()" class="sub-text">{{ defaultMsg }}</a></p>
   </div>
 
-  <div *ngIf="isEdit">
+  <div *ngIf="edit">
     <div class="field">
       <input placeholder="{{translation.ja || 'Add Japanese' }}" class="input"
       [(ngModel)]="translation.ja"
@@ -39,9 +39,9 @@
     </div>
   </div>
 
-  <div class="sub-footer" *ngIf="!isEdit">
+  <div class="sub-footer" *ngIf="!edit">
     <p *ngIf="translation.notes" class="notes">{{ translation.notes }}</p>
-    <p class="sub-text" style="margin-bottom: 0" *ngIf="!isEdit"><a (click)="isEdit=true">Add notes</a></p>
+    <p class="sub-text" style="margin-bottom: 0" *ngIf="!edit"><a (click)="toggleEdit()">Add notes</a></p>
   </div>
 
   <div class="sub-footer has-text-right">
@@ -52,12 +52,12 @@
   </div>
 </div>
 
-<div class="card-footer" *ngIf="!isEdit">
-  <a class="card-footer-item" (click)="isEdit=true">Edit</a>
+<div class="card-footer" *ngIf="!edit">
+  <a class="card-footer-item" (click)="toggleEdit()">Edit</a>
   <a class="card-footer-item" (click)='deleteTranslation()'>Delete</a>
 </div>
 
-<div class="card-footer" *ngIf="isEdit">
-  <a class="card-footer-item" (click)="isEdit=false">Cancel</a>
+<div class="card-footer" *ngIf="edit">
   <a class="card-footer-item" (click)='updateTranslation()'>Update</a>
+  <a class="card-footer-item" (click)="toggleEdit()">Cancel</a>
 </div>

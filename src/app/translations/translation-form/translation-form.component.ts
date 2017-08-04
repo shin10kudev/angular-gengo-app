@@ -13,13 +13,17 @@ export class TranslationFormComponent {
 
   translation: Translation = new Translation();
   currentTranslation;
-  isJapaneseInput: boolean = false;
+  inputType: boolean = false;
 
   constructor(private translationSvc: TranslationService) {}
 
   createTranslation() {
     this.currentTranslation = this.translationSvc.createTranslation(this.translation);
     this.translation = new Translation(); // reset translation
+  }
+
+  toggleInputType() {
+    this.inputType = !this.inputType;
   }
 
   cancelTranslation() {
