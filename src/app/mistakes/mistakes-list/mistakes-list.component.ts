@@ -43,7 +43,7 @@ export class MistakesListComponent implements OnInit {
   }
 
   private applyFilters() {
-    this.filteredMistakes = _.filter(this.mistakes, _.conforms(this.filters) );
+    this.filteredMistakes = _.filter(this.mistakes, _.conforms(this.filters));
     this.mistakesCount = this.filteredMistakes.length;
   }
 

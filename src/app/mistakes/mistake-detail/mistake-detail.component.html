@@ -59,7 +59,7 @@
       <span class="icon is-small">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
       </span>
-      <span class="date-time">{{ mistake.updated_at | date: 'short' }}</span>
+      <span class="date-time">{{ mistake.created_at | date: 'short' }}</span>
     </div>
   </div>
 </div>
@@ -70,6 +70,6 @@
 </div>
 
 <div class="card-footer" *ngIf="isEdit">
-  <a class="card-footer-item" (click)='updateMistake()'>Update</a>
   <a class="card-footer-item" (click)="isEdit=false">Cancel</a>
+  <a class="card-footer-item" (click)='updateMistake()'>Update</a>
 </div>
