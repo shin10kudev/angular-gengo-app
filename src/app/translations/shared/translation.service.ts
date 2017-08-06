@@ -6,10 +6,12 @@ import { Translation } from '../shared/translation';
 @Injectable()
 export class TranslationService {
 
-  translations: FirebaseListObservable<Translation[]> = null; //  list of objects
+  private basePath: string = '/translations';
   userId: string;
+  translations: FirebaseListObservable<Translation[]> = null; //  list of objects
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(private db: AngularFireDatabase,
+              private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
     });
@@ -19,16 +21,16 @@ export class TranslationService {
   // You will usually call this from OnInit in a component
   getTranslationsList(query={}): FirebaseListObservable<Translation[]> {
     if (!this.userId) return;
-    this.translations = this.db.list(`translations/${this.userId}`, {
+    this.translations = this.db.list(`${this.basePath}/${this.userId}`, {
       query: query
     });
-    return this.translations
+    return this.translations;
   }
 
   createTranslation(translation): FirebaseObjectObservable<any> {
     // create new translation, then return it as an object observable
     const key = this.db.list(`/translations/${this.userId}`).push(translation).key
-    return this.db.object(`translations/${this.userId}/${key}`)
+    return this.db.object(`${this.basePath}/${this.userId}/${key}`)
   }
 
   // Update an exisiting translation
@@ -45,6 +47,6 @@ export class TranslationService {
 
   // Default error handling for all actions
   private handleError(error) {
-    console.log(error)
+    console.log(error);
   }
 }

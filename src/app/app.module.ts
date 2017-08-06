@@ -52,7 +52,6 @@ import { MistakeService } from './mistakes/shared/mistake.service';
 import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.component';
 import { MistakeFormComponent } from './mistakes/mistake-form/mistake-form.component';
 import { MistakeDetailComponent } from './mistakes/mistake-detail/mistake-detail.component';
-import { VerifiedMistakePipe } from './mistakes/shared/verified-mistake.pipe';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -76,8 +75,7 @@ export const firebaseConfig = environment.firebaseConfig;
     MistakesListComponent,
     MistakeFormComponent,
     MistakeDetailComponent,
-    ReversePipe,
-    VerifiedMistakePipe
+    ReversePipe
   ],
   imports: [
     BrowserModule,

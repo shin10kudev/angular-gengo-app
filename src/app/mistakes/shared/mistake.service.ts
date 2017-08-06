@@ -10,7 +10,8 @@ export class MistakeService {
   userId: string;
   mistakes: FirebaseListObservable<Mistake[]> = null; //  list of objects
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(private db: AngularFireDatabase,
+              private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
     });

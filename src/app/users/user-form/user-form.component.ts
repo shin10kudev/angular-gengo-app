@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
-  newUser: boolean = false; // to toggle login or signup form
+  newUser: boolean = true; // to toggle login or signup form
   passReset: boolean = false; // set to true when password reset is triggered
 
   constructor(private fb: FormBuilder,
