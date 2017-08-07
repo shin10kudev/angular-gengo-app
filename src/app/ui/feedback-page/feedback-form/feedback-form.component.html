@@ -1,6 +1,11 @@
+<div class="content">
+  <h3>Feedback</h3>
+  <p>Use the following form to submit feedback about GengoApp.</p>
+  <small><span  class="has-text-danger">*</span> indicates required field</small>
+</div>
 
 <div class="field">
-  <label for="feedbackBody" class="label">Message</label>
+  <label for="feedbackBody" class="label">Message <small class="has-text-danger">*</small></label>
   <textarea placeholder="What can be improved?" id="feedbackBody" class="textarea"
   [(ngModel)]="feedback.body"
   required minlength="1" maxlength="100"
@@ -8,7 +13,7 @@
 </div>
 
 <div class="field">
-  <label for="feedbackCategory" class="label">Category</label>
+  <label for="feedbackCategory" class="label">Category <small class="has-text-danger">*</small></label>
   <div class="control">
     <div class="select">
       <select id="feedbackCategory"
