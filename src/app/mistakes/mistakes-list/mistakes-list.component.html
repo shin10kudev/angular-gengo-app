@@ -4,9 +4,14 @@
 
 <div *ngIf="!filter">
   <mistake-form></mistake-form>
+
   <hr>
-  <a (click)="toggleFilters()">Show Filters</a>
-  <hr>
+
+  <div *ngIf="filteredMistakes?.length > 1 && !showSpinner">
+
+    <a (click)="toggleFilters()">Show Filters</a>
+    <hr>
+  </div>
 </div>
 
 <div *ngIf="filter">
@@ -62,8 +67,12 @@
   <mistake-detail [mistake]='mistake'></mistake-detail>
 </div>
 
-<div *ngIf="filteredMistakes?.length < 1 && !showSpinner">
-  <p>No results</p>
+<div *ngIf="filteredMistakes?.length < 1 && !showSpinner" class="has-text-centered">
+  <figure class="image is-128x128 is-centered">
+    <img src="assets/images/brain.svg">
+  </figure>
+  <h5 class="has-text-grey-dark"><b>Looks like you haven't added any mistakes yet</b></h5>
+  <p class="has-text-gray-light">Why don't you add one?</p>
 </div>
 
 <loading-spinner *ngIf="showSpinner"></loading-spinner>

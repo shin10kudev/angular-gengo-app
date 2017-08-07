@@ -4,9 +4,18 @@
 
 <div class="content">
   <h4>Submitted Feedback</h4>
+
   <div *ngFor="let feedback of feedbacks | async" class="box">
     <feedback-detail [feedback]='feedback'></feedback-detail>
   </div>
+</div>
+
+<div *ngIf="(feedbacks | async)?.length < 1 && !showSpinner" class="has-text-centered">
+  <figure class="image is-128x128 is-centered">
+    <img src="assets/images/heart.svg">
+  </figure>
+  <h5 class="has-text-grey-dark"><b>Looks like you haven't added any feedback yet</b></h5>
+  <p class="has-text-gray-light">Why not say something?</p>
 </div>
 
 <loading-spinner *ngIf="showSpinner"></loading-spinner>

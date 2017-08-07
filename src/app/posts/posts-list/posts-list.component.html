@@ -15,4 +15,12 @@
   <post-detail [post]='post'></post-detail>
 </div>
 
+<div *ngIf="(posts | async)?.length < 1 && !showSpinner" class="has-text-centered">
+  <figure class="image is-128x128 is-centered">
+    <img src="assets/images/pencil.svg">
+  </figure>
+  <h5 class="has-text-grey-dark"><b>Looks like you haven't added any posts yet</b></h5>
+  <p class="has-text-gray-light">Why don't you add one?</p>
+</div>
+
 <loading-spinner *ngIf="showSpinner"></loading-spinner>

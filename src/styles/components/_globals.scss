@@ -36,6 +36,10 @@ body {
     }
   }
 
+  &.is-centered {
+    margin: 0 auto;
+  }
+
   &.is-inline {
     display: inline-block;
     margin-right: 5px;
