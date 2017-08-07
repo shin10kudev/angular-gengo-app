@@ -23,6 +23,7 @@
     [(ngModel)]="translation.ja"
     required minlength="1" maxlength="100"
     #ja='ngModel' autofocus>
+    <small class="has-text-info">Note: Google Translate for Japanese coming soon!</small>
   </div>
 
   <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add Phrase</button>

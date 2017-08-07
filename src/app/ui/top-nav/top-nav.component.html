@@ -1,41 +1,48 @@
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item" routerLink="/">
+<nav class="navbar ">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/">
       <img src="assets/images/logo.svg" width="40px" height="40px" alt="GengoApp logo"/> GengoApp
     </a>
+
+    <div class="navbar-burger burger" (click)="toggleCollapse()" [ngClass]="{'is-active': show }">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 
-  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-  <span class="nav-toggle" (click)="toggleCollapse()" [ngClass]="{'is-active': show }">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
+  <div class="navbar-menu" [ngClass]="{'is-active': show }">
+    <div class="navbar-start">
+    </div>
 
-  <!-- This "nav-menu" is hidden on mobile -->
-  <!-- Add the modifier "is-active" to display it on mobile -->
-  <div class="nav-right nav-menu" [ngClass]="{'is-active': show }">
-    <!-- sign-in -->
-    <a class="nav-item" routerLink="/phrases" *ngIf="auth.currentUser" (click)="toggleCollapse()">
-      Phrases
-    </a>
-    <a class="nav-item" routerLink="/mistakes" *ngIf="auth.currentUser" (click)="toggleCollapse()">
-      Mistakes
-    </a>
-    <a class="nav-item" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
-      Posts
-    </a>
-    <a class="nav-item" routerLink="/feedback" *ngIf="auth.currentUser" (click)="toggleCollapse()">
-      Feedback
-    </a>
-
-    <!-- sign-out -->
-    <a class="nav-item is-hidden-desktop" *ngIf="auth.currentUser" (click)="signout()">
-      Sign out
-    </a>
-    <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
-      Login/Signup?
-    </a>
+    <div class="navbar-end">
+      <a class="nav-item is-hidden-desktop-only" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
+        Login/Signup?
+      </a>
+      <a class="navbar-item is-hidden-desktop-only" routerLink="/phrases" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+        Phrases
+      </a>
+      <a class="navbar-item is-hidden-desktop-only" routerLink="/mistakes" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+        Mistakes
+      </a>
+      <a class="navbar-item is-hidden-desktop-only" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+        Posts
+      </a>
+      <!-- dropdown -->
+      <div class="navbar-item has-dropdown is-hoverable" *ngIf="auth.currentUser">
+        <a class="navbar-link is-active">
+          Account
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" routerLink="/feedback" (click)="toggleCollapse()">
+            Feedback
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" *ngIf="auth.currentUser" (click)="signout(); toggleCollapse()">
+            Signout
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
