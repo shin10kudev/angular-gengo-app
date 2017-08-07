@@ -7,7 +7,7 @@ export class Feedback {
   subject: string;
   body: string;
   reply: string;
-  status: string = 'Open';
+  status: string = 'Sent';
   edited: boolean = false;
   resolved: boolean = false;
   updated_at: any = firebase.database.ServerValue.TIMESTAMP;

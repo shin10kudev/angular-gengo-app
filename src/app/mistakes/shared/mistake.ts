@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 
 export class Mistake {
   $key: string;
-  category: string;
+  category: string = 'General Feedback';
   content: string;
   correction: string;
   errorCount: number = 1;

@@ -1,5 +1,7 @@
+
 <div class="field">
-  <textarea placeholder="What can be improved?" class="textarea"
+  <label for="feedbackBody" class="label">Message</label>
+  <textarea placeholder="What can be improved?" id="feedbackBody" class="textarea"
   [(ngModel)]="feedback.body"
   required minlength="1" maxlength="100"
   #body='ngModel' autofocus></textarea>
@@ -10,7 +12,7 @@
   <div class="control">
     <div class="select">
       <select id="feedbackCategory"
-              required
+              required minlength="1"
               [(ngModel)]="feedback.category"
               #category='ngModel'>
         <option *ngFor="let category of categories" [value]="category">{{category}}</option>
@@ -19,5 +21,5 @@
   </div>
 </div>
 
-<button class="button is-primary" (click)="createFeedback()" [disabled]="!body.valid">Submit</button>
-<button class="button is-default" *ngIf="feedback.body" (click)="cancelFeedback()">Cancel</button>
+<button class="button is-primary" (click)="createFeedback()" [disabled]="!body.valid || !category.valid">Submit</button>
+<button class="button is-default" *ngIf="feedback.body || feedback.category" (click)="cancelFeedback()">Cancel</button>

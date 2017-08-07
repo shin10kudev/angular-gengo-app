@@ -8,9 +8,10 @@
 <hr>
 
 <div class="content">
-  <h5>Submitted Feedback</h5>
-
+  <h4>Submitted Feedback</h4>
   <div *ngFor="let feedback of feedbacks | async" class="box">
     <feedback-detail [feedback]='feedback'></feedback-detail>
   </div>
 </div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>

@@ -19,6 +19,7 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   createFeedback() {
+    if(!this.feedback.category) this.feedback.category = 'General Feedback';
     this.feedbackSvc.createFeedback(this.feedback);
     this.feedback = new Feedback(); // reset form
   }

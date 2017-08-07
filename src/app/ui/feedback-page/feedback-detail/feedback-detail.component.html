@@ -1,3 +1,35 @@
-<p>
-  feedback-detail works!
-</p>
+<article class="media">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <small>{{ feedback.created_at | date:'medium' }}<span *ngIf="feedback.edited" class="tag is-white has-text-danger">Edited</span></small>
+        <br>
+      </p>
+      <div *ngIf="!edit">
+        <p (click)="toggleEdit()">{{ feedback.body }}</p>
+      </div>
+
+      <div *ngIf="edit">
+        <div class="field">
+          <textarea placeholder="{{feedback.body }}" class="textarea"
+          [(ngModel)]="feedback.body"
+          required minlength="1" maxlength="100"
+          #body='ngModel'></textarea>
+        </div>
+        <a class="button is-primary" (click)='updateFeedback()'>Update</a>
+        <a class="button is-default" (click)='toggleEdit()'>Cancel</a>
+      </div>
+    </div>
+    <div class="level is-mobile">
+      <div class="level-left">
+        <div class="tags">
+          <span class="tag is-light">{{ feedback.category }}</span>
+          <span class="tag is-light">Status: {{ feedback.status }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="media-right">
+    <button class="delete" (click)="deleteFeedback()"></button>
+  </div>
+</article>

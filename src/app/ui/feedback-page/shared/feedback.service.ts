@@ -39,6 +39,18 @@ export class FeedbackService {
       .catch(error => this.handleError(error))
   }
 
+  // Update a feedback
+  updateFeedback(key: string, feedback: Feedback): void {
+    this.feedbacks.update(key, feedback)
+      .catch(error => this.handleError(error))
+  }
+
+  // Delete feedback
+  deleteFeedback(key: string): void {
+    this.feedbacks.remove(key)
+      .catch(error => this.handleError(error))
+  }
+
   // Default error handling for all actions
   private handleError(error) {
     console.log(error);
