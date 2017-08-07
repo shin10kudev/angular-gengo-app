@@ -53,6 +53,12 @@ import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.co
 import { MistakeFormComponent } from './mistakes/mistake-form/mistake-form.component';
 import { MistakeDetailComponent } from './mistakes/mistake-detail/mistake-detail.component';
 
+// Feedbacks
+import { FeedbackService } from './ui/feedback-page/shared/feedback.service';
+import { FeedbackListComponent } from './ui/feedback-page/feedback-list/feedback-list.component';
+import { FeedbackFormComponent } from './ui/feedback-page/feedback-form/feedback-form.component';
+import { FeedbackDetailComponent } from './ui/feedback-page/feedback-detail/feedback-detail.component';
+
 export const firebaseConfig = environment.firebaseConfig;
 
 ///// End FireStarter
@@ -75,7 +81,10 @@ export const firebaseConfig = environment.firebaseConfig;
     MistakesListComponent,
     MistakeFormComponent,
     MistakeDetailComponent,
-    ReversePipe
+    ReversePipe,
+    FeedbackListComponent,
+    FeedbackFormComponent,
+    FeedbackDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +103,8 @@ export const firebaseConfig = environment.firebaseConfig;
     NavService,
     TranslationService,
     PostService,
-    MistakeService
+    MistakeService,
+    FeedbackService
   ],
   bootstrap: [
     AppComponent

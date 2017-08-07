@@ -1,0 +1,16 @@
+<div class="content">
+  <h3>Feedback</h3>
+  <p>Use the following form to submit feedback about GengoApp.</p>
+</div>
+
+<feedback-form></feedback-form>
+
+<hr>
+
+<div class="content">
+  <h5>Submitted Feedback</h5>
+
+  <div *ngFor="let feedback of feedbacks | async" class="box">
+    <feedback-detail [feedback]='feedback'></feedback-detail>
+  </div>
+</div>

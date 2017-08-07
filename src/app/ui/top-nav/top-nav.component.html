@@ -23,26 +23,17 @@
     <a class="nav-item" routerLink="/mistakes" *ngIf="auth.currentUser" (click)="toggleCollapse()">
       Mistakes
     </a>
-    <a class="nav-item is-hidden-desktop" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+    <a class="nav-item" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
       Posts
     </a>
+    <a class="nav-item" routerLink="/feedback" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+      Feedback
+    </a>
+
+    <!-- sign-out -->
     <a class="nav-item is-hidden-desktop" *ngIf="auth.currentUser" (click)="signout()">
       Sign out
     </a>
-    <div class="nav-item is-hidden-touch" *ngIf="auth.currentUser">
-      <div class="field is-grouped">
-        <p class="control">
-          <a class="button is-primary" routerLink="/posts" (click)="toggleCollapse()">
-            <span class="icon">
-              <i class="fa fa-pencil-square-o"></i>
-            </span>
-            <span>Post</span>
-          </a>
-        </p>
-      </div>
-    </div>
-
-    <!-- sign-out -->
     <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
       Login/Signup?
     </a>

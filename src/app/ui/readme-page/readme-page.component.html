@@ -1,13 +1,18 @@
 <div class="content">
-  <h1><span class="image is-inline is-48x48"><img src="assets/images/logo.svg" alt="GengoApp logo"/></span>GengoApp</h1>
+  <h1>GengoApp <span class="image is-inline is-48x48"><img src="assets/images/logo.svg" alt="GengoApp logo"/></span></h1>
   <p>Enhance your language learning!</p>
   <ul>
-    <li>Add new phrases quickly using the powerful Google Translate API</li>
-    <li>Track and annotate mistakes</li>
-    <li>Write posts (with photos) in the language of your choice</li>
+    <li>Add phrases quickly using the powerful Google Translate API</li>
+    <li>Track and annotate your mistakes</li>
+    <li>Write posts in the language of your choice</li>
   </ul>
   <div *ngIf="!auth.currentUser">
     <p><b>Get started now</b></p>
     <a class="button is-primary" routerLink="/login">Login/Signup</a>
   </div>
+  <hr>
+  <h2>Feedback</h2>
+  <p>GengoApp is in its first release. To make the app work better for you, submit feedback whenever you can. Whether it is a bug, feature request, or something that just doesn't work for you, I'd like to hear from you!</p>
+  <p>Please submit your feedback here:</p>
+  <p><a class="button is-default" routerLink="/feedback">Feedback Page</a></p>
 </div>
