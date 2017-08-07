@@ -1,11 +1,11 @@
 <post-form></post-form>
 
-<div *ngFor="let post of posts | async">
+<div *ngFor="let post of filteredPosts | reverse">
   <post-detail [post]='post'></post-detail>
 </div>
 
 <!-- blank-state -->
-<div *ngIf="(posts | async)?.length < 1 && !showSpinner" class="blank-state">
+<div *ngIf="filteredPosts?.length < 1 && !showSpinner" class="blank-state">
   <figure class="image is-128x128 is-centered">
     <img src="assets/images/pencil.svg">
   </figure>

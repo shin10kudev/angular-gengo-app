@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { PostService } from '../shared/post.service';
 import { Post } from '../shared/post';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'posts-list',
@@ -11,7 +12,12 @@ import { Post } from '../shared/post';
 
 export class PostsListComponent implements OnInit {
 
-  posts: FirebaseListObservable<Post[]>;
+  // Unwrapped arrays from firebase
+  posts: any;
+  filteredPosts: any;
+
+  // Active filter rules
+  filters = {};
 
   // Misc.
   showSpinner: boolean = true;
@@ -19,9 +25,15 @@ export class PostsListComponent implements OnInit {
   constructor(private postSvc: PostService) { }
 
   ngOnInit() {
-    this.posts = this.postSvc.getPosts({
-      limitToLast: 15
-    })
-    this.posts.subscribe(() => this.showSpinner = false)
+    this.postSvc.getPosts({ limitToLast: 20 })
+      .subscribe(posts => {
+        this.posts = posts;
+        this.applyFilters();
+        this.showSpinner = false;
+      })
+  }
+
+  private applyFilters() {
+    this.filteredPosts = _.filter(this.posts, _.conforms(this.filters));
   }
 }
