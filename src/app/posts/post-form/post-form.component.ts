@@ -13,6 +13,7 @@ export class PostFormComponent implements OnInit {
 
   post: Post = new Post();
   selectedFiles: FileList;
+  currentPost;
 
   // Misc.
   translate: boolean = false;
@@ -36,6 +37,7 @@ export class PostFormComponent implements OnInit {
 
   createPost() {
     let postHasImage = this.selectedFiles;
+    this.currentPost = this.post;
 
     if (postHasImage) {
       let file = this.selectedFiles.item(0);
