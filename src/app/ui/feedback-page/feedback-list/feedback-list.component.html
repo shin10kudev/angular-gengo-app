@@ -10,7 +10,8 @@
   </div>
 </div>
 
-<div *ngIf="(feedbacks | async)?.length < 1 && !showSpinner" class="has-text-centered">
+<!-- blank-state -->
+<div *ngIf="(feedbacks | async)?.length < 1 && !showSpinner" class="blank-state">
   <figure class="image is-128x128 is-centered">
     <img src="assets/images/heart.svg">
   </figure>

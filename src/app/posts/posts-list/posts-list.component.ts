@@ -12,8 +12,9 @@ import { Post } from '../shared/post';
 export class PostsListComponent implements OnInit {
 
   posts: FirebaseListObservable<Post[]>;
-  showSpinner = true;
-  isAddPost: boolean = false;
+
+  // Misc.
+  showSpinner: boolean = true;
 
   constructor(private postSvc: PostService) { }
 

@@ -25,12 +25,26 @@ export class PostService {
     return this.posts
   }
 
-  deletePost(post: Post) {
-    this.deleteFileData(post.$key)
-    .then( () => {
-      this.deleteFileStorage(post.name)
-    })
-    .catch(error => console.log(error))
+  deletePost(post: Post): void {
+    let key = post.$key;
+    let postHasImage = post.url;
+
+    if (postHasImage) {
+      this.deleteFileData(key)
+      .then(() => {
+        this.deleteFileStorage(post.name)
+      })
+      .catch(error => this.handleError(error))
+    } else {
+      this.posts.remove(key)
+        .catch(error => this.handleError(error))
+    }
+  }
+
+  // Create a new mistake
+  createPost(post: Post): void {
+    this.posts.push(post)
+      .catch(error => this.handleError(error))
   }
 
   // Executes the file uploading to firebase https://firebase.google.com/docs/storage/web/upload-files
@@ -73,5 +87,10 @@ export class PostService {
   private deleteFileStorage(name:string) {
     const storageRef = firebase.storage().ref();
     storageRef.child(`${this.basePath}/${name}`).delete()
+  }
+
+   // Default error handling for all actions
+  private handleError(error) {
+    console.log(error);
   }
 }

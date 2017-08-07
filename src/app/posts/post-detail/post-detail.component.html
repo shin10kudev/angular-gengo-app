@@ -1,11 +1,11 @@
 <div class="md-card">
-  <img ng-src="post.url" class="md-card-image" alt="post image" src="{{post.url}}">
+  <img *ngIf="post.url" ng-src="post.url" class="md-card-image" alt="post image" src="{{post.url}}">
   <div class="md-card-title">
-    <span class="md-headline">{{ post.title || 'title missing' }}</span>
+    <span class="md-headline">{{ post.title }}</span>
   </div>
   <div class="md-card-content">
-    <p>{{ post.body || 'body missing' }}</p>
-    <p>{{ post.translation}}</p>
+    <p>{{ post.body }}</p>
+    <p>{{ post.translation }}</p>
   </div>
   <div class="md-card-actions">
     <span class="button is-small is-danger is-pulled-right" (click)='deletePost(post)'>Delete</span>

@@ -13,20 +13,39 @@ export class PostFormComponent implements OnInit {
 
   post: Post = new Post();
   selectedFiles: FileList;
-  isTranslate: boolean = false;
+
+  // Misc.
+  translate: boolean = false;
+  showModal: boolean = false;
 
   constructor(private postSvc: PostService) {}
 
   ngOnInit() {}
+
+  toggleTranslate() {
+    this.translate = !this.translate;
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 
   createPost() {
-    let file = this.selectedFiles.item(0);
-    this.post.file = file;
-    this.postSvc.pushUpload(this.post);
+    let postHasImage = this.selectedFiles;
+
+    if (postHasImage) {
+      let file = this.selectedFiles.item(0);
+      this.post.file = file;
+      this.postSvc.pushUpload(this.post);
+    } else {
+      this.postSvc.createPost(this.post);
+    }
+
+    this.toggleModal();
     this.post = new Post();
   }
 }

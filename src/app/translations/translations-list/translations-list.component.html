@@ -10,7 +10,8 @@
   <translation-detail [translation]='translation'></translation-detail>
 </div>
 
-<div *ngIf="filteredTranslations?.length < 1 && !showSpinner" class="has-text-centered">
+<!-- blank-state -->
+<div *ngIf="filteredTranslations?.length < 1 && !showSpinner" class="blank-state">
   <figure class="image is-128x128 is-centered">
     <img src="assets/images/pen.svg">
   </figure>

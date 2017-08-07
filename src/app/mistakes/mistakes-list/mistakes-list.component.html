@@ -67,7 +67,8 @@
   <mistake-detail [mistake]='mistake'></mistake-detail>
 </div>
 
-<div *ngIf="filteredMistakes?.length < 1 && !showSpinner" class="has-text-centered">
+<!-- blank-state -->
+<div *ngIf="filteredMistakes?.length < 1 && !showSpinner" class="blank-state">
   <figure class="image is-128x128 is-centered">
     <img src="assets/images/brain.svg">
   </figure>
