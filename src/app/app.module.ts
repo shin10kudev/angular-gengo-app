@@ -59,6 +59,9 @@ import { FeedbackListComponent } from './ui/feedback-page/feedback-list/feedback
 import { FeedbackFormComponent } from './ui/feedback-page/feedback-form/feedback-form.component';
 import { FeedbackDetailComponent } from './ui/feedback-page/feedback-detail/feedback-detail.component';
 
+// Support
+import { SupportPageComponent } from './static-pages/support-page/support-page.component';
+
 export const firebaseConfig = environment.firebaseConfig;
 
 ///// End FireStarter
@@ -84,7 +87,8 @@ export const firebaseConfig = environment.firebaseConfig;
     ReversePipe,
     FeedbackListComponent,
     FeedbackFormComponent,
-    FeedbackDetailComponent
+    FeedbackDetailComponent,
+    SupportPageComponent
   ],
   imports: [
     BrowserModule,

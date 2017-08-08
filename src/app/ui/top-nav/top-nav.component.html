@@ -1,4 +1,4 @@
-<nav class="navbar ">
+<nav class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" routerLink="/">
       <img src="assets/images/logo.svg" width="40px" height="40px" alt="GengoApp logo"/> GengoApp
@@ -39,8 +39,12 @@
           <a class="navbar-item" routerLink="/profile" (click)="toggleCollapse()">
             Profile
           </a>
+          <hr class="navbar-divider">
           <a class="navbar-item" routerLink="/feedback" (click)="toggleCollapse()">
             Feedback
+          </a>
+          <a class="navbar-item" routerLink="/support" (click)="toggleCollapse()">
+            Support
           </a>
           <hr class="navbar-divider">
           <a class="navbar-item" *ngIf="auth.currentUser" (click)="signout(); toggleCollapse()">

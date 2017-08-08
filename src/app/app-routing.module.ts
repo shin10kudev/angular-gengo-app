@@ -2,13 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/auth.guard';
 
+// Users
 import { UserLoginComponent } from './users/user-login/user-login.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
+
+// Features
+import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
+import { TranslationsListComponent } from './translations/translations-list/translations-list.component';
+
+// Static pages
 import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 import { FeedbackListComponent } from './ui/feedback-page/feedback-list/feedback-list.component';
-import { TranslationsListComponent } from './translations/translations-list/translations-list.component';
-import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.component';
+import { SupportPageComponent } from './static-pages/support-page/support-page.component';
 
 const routes: Routes = [
   // root
@@ -25,6 +31,7 @@ const routes: Routes = [
 
   // Other
   { path: 'feedback', component: FeedbackListComponent, canActivate: [AuthGuard]},
+  { path: 'support', component: SupportPageComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

@@ -24,7 +24,8 @@ exports.translate = functions.database.ref('/translations/{userId}/{translationI
     var source = 'ja';
     var target = 'en';
     var text = snapshot.val().ja;
-    promises.push(createTranslationPromise(source, target, text, snapshot, userId));
+    return;
+    // promises.push(createTranslationPromise(source, target, text, snapshot, userId));
   } else {
     return;
   }

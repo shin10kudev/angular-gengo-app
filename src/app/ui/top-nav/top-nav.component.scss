@@ -1,3 +1,7 @@
-nav {
+.navbar {
   box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+
+  @media all and (min-width: 1008px) {
+    padding: 0 3vw;
+  }
 }
