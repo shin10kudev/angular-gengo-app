@@ -15,7 +15,7 @@
     <div class="navbar-start"></div>
 
     <div class="navbar-end">
-      <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
+      <a class="navbar-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
         Login/Signup?
       </a>
       <a class="navbar-item" routerLink="/phrases" *ngIf="auth.currentUser" (click)="toggleCollapse()">
