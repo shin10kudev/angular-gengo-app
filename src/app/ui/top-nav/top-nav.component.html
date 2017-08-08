@@ -12,9 +12,7 @@
   </div>
 
   <div class="navbar-menu" [ngClass]="{'is-active': show }">
-    <div class="navbar-start">
-
-    </div>
+    <div class="navbar-start"></div>
 
     <div class="navbar-end">
       <a class="nav-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
