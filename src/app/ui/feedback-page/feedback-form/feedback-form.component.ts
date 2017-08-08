@@ -11,7 +11,7 @@ import { Feedback } from '../shared/feedback';
 export class FeedbackFormComponent implements OnInit {
 
   feedback: Feedback = new Feedback();
-  categories: any = ['Bug', 'Feature Request', 'General Feedback', 'Love', 'Other'];
+  categories: any = ['', 'Bug', 'Feature Request', 'General Feedback', 'Sending Love', 'Other'];
 
   constructor(private feedbackSvc: FeedbackService) { }
 

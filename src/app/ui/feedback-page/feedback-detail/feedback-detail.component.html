@@ -22,8 +22,11 @@
     </div>
     <div class="level is-mobile">
       <div class="level-left">
-        <div class="tags">
-          <span class="tag is-light">{{ feedback.category }}</span>
+        <div class="tags is-grouped">
+          <span class="tag is-light" *ngIf="feedback.category != 'Sending Love'">{{ feedback.category }}</span>
+          <span class="tag is-light" *ngIf="feedback.category == 'Sending Love'">
+            {{ feedback.category }}&nbsp;<i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
+          </span>
           <span class="tag is-light">Status: {{ feedback.status }}</span>
         </div>
       </div>
