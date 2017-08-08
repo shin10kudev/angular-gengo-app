@@ -14,6 +14,7 @@ export class FeedbackDetailComponent implements OnInit {
   @Input() feedback: Feedback;
 
   edit: boolean = false;
+  showDropdown: boolean = false;
 
   constructor(private feedbackSvc: FeedbackService) { }
 
@@ -22,6 +23,10 @@ export class FeedbackDetailComponent implements OnInit {
 
   toggleEdit() {
     this.edit = !this.edit;
+  }
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
   }
 
   // Update feedback
