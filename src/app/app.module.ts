@@ -29,7 +29,6 @@ import { NavService } from './ui/shared/nav.service';
 import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { FooterNavComponent } from './ui/footer-nav/footer-nav.component';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
-import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
 
 // Translations
 import { TranslationService } from './translations/shared/translation.service';
@@ -43,24 +42,23 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { PostFormComponent } from './posts/post-form/post-form.component';
 import { PostDetailComponent } from './posts/post-detail/post-detail.component';
 
-// Reactions
-// import { ReactionService } from './reaction/shared/reaction.service';
-// import { ReactionComponent } from './reaction/reaction.component';
-
 // Mistakes
 import { MistakeService } from './mistakes/shared/mistake.service';
 import { MistakesListComponent } from './mistakes/mistakes-list/mistakes-list.component';
 import { MistakeFormComponent } from './mistakes/mistake-form/mistake-form.component';
 import { MistakeDetailComponent } from './mistakes/mistake-detail/mistake-detail.component';
 
-// Feedbacks
-import { FeedbackService } from './ui/feedback-page/shared/feedback.service';
-import { FeedbackListComponent } from './ui/feedback-page/feedback-list/feedback-list.component';
-import { FeedbackFormComponent } from './ui/feedback-page/feedback-form/feedback-form.component';
-import { FeedbackDetailComponent } from './ui/feedback-page/feedback-detail/feedback-detail.component';
+// Feedback Page
+import { FeedbackService } from './static-pages/feedback-page/shared/feedback.service';
+import { FeedbackListComponent } from './static-pages/feedback-page/feedback-list/feedback-list.component';
+import { FeedbackFormComponent } from './static-pages/feedback-page/feedback-form/feedback-form.component';
+import { FeedbackDetailComponent } from './static-pages/feedback-page/feedback-detail/feedback-detail.component';
 
-// Support
+// Support Page
 import { SupportPageComponent } from './static-pages/support-page/support-page.component';
+
+// Readme Page
+import { ReadmePageComponent } from './static-pages/readme-page/readme-page.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 

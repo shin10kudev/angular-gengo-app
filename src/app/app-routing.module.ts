@@ -12,8 +12,8 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { TranslationsListComponent } from './translations/translations-list/translations-list.component';
 
 // Static pages
-import { ReadmePageComponent } from './ui/readme-page/readme-page.component';
-import { FeedbackListComponent } from './ui/feedback-page/feedback-list/feedback-list.component';
+import { ReadmePageComponent } from './static-pages/readme-page/readme-page.component';
+import { FeedbackListComponent } from './static-pages/feedback-page/feedback-list/feedback-list.component';
 import { SupportPageComponent } from './static-pages/support-page/support-page.component';
 
 const routes: Routes = [
