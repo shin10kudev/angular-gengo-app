@@ -1,6 +1,5 @@
 <div class="content">
   <h3>My Phrases</h3>
-  <p>Add new phrases you want to remember</p>
 </div>
 
 <div class="tabs is-boxed">
@@ -18,7 +17,7 @@
     #en='ngModel' autofocus>
   </div>
 
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Translate</button>
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add Phrase</button>
   <button class="button is-default" *ngIf="translation.en" (click)="cancelTranslation()">Cancel</button>
 </div>
 
@@ -30,6 +29,6 @@
     #ja='ngModel' autofocus>
   </div>
 
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Translate</button>
+  <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add Phrase</button>
   <button class="button is-default" *ngIf="translation.ja" (click)="cancelTranslation()">Cancel</button>
 </div>
