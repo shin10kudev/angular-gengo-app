@@ -1,10 +1,10 @@
-<div class="content">
-  <h3>My Phrases</h3>
-</div>
-
 <translation-form></translation-form>
 
 <hr>
+
+<div class="content">
+  <h4>My Saved Phrases</h4>
+</div>
 
 <div *ngFor="let translation of filteredTranslations | reverse" class="card">
   <translation-detail [translation]='translation'></translation-detail>

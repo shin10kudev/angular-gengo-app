@@ -1,24 +1,34 @@
 <div class="card-content">
+  <!-- normal view -->
   <div *ngIf="!edit">
     <div class="verify-icon is-pulled-right">
       <span class="icon" title="Verified translation" *ngIf='translation.verified' (click)='updateStatus(false)'>
         <i class="fa fa-star" aria-hidden="true"></i>
       </span>
-      <span class="icon" title="Unverified translation" *ngIf='!translation.verified' (click)='updateStatus(true)'>
+      <span class="icon" title="Verify translation" *ngIf='!translation.verified' (click)='updateStatus(true)'>
         <i class="fa fa-star-o" aria-hidden="true"></i>
       </span>
     </div>
-  </div>
 
-  <div *ngIf="!edit">
     <h3>{{ translation.ja || translationMsg }}</h3>
-    <p class="sub-text">
-      <span *ngIf="translation.en">{{ translation.en || translationMsg }}</span>
-      <a *ngIf="!translation.en" (click)="toggleEdit()">{{ defaultMsg }}</a>
-    </p>
+    <p class="sub-text">{{ translation.en || translationMsg }}</p>
+
+    <div class="sub-footer">
+      <p *ngIf="translation.notes" class="notes">{{ translation.notes }}</p>
+      <p *ngIf="!translation.notes && !edit" class="sub-text is-marginless"><a (click)="toggleEdit()">Add notes</a></p>
+    </div>
+
+    <div class="sub-footer has-text-right">
+      <span class="icon is-small">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </span>
+      <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
+    </div>
   </div>
 
+  <!-- edit form -->
   <div *ngIf="edit">
+    <p style="margin-bottom: 6px"><b>Edit Phrase</b></p>
     <div class="field">
       <input placeholder="{{translation.ja || 'Add Japanese' }}" class="input"
       [(ngModel)]="translation.ja"
@@ -39,18 +49,6 @@
       required minlength="2" maxlength="500"
       #notes='ngModel'></textarea>
     </div>
-  </div>
-
-  <div class="sub-footer" *ngIf="!edit">
-    <p *ngIf="translation.notes" class="notes">{{ translation.notes }}</p>
-    <p class="sub-text" style="margin-bottom: 0" *ngIf="!edit"><a (click)="toggleEdit()">Add notes</a></p>
-  </div>
-
-  <div class="sub-footer has-text-right">
-    <span class="icon is-small">
-      <i class="fa fa-clock-o" aria-hidden="true"></i>
-    </span>
-    <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
   </div>
 </div>
 

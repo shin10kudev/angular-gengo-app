@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { trigger,state,style,animate,transition } from '@angular/animations';
 import { AuthService } from "../../core/auth.service";
 
@@ -25,9 +26,13 @@ import { AuthService } from "../../core/auth.service";
 })
 export class TopNavComponent implements OnInit {
 
+  location: Location;
   show: boolean = false;
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService,
+              location: Location) {
+                this.location = location;
+              }
 
   ngOnInit() {
   }

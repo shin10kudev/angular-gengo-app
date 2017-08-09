@@ -15,35 +15,66 @@
     <div class="navbar-start"></div>
 
     <div class="navbar-end">
-      <a class="navbar-item" routerLink="/login" *ngIf="!auth.currentUser" (click)="toggleCollapse()">
+      <a class="navbar-item"
+         routerLink="/login"
+         *ngIf="!auth.currentUser"
+         (click)="toggleCollapse()"
+        >
         Login/Signup?
       </a>
-      <a class="navbar-item" routerLink="/phrases" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+      <a class="navbar-item is-underlined"
+         [ngClass]="{'is-active': location.path() === '/phrases'}"
+         routerLink="/phrases"
+         *ngIf="auth.currentUser"
+         (click)="toggleCollapse()"
+        >
         Phrases
       </a>
-      <a class="navbar-item" routerLink="/mistakes" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+      <a class="navbar-item is-underlined"
+         [ngClass]="{'is-active': location.path() === '/mistakes'}"
+         routerLink="/mistakes"
+         *ngIf="auth.currentUser"
+         (click)="toggleCollapse()"
+        >
         Mistakes
       </a>
-      <a class="navbar-item" routerLink="/posts" *ngIf="auth.currentUser" (click)="toggleCollapse()">
+      <a class="navbar-item is-underlined"
+         [ngClass]="{'is-active': location.path() === '/posts'}"
+         routerLink="/posts"
+         *ngIf="auth.currentUser"
+         (click)="toggleCollapse()"
+        >
         Posts
       </a>
       <!-- dropdown -->
       <div class="navbar-item has-dropdown is-hoverable" *ngIf="auth.currentUser">
-        <a class="navbar-link is-active">
+        <a class="navbar-link" routerLink="/profile" (click)="toggleCollapse()">
           <span class="image is-round is-24x24 is-rounded is-hidden-touch">
             <img [src]="auth.currentUser.photoURL || 'assets/images/default-user.svg'" width="24px" height="24px" class="profile-image">
           </span>
           <span class="is-hidden-desktop">Account</span>
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item" routerLink="/profile" (click)="toggleCollapse()">
+          <a class="navbar-item"
+             [ngClass]="{'is-active': location.path() === '/profile'}"
+             routerLink="/profile"
+             (click)="toggleCollapse()"
+            >
             Profile
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item" routerLink="/feedback" (click)="toggleCollapse()">
+          <a class="navbar-item"
+             [ngClass]="{'is-active': location.path() === '/feedback'}"
+             routerLink="/feedback"
+             (click)="toggleCollapse()"
+            >
             Feedback
           </a>
-          <a class="navbar-item" routerLink="/support" (click)="toggleCollapse()">
+          <a class="navbar-item"
+             [ngClass]="{'is-active': location.path() === '/support'}"
+             routerLink="/support"
+             (click)="toggleCollapse()"
+            >
             Support
           </a>
           <hr class="navbar-divider">

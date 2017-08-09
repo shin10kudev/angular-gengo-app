@@ -1,7 +1,3 @@
-<div class="content">
-  <h3>My Mistakes</h3>
-</div>
-
 <div *ngIf="!filter">
   <mistake-form></mistake-form>
 
@@ -15,20 +11,7 @@
 </div>
 
 <div *ngIf="filter">
-  <h3>Filters</h3>
-
-  <label for="correction">Search mistakes by title</label>
-  <input type="text"
-         [(ngModel)]="correction"
-         (change)="filterPartial('correction', correction)">
-
-  <button *ngIf="correction"
-          (click)="removeFilter('correction')">
-
-          Remove Filter
-        </button>
-
-  <br>
+  <h3 class="title is-5">Filters</h3>
 
   <label>Verified?</label>
   <input type="checkbox"
@@ -37,30 +20,23 @@
 
   <br>
 
-  <label>UnVerified?</label>
+  <label>Unverified?</label>
   <input type="checkbox"
          [(ngModel)]="unverified"
          (change)="filterBooleanFalse('verified', unverified); verified=false;">
 
   <br>
 
-  <label for="errorCount">Error Count</label>
-  <input type="number"
-         id="errorCount"
-         [(ngModel)]="errorCount"
-         (change)="filterGreaterThan('errorCount', errorCount)">
-
-  <button *ngIf="errorCount"
-          (click)="removeFilter('errorCount')">
-
-          Remove Filter
-        </button>
   <hr>
 
   <p>Returned Results: <b>{{ mistakesCount }}</b></p>
   <a (click)="toggleFilters(); resetFilters()">Clear Filters</a>
 
   <hr>
+</div>
+
+<div class="content">
+  <h4>My Saved Mistakes</h4>
 </div>
 
 <div *ngFor="let mistake of filteredMistakes | reverse" class="card">
