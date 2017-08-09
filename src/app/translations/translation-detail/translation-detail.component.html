@@ -12,8 +12,10 @@
 
   <div *ngIf="!edit">
     <h3>{{ translation.ja || translationMsg }}</h3>
-    <p *ngIf="translation.en" class="sub-text">{{ translation.en }}</p>
-    <p><a *ngIf="!translation.en" (click)="toggleEdit()" class="sub-text">{{ defaultMsg }}</a></p>
+    <p class="sub-text">
+      <span *ngIf="translation.en">{{ translation.en || translationMsg }}</span>
+      <a *ngIf="!translation.en" (click)="toggleEdit()">{{ defaultMsg }}</a>
+    </p>
   </div>
 
   <div *ngIf="edit">
