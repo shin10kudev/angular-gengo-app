@@ -8,6 +8,13 @@ import { AuthService } from "./core/auth.service";
 })
 
 export class AppComponent {
+
+  close: boolean = false;
+
   constructor() {}
   title = 'FireStarter app works!';
+
+  triggerClose() {
+    this.close = !this.close;
+  }
 }

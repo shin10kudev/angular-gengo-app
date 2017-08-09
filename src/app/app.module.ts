@@ -54,11 +54,10 @@ import { FeedbackListComponent } from './static-pages/feedback-page/feedback-lis
 import { FeedbackFormComponent } from './static-pages/feedback-page/feedback-form/feedback-form.component';
 import { FeedbackDetailComponent } from './static-pages/feedback-page/feedback-detail/feedback-detail.component';
 
-// Support Page
+// Static Pages
 import { SupportPageComponent } from './static-pages/support-page/support-page.component';
-
-// Readme Page
 import { ReadmePageComponent } from './static-pages/readme-page/readme-page.component';
+import { AddBookmarkPageComponent } from './static-pages/add-bookmark-page/add-bookmark-page.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -86,7 +85,8 @@ export const firebaseConfig = environment.firebaseConfig;
     FeedbackListComponent,
     FeedbackFormComponent,
     FeedbackDetailComponent,
-    SupportPageComponent
+    SupportPageComponent,
+    AddBookmarkPageComponent
   ],
   imports: [
     BrowserModule,

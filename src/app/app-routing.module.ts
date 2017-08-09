@@ -15,6 +15,7 @@ import { TranslationsListComponent } from './translations/translations-list/tran
 import { ReadmePageComponent } from './static-pages/readme-page/readme-page.component';
 import { FeedbackListComponent } from './static-pages/feedback-page/feedback-list/feedback-list.component';
 import { SupportPageComponent } from './static-pages/support-page/support-page.component';
+import { AddBookmarkPageComponent } from './static-pages/add-bookmark-page/add-bookmark-page.component';
 
 const routes: Routes = [
   // root
@@ -31,7 +32,8 @@ const routes: Routes = [
 
   // Other
   { path: 'feedback', component: FeedbackListComponent, canActivate: [AuthGuard]},
-  { path: 'support', component: SupportPageComponent, canActivate: [AuthGuard]},
+  { path: 'support', component: SupportPageComponent },
+  { path: 'add_gengo_app_to_homescreen', component: AddBookmarkPageComponent }
 ];
 
 @NgModule({
