@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import * as firebase from 'firebase';
 
 @Injectable()
-
 export class AuthService {
 
   authState: any = null;
@@ -15,7 +14,7 @@ export class AuthService {
               private router: Router) {
 
             this.afAuth.authState.subscribe((auth) => {
-              this.authState = auth
+              this.authState = auth;
             });
           }
 
@@ -31,7 +30,7 @@ export class AuthService {
 
   // Returns
   get currentUserObservable(): any {
-    return this.afAuth.authState
+    return this.afAuth.authState;
   }
 
   // Returns current user UID
@@ -39,75 +38,59 @@ export class AuthService {
     return this.authenticated ? this.authState.uid : '';
   }
 
-  // Anonymous User
-  get currentUserAnonymous(): boolean {
-    return this.authenticated ? this.authState.isAnonymous : false
-  }
-
   // Returns current user display name or Guest
   get currentUserDisplayName(): string {
-    if (!this.authState) { return 'Guest' }
-    else if (this.currentUserAnonymous) { return 'Anonymous' }
-    else { return this.authState['displayName'] || 'User' }
+    return this.authState['displayName'] || 'Username';
   }
 
   //// Social Auth ////
-  githubLogin() {
-    const provider = new firebase.auth.GithubAuthProvider()
-    return this.socialSignIn(provider);
-  }
-
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
     return this.socialSignIn(provider);
   }
 
-  facebookLogin() {
-    const provider = new firebase.auth.FacebookAuthProvider()
-    return this.socialSignIn(provider);
-  }
+  // facebookLogin() {
+  //   const provider = new firebase.auth.FacebookAuthProvider()
+  //   return this.socialSignIn(provider);
+  // }
 
-  twitterLogin(){
-    const provider = new firebase.auth.TwitterAuthProvider()
-    return this.socialSignIn(provider);
-  }
+  // twitterLogin(){
+  //   const provider = new firebase.auth.TwitterAuthProvider()
+  //   return this.socialSignIn(provider);
+  // }
 
   private socialSignIn(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) =>  {
-          this.authState = credential.user
-          this.updateUserData()
+        this.authState = credential.user;
+        this.updateUserData();
       })
-      .catch(error => console.log(error));
-  }
-
-  //// Anonymous Auth ////
-  anonymousLogin() {
-    return this.afAuth.auth.signInAnonymously()
-    .then((user) => {
-      this.authState = user
-      this.updateUserData()
-    })
-    .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   //// Email/Password Auth ////
   emailSignUp(email:string, password:string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        this.authState = user
-        this.updateUserData()
+        this.authState = user;
+        this.updateUserData();
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error.message);
+      });
   }
 
   emailLogin(email:string, password:string) {
      return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-       .then((user) => {
-         this.authState = user
-         this.updateUserData()
-       })
-       .catch(error => console.log(error));
+      .then((user) => {
+        this.authState = user;
+        this.updateUserData();
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
   }
 
   // Sends email allowing user to reset password

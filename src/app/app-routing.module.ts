@@ -23,7 +23,7 @@ const routes: Routes = [
 
   // users & sessions
   { path: 'login', component: UserLoginComponent },
-  { path: 'profile', component: UserProfileComponent },
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
 
   // features
   { path: 'phrases', component: TranslationsListComponent, canActivate: [AuthGuard]},
