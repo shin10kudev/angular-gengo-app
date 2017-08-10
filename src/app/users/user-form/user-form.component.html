@@ -7,8 +7,6 @@
 
 <!-- Sign Up -->
 <form [formGroup]="userForm"  *ngIf="newUser" (ngSubmit)="signup()">
-  <h3 class="title is-size-5">Join GengoApp!</h3>
-
   <div class="field">
     <p class="control has-icons-right">
       <input type="email" id="email" class="input"
@@ -37,8 +35,8 @@
 
   <div class="field">
     <p class="control">
-      <button class="button is-primary is-medium is-full-width" type="submit" [disabled]="!userForm.valid">
-        Sign up
+      <button class="button is-full-width" type="submit" [ngClass]="{ 'is-primary': userForm.valid }" [disabled]="!userForm.valid">
+        Sign up with Email
       </button>
     </p>
   </div>
@@ -46,8 +44,6 @@
 
 <!-- Log In -->
 <form [formGroup]="userForm"  *ngIf="!newUser" (ngSubmit)="login()">
-  <h3 class="title is-size-5">Log in to continue</h3>
-
   <div class="field">
     <p class="control has-icons-right">
       <input type="email" id="email" class="input"
@@ -76,8 +72,8 @@
 
   <div class="field">
     <p class="control">
-      <button class="button is-primary is-medium is-full-width" type="submit" [disabled]="!userForm.valid">
-        Log in
+      <button class="button is-full-width" type="submit" [ngClass]="{ 'is-primary': userForm.valid }" [disabled]="!userForm.valid">
+        Log in with Email
       </button>
     </p>
   </div>
@@ -85,3 +81,5 @@
   <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
   <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
 </form>
+
+<hr>
