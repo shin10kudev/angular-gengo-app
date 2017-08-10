@@ -4,7 +4,6 @@ import { MistakeService } from '../shared/mistake.service';
 import { Mistake } from '../shared/mistake';
 import { ToastService } from '../../ui/toast-messages/shared/toast.service';
 
-
 @Component({
   selector: 'mistake-form',
   templateUrl: './mistake-form.component.html',
@@ -25,8 +24,7 @@ export class MistakeFormComponent implements OnInit {
     this.mistakeSvc.createMistake(this.mistake);
     this.mistake = new Mistake(); // reset form
 
-    const message = "Mistake added!";
-    this.toast.sendMessage(message, 'success');
+    this.toast.sendMessage('Mistake added!', 'success');
   }
 
   cancelMistake() {

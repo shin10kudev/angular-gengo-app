@@ -5,10 +5,11 @@ import { Message } from './message';
 export class ToastService {
 
   messages: any = [];
+  toastLife: number = 5000;
 
   constructor() {}
 
-  getMessages(): any[] {
+  getMessages(): any {
     return this.messages;
   }
 
@@ -16,6 +17,10 @@ export class ToastService {
     this.messages.pop();
     const message = new Message(content, style);
     this.messages.push(message);
+
+    setTimeout(() => {
+      this.dismissMessage(message);
+    }, this.toastLife);
   }
 
   dismissMessage(message) {

@@ -4,6 +4,7 @@
          *ngIf="!message.dismissed"
          [ngClass]="{'is-info':     message.style=='info',
                      'is-danger':   message.style=='danger',
+                     'is-warning':   message.style=='warning',
                      'is-success':  message.style=='success'}">
       <button class="delete" (click)="dismiss(message)"></button>
       {{message.content}}

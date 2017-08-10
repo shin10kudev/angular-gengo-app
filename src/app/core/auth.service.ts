@@ -3,6 +3,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from "@angular/router";
 import * as firebase from 'firebase';
+import { ToastService } from '../ui/toast-messages/shared/toast.service';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +12,8 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router) {
+              private router: Router,
+              private toast: ToastService) {
 
             this.afAuth.authState.subscribe((auth) => {
               this.authState = auth;
@@ -64,10 +66,9 @@ export class AuthService {
       .then((credential) =>  {
         this.authState = credential.user;
         this.updateUserData();
+        this.handleLoginSuccess();
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => this.handleError(error));
   }
 
   //// Email/Password Auth ////
@@ -76,10 +77,9 @@ export class AuthService {
       .then((user) => {
         this.authState = user;
         this.updateUserData();
+        this.handleLoginSuccess();
       })
-      .catch(error => {
-        console.log(error.message);
-      });
+      .catch(error => this.handleError(error));
   }
 
   emailLogin(email:string, password:string) {
@@ -87,10 +87,9 @@ export class AuthService {
       .then((user) => {
         this.authState = user;
         this.updateUserData();
+        this.handleLoginSuccess();
       })
-      .catch(error => {
-        console.log(error.message);
-      });
+      .catch(error => this.handleError(error));
   }
 
   // Sends email allowing user to reset password
@@ -98,14 +97,24 @@ export class AuthService {
     const fbAuth = firebase.auth();
 
     return fbAuth.sendPasswordResetEmail(email)
-      .then(() => console.log("email sent"))
-      .catch((error) => console.log(error))
+      .then(() => this.toast.sendMessage('Email sent!', 'success'))
+      .catch((error) => this.handleError(error));
   }
 
   //// Sign Out ////
   signOut(): void {
     this.afAuth.auth.signOut();
     this.router.navigate(['/'])
+  }
+
+  // Default error handling for all actions
+  private handleError(error) {
+    this.toast.sendMessage(error.message, 'warning');
+  }
+
+  // Default success handeling on login success
+  private handleLoginSuccess() {
+    this.toast.sendMessage('Login successful!', 'success');
   }
 
   //// Helpers ////
@@ -120,6 +129,6 @@ export class AuthService {
                 }
 
     this.db.object(path).update(data)
-    .catch(error => console.log(error));
+    .catch(error => this.handleError(error));
   }
 }

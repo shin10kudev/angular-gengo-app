@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../core/auth.service";
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import { ToastService } from '../../ui/toast-messages/shared/toast.service';
 
 @Component({
   selector: 'user-form',
@@ -16,7 +17,8 @@ export class UserFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private auth: AuthService,
-              private router: Router) {}
+              private router: Router,
+              private toast: ToastService) {}
 
    ngOnInit(): void {
      this.buildForm();
@@ -95,10 +97,6 @@ export class UserFormComponent implements OnInit {
     }
   };
 
-  // Default error handling for all actions
-  private handleError(error) {
-    console.log(error);
-  }
 
   /// Shared
   private afterSignIn(): void {
