@@ -16,7 +16,7 @@ export class FeedbackListComponent implements OnInit {
   constructor(private feedbackSvc: FeedbackService) { }
 
   ngOnInit() {
-    this.feedbacks = this.feedbackSvc.getFeedbacksList({ limitToLast: 15 })
+    this.feedbacks = this.feedbackSvc.getFeedbacksList({ limitToLast: 20 })
     this.feedbacks.subscribe(() => this.showSpinner = false)
   }
 }

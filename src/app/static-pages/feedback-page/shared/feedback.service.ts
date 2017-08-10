@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Feedback } from './feedback';
+import { ToastService } from '../../../ui/toast-messages/shared/toast.service';
 
 @Injectable()
 export class FeedbackService {
@@ -13,7 +14,8 @@ export class FeedbackService {
   userEmail: string;
 
   constructor(private db: AngularFireDatabase,
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private toast: ToastService) {
     this.afAuth.authState.subscribe(user => {
       if(user) {
         this.userId = user.uid;
@@ -36,23 +38,24 @@ export class FeedbackService {
   createFeedback(feedback: Feedback): void {
     feedback.userEmail = this.userEmail;
     this.feedbacks.push(feedback)
-      .catch(error => this.handleError(error))
+      .then(() => this.toast.sendMessage('Feedback sent!', 'success'))
+      .catch(error => this.handleError(error));
   }
 
   // Update a feedback
   updateFeedback(key: string, feedback: Feedback): void {
     this.feedbacks.update(key, feedback)
-      .catch(error => this.handleError(error))
+      .catch(error => this.handleError(error));
   }
 
   // Delete feedback
   deleteFeedback(key: string): void {
     this.feedbacks.remove(key)
-      .catch(error => this.handleError(error))
+      .catch(error => this.handleError(error));
   }
 
   // Default error handling for all actions
   private handleError(error) {
-    console.log(error);
+    this.toast.sendMessage(error.message, 'warning');
   }
 }

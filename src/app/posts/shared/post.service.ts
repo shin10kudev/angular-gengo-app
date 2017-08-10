@@ -3,19 +3,22 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Post } from './post';
+import { ToastService } from '../../ui/toast-messages/shared/toast.service';
 
 @Injectable()
 export class PostService {
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid
-    });
-  }
-
   private basePath:string = '/posts';
   posts: FirebaseListObservable<Post[]>;
   userId: string;
+
+  constructor(private db: AngularFireDatabase,
+              private afAuth: AngularFireAuth,
+              private toast: ToastService) {
+    this.afAuth.authState.subscribe(user => {
+      if(user) this.userId = user.uid;
+    });
+  }
 
   getPosts(query={}) {
     if (!this.userId) return;
@@ -44,6 +47,7 @@ export class PostService {
   // Create a new mistake
   createPost(post: Post): void {
     this.posts.push(post)
+      .then(() => this.toast.sendMessage('New post added!', 'success'))
       .catch(error => this.handleError(error))
   }
 
@@ -61,13 +65,14 @@ export class PostService {
       },
       (error) => {
         // upload failed
-        console.log(error)
+        this.handleError(error);
       },
       () => {
         // upload success
-        post.url = uploadTask.snapshot.downloadURL
-        post.name = uploadName
-        this.saveFileData(post)
+        post.url = uploadTask.snapshot.downloadURL;
+        post.name = uploadName;
+        this.saveFileData(post);
+        this.toast.sendMessage('New post added!', 'success');
       }
     );
   }
@@ -89,8 +94,8 @@ export class PostService {
     storageRef.child(`${this.basePath}/${name}`).delete()
   }
 
-   // Default error handling for all actions
+  // Default error handling for all actions
   private handleError(error) {
-    console.log(error);
+    this.toast.sendMessage(error.message, 'warning');
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Translation } from '../shared/translation';
+import { ToastService } from '../../ui/toast-messages/shared/toast.service';
 
 @Injectable()
 export class TranslationService {
@@ -11,9 +12,10 @@ export class TranslationService {
   translations: FirebaseListObservable<Translation[]> = null; //  list of objects
 
   constructor(private db: AngularFireDatabase,
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private toast: ToastService) {
     this.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid
+      if(user) this.userId = user.uid;
     });
   }
 
@@ -29,24 +31,24 @@ export class TranslationService {
 
   createTranslation(translation): FirebaseObjectObservable<any> {
     // create new translation, then return it as an object observable
-    const key = this.db.list(`/translations/${this.userId}`).push(translation).key
-    return this.db.object(`${this.basePath}/${this.userId}/${key}`)
+    const key = this.db.list(`/translations/${this.userId}`).push(translation).key;
+    return this.db.object(`${this.basePath}/${this.userId}/${key}`);
   }
 
   // Update an exisiting translation
   updateTranslation(key: string, translation: Translation): void {
     this.translations.update(key, translation)
-      .catch(error => this.handleError(error))
+      .catch(error => this.handleError(error));
   }
 
   // Deletes a single item
   deleteTranslation(key: string): void {
     this.translations.remove(key)
-      .catch(error => this.handleError(error))
+      .catch(error => this.handleError(error));
   }
 
   // Default error handling for all actions
   private handleError(error) {
-    console.log(error);
+    this.toast.sendMessage(error.message, 'warning');
   }
 }

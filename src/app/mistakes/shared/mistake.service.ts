@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Mistake } from './mistake';
+import { ToastService } from '../../ui/toast-messages/shared/toast.service';
 
 @Injectable()
 export class MistakeService {
@@ -11,7 +12,8 @@ export class MistakeService {
   mistakes: FirebaseListObservable<Mistake[]> = null; //  list of objects
 
   constructor(private db: AngularFireDatabase,
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private toast: ToastService) {
     this.afAuth.authState.subscribe(user => {
       if(user) this.userId = user.uid
     });
@@ -30,6 +32,7 @@ export class MistakeService {
   // Create a new mistake
   createMistake(mistake: Mistake): void {
     this.mistakes.push(mistake)
+      .then(() => this.toast.sendMessage('New mistake added!', 'success'))
       .catch(error => this.handleError(error))
   }
 
@@ -47,6 +50,6 @@ export class MistakeService {
 
   // Default error handling for all actions
   private handleError(error) {
-    console.log(error);
+    this.toast.sendMessage(error.message, 'warning');
   }
 }

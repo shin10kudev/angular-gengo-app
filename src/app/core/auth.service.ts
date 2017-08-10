@@ -107,16 +107,6 @@ export class AuthService {
     this.router.navigate(['/'])
   }
 
-  // Default error handling for all actions
-  private handleError(error) {
-    this.toast.sendMessage(error.message, 'warning');
-  }
-
-  // Default success handeling on login success
-  private handleLoginSuccess() {
-    this.toast.sendMessage('Login successful!', 'success');
-  }
-
   //// Helpers ////
   private updateUserData(): void {
   // Writes user name and email to realtime db
@@ -130,5 +120,15 @@ export class AuthService {
 
     this.db.object(path).update(data)
     .catch(error => this.handleError(error));
+  }
+
+  // Default error handling for all actions
+  private handleError(error) {
+    this.toast.sendMessage(error.message, 'warning');
+  }
+
+  // Default success handeling on login success
+  private handleLoginSuccess() {
+    this.toast.sendMessage('Login successful!', 'success');
   }
 }
