@@ -32,7 +32,6 @@ export class MistakeService {
   // Create a new mistake
   createMistake(mistake: Mistake): void {
     this.mistakes.push(mistake)
-      .then(() => this.toast.sendMessage('New mistake added!', 'success'))
       .catch(error => this.handleError(error))
   }
 

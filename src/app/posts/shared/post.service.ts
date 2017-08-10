@@ -47,7 +47,6 @@ export class PostService {
   // Create a new mistake
   createPost(post: Post): void {
     this.posts.push(post)
-      .then(() => this.toast.sendMessage('New post added!', 'success'))
       .catch(error => this.handleError(error))
   }
 

@@ -105,6 +105,7 @@ export class AuthService {
   signOut(): void {
     this.afAuth.auth.signOut();
     this.router.navigate(['/'])
+    this.toast.sendMessage('Logout successful', 'info');
   }
 
   //// Helpers ////
