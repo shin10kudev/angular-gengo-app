@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <aside  *ngFor="let message of messages" style="margin-bottom: 10px">
+    <div class="notification"
+         *ngIf="!message.dismissed"
+         [ngClass]="{'is-info':     message.style=='info',
+                     'is-danger':   message.style=='danger',
+                     'is-success':  message.style=='success'}">
+      <button class="delete" (click)="dismiss(message)"></button>
+      {{message.content}}
+    </div>
+  </aside>
+</div>

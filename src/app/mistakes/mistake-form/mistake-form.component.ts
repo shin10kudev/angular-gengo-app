@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MistakeService } from '../shared/mistake.service';
 import { Mistake } from '../shared/mistake';
+import { ToastService } from '../../ui/toast-messages/shared/toast.service';
+
 
 @Component({
   selector: 'mistake-form',
@@ -13,7 +15,8 @@ export class MistakeFormComponent implements OnInit {
 
   mistake: Mistake = new Mistake();
 
-  constructor(private mistakeSvc: MistakeService) { }
+  constructor(private mistakeSvc: MistakeService,
+              private toast: ToastService) { }
 
   ngOnInit() {
   }
@@ -21,6 +24,9 @@ export class MistakeFormComponent implements OnInit {
   createMistake() {
     this.mistakeSvc.createMistake(this.mistake);
     this.mistake = new Mistake(); // reset form
+
+    const message = "Mistake added!";
+    this.toast.sendMessage(message, 'success');
   }
 
   cancelMistake() {

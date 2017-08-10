@@ -14,6 +14,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 
+// Toasts
+import { ToastService } from './ui/toast-messages/shared/toast.service';
+import { ToastMessagesComponent } from './ui/toast-messages/toast-messages.component';
+
 // Custom Pipes
 import { ReversePipe } from './shared/pipes/reverse.pipe';
 
@@ -86,7 +90,8 @@ export const firebaseConfig = environment.firebaseConfig;
     FeedbackFormComponent,
     FeedbackDetailComponent,
     SupportPageComponent,
-    AddBookmarkPageComponent
+    AddBookmarkPageComponent,
+    ToastMessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +111,8 @@ export const firebaseConfig = environment.firebaseConfig;
     TranslationService,
     PostService,
     MistakeService,
-    FeedbackService
+    FeedbackService,
+    ToastService
   ],
   bootstrap: [
     AppComponent
