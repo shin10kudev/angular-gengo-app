@@ -32,6 +32,9 @@ export class TopNavComponent implements OnInit {
   constructor(public auth: AuthService,
               location: Location) {
                 this.location = location;
+                window.onresize = (e) => {
+                  if(this.show) this.show = false;
+                }
               }
 
   ngOnInit() {
