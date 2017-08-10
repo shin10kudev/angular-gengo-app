@@ -1,17 +1,25 @@
 <div *ngIf="!auth.currentUser; else alreadyLoggedIn">
-  <h3 class="title is-size-5">Social Login</h3>
-
-  <button (click)="signInWithGoogle()" class="button btn-social btn-google">
-    <i class="fa fa-google-plus fa-lg"></i> Connect Google
-  </button>
-
-  <hr>
 
   <user-form></user-form>
+
+  <div class="or-separator">
+    <span class="content">
+      <span>or</span>
+    </span>
+  </div>
+
+  <p class="field">
+    <button class="button is-medium is-full-width" (click)="signInWithGoogle()">
+      <span class="icon">
+        <i class="fa fa-google-plus"></i>
+      </span>
+      <span>Continue with Google</span>
+    </button>
+  </p>
 </div>
 
 <ng-template #alreadyLoggedIn>
-  <p class="text-success">
+  <div class="notification is-info">
     Already logged in!
-  </p>
+  </div>
 </ng-template>

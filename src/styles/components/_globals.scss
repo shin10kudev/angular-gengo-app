@@ -52,7 +52,42 @@ body {
 }
 
 .blank-state {
-  text-align: center;
-  padding-top: 50px;
   padding-bottom: 70px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+// Separator used on login and reg forms
+.or-separator {
+  overflow: hidden;
+  text-align: center;
+  margin: 28px 0;
+
+  .content {
+    position: relative;
+    padding: 16px;
+
+    span {
+      color: #a6a6a6;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    &::before,
+    &::after {
+      border-bottom: 1px solid rgba(#979797, .2);
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 5000px;
+    }
+
+    &::before {
+      right: 100%;
+    }
+
+    &::after {
+      left: 100%;
+    }
+  }
 }

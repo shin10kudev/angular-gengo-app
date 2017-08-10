@@ -1,59 +1,86 @@
-<!-- new user -->
-<form [formGroup]="userForm"  *ngIf="newUser"  (ngSubmit)="signup()">
-  <h3 class="title is-size-5">Sign Up</h3>
+<div class="tabs is-boxed">
+  <ul>
+    <li [ngClass]="{ 'is-active': newUser }"><a (click)="toggleForm()">Sign Up</a></li>
+    <li [ngClass]="{ 'is-active': !newUser }"><a (click)="toggleForm()">Log In</a></li>
+  </ul>
+</div>
+
+<!-- Sign Up -->
+<form [formGroup]="userForm"  *ngIf="newUser" (ngSubmit)="signup()">
+  <h3 class="title is-size-5">Join GengoApp!</h3>
 
   <div class="field">
-    <label for="email">Email</label>
-    <input type="email" id="email" class="input"
-           formControlName="email" required >
+    <p class="control has-icons-right">
+      <input type="email" id="email" class="input"
+             formControlName="email" placeholder="Email Address" required>
+      <span class="icon is-small is-right">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </p>
     <div *ngIf="formErrors.email" class="notification is-danger">
       {{ formErrors.email }}
     </div>
   </div>
 
   <div class="field">
-    <label for="password">Password</label>
-    <input type="password" id="password" class="input"
-           formControlName="password" required >
+    <p class="control has-icons-right">
+      <input type="password" id="password" class="input" placeholder="Password"
+             formControlName="password" required >
+      <span class="icon is-small is-right">
+        <i class="fa fa-lock"></i>
+      </span>
+    </p>
     <div *ngIf="formErrors.password" class="notification is-danger">
       {{ formErrors.password }}
     </div>
   </div>
 
-  <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button>
-
-  <hr>
-
-  <a (click)="toggleForm()">Already Registered?</a>
+  <div class="field">
+    <p class="control">
+      <button class="button is-primary is-medium is-full-width" type="submit" [disabled]="!userForm.valid">
+        Sign up
+      </button>
+    </p>
+  </div>
 </form>
 
-<!-- existing user login -->
-<form [formGroup]="userForm"  *ngIf="!newUser"  (ngSubmit)="login()">
-  <h3 class="title is-size-5">Login</h3>
+<!-- Log In -->
+<form [formGroup]="userForm"  *ngIf="!newUser" (ngSubmit)="login()">
+  <h3 class="title is-size-5">Log in to continue</h3>
 
   <div class="field">
-    <label for="email">Email</label>
-    <input type="email" id="email" class="input"
-           formControlName="email" required >
+    <p class="control has-icons-right">
+      <input type="email" id="email" class="input"
+             formControlName="email" placeholder="Email Address" required>
+      <span class="icon is-small is-right">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </p>
     <div *ngIf="formErrors.email" class="notification is-danger">
       {{ formErrors.email }}
     </div>
   </div>
 
   <div class="field">
-    <label for="password">Password</label>
-    <input type="password" id="password" class="input"
-           formControlName="password" required >
+    <p class="control has-icons-right">
+      <input type="password" id="password" class="input" placeholder="Password"
+             formControlName="password" required >
+      <span class="icon is-small is-right">
+        <i class="fa fa-lock"></i>
+      </span>
+    </p>
     <div *ngIf="formErrors.password" class="notification is-danger">
       {{ formErrors.password }}
     </div>
   </div>
 
-  <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button>
-
-  <hr>
-
-  <a (click)="toggleForm()">New User?</a>
+  <div class="field">
+    <p class="control">
+      <button class="button is-primary is-medium is-full-width" type="submit" [disabled]="!userForm.valid">
+        Log in
+      </button>
+    </p>
+  </div>
 
   <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
   <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
