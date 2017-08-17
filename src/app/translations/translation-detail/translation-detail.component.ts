@@ -26,6 +26,13 @@ export class TranslationDetailComponent implements OnInit {
     this.edit = !this.edit;
   }
 
+  textToSpeech() {
+    let msg = new SpeechSynthesisUtterance();
+    msg.text = this.translation.ja;
+    msg.lang = 'ja-JP';
+    speechSynthesis.speak(msg);
+  }
+
   // Update translation
   updateTranslation() {
     let date = firebase.database.ServerValue.TIMESTAMP;

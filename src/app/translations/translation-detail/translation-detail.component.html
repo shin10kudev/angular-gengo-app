@@ -1,11 +1,15 @@
 <div class="card-content">
   <!-- normal view -->
   <div *ngIf="!edit">
-    <div class="verify-icon is-pulled-right">
-      <span class="icon" title="Verified translation" *ngIf='translation.verified' (click)='updateStatus(false)'>
+    <div class="is-pulled-right">
+      <span class="icon" title="Listen" *ngIf='translation.ja' (click)='textToSpeech()'>
+        <i class="fa fa-microphone has-text-grey" aria-hidden="true"></i>
+      </span>
+      <span class="has-text-grey-light">|</span>
+      <span class="verify-icon icon" title="Translation verified" *ngIf='translation.verified' (click)='updateStatus(false)'>
         <i class="fa fa-star" aria-hidden="true"></i>
       </span>
-      <span class="icon" title="Verify translation" *ngIf='!translation.verified' (click)='updateStatus(true)'>
+      <span class="verify-icon icon" title="Verify translation" *ngIf='!translation.verified' (click)='updateStatus(true)'>
         <i class="fa fa-star-o" aria-hidden="true"></i>
       </span>
     </div>
@@ -18,11 +22,13 @@
       <p *ngIf="!translation.notes && !edit" class="sub-text is-marginless"><a (click)="toggleEdit()">Add notes</a></p>
     </div>
 
-    <div class="sub-footer has-text-right">
-      <span class="icon is-small">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>
-      </span>
-      <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
+    <div class="sub-footer is-clearfix">
+      <div class="is-pulled-right">
+        <span class="icon is-small">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+        </span>
+        <span class="date-time">{{ translation.created_at | date: 'short' }}</span>
+      </div>
     </div>
   </div>
 
@@ -53,8 +59,8 @@
 </div>
 
 <div class="card-footer" *ngIf="!edit">
-  <a class="card-footer-item" (click)="toggleEdit()">Edit</a>
   <a class="card-footer-item" (click)='deleteTranslation()'>Delete</a>
+  <a class="card-footer-item" (click)="toggleEdit()">Edit</a>
 </div>
 
 <div class="card-footer" *ngIf="edit">

@@ -2,9 +2,9 @@
   <h1>GengoApp <span class="image is-inline is-48x48"><img src="assets/images/logo.svg" alt="GengoApp logo"/></span></h1>
   <p>Enhance your language learning!</p>
   <ul>
-    <li>Add phrases quickly using the powerful Google Translate API</li>
-    <li>Track and annotate your mistakes</li>
-    <li>Improve your writing by posting in Japanese (with photos)!</li>
+    <li>Record new phrases quickly using the powerful Google Translate API</li>
+    <li>Track and annotate mistakes</li>
+    <li>Write posts in Japanese to improve your writing skills!</li>
   </ul>
   <div *ngIf="!auth.currentUser">
     <p><b>Get started now</b></p>
@@ -18,7 +18,5 @@
 
   <hr>
   <h3>Bookmark GengoApp!</h3>
-  <div class="notification is-info">
-    <p>Learn how to add GengoApp to your iPhone homescreen in <a routerLink="/add_gengo_app_to_homescreen">3 easy steps!</a></p>
-  </div>
+  <p>Learn how to add GengoApp to your iPhone homescreen in <a routerLink="/add_gengo_app_to_homescreen">3 easy steps!</a></p>
 </div>
