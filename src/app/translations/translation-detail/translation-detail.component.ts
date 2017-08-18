@@ -14,7 +14,6 @@ export class TranslationDetailComponent implements OnInit {
   @Input() translation: Translation;
 
   translationMsg: string = "Running translation in the cloud..."
-  defaultMsg: string = "Add translation"
   edit: boolean = false;
 
   constructor(private translationSvc: TranslationService) { }

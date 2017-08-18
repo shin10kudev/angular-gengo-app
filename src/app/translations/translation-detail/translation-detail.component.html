@@ -52,18 +52,18 @@
     <div class="field">
       <textarea placeholder="{{translation.notes || 'Add notes' }}" class="textarea"
       [(ngModel)]="translation.notes"
-      required minlength="2" maxlength="500"
+      maxlength="500"
       #notes='ngModel'></textarea>
     </div>
   </div>
 </div>
 
 <div class="card-footer" *ngIf="!edit">
-  <a class="card-footer-item" (click)='deleteTranslation()'>Delete</a>
+  <a class="card-footer-item" (click)="deleteTranslation()">Delete</a>
   <a class="card-footer-item" (click)="toggleEdit()">Edit</a>
 </div>
 
 <div class="card-footer" *ngIf="edit">
   <a class="card-footer-item" (click)="toggleEdit()">Cancel</a>
-  <a class="card-footer-item" (click)='updateTranslation()'>Update</a>
+  <a class="card-footer-item" (click)="updateTranslation()">Update</a>
 </div>
