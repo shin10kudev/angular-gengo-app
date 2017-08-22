@@ -2,10 +2,10 @@
   <!-- normal view -->
   <div *ngIf="!edit">
     <div class="is-pulled-right">
-      <span class="icon" title="Listen" *ngIf='translation.ja' (click)='textToSpeech()'>
+      <span class="icon is-hidden-touch" title="Listen" *ngIf='translation.ja' (click)='textToSpeech()'>
         <i class="fa fa-microphone has-text-grey" aria-hidden="true"></i>
       </span>
-      <span class="has-text-grey-light">|</span>
+      <span class="has-text-grey-light is-hidden-touch" *ngIf='translation.ja'>|</span>
       <span class="verify-icon icon" title="Translation verified" *ngIf='translation.verified' (click)='updateStatus(false)'>
         <i class="fa fa-star" aria-hidden="true"></i>
       </span>
@@ -15,7 +15,7 @@
     </div>
 
     <h3>{{ translation.ja || translationMsg }}</h3>
-    <p class="sub-text">{{ translation.en || translationMsg }}</p>
+    <p class="sub-text" *ngIf="translation.en">{{ translation.en }}</p>
 
     <div class="sub-footer">
       <p *ngIf="translation.notes" class="notes">{{ translation.notes }}</p>

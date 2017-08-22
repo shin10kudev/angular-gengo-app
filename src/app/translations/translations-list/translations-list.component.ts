@@ -25,7 +25,7 @@ export class TranslationsListComponent implements OnInit {
   constructor(private translationSvc: TranslationService) { }
 
   ngOnInit() {
-    this.translationSvc.getTranslationsList({ limitToLast: 20 })
+    this.translationSvc.getTranslationsList({ limitToLast: 30 })
        .subscribe(translations => {
         this.translations = translations;
         this.applyFilters();

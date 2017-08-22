@@ -1,10 +1,14 @@
 <div *ngIf="!filter">
+  <div class="content">
+    <h3>My Mistakes</h3>
+    <p>Enter a mistake you've discovered</p>
+  </div>
+
   <mistake-form></mistake-form>
 
   <hr>
 
   <div *ngIf="filteredMistakes?.length > 1 && !showSpinner">
-
     <a (click)="toggleFilters()">Show Filters</a>
     <hr>
   </div>
@@ -33,10 +37,6 @@
   <a (click)="toggleFilters(); resetFilters()">Clear Filters</a>
 
   <hr>
-</div>
-
-<div class="content">
-  <h4>My Saved Mistakes</h4>
 </div>
 
 <div *ngFor="let mistake of filteredMistakes | reverse" class="card">

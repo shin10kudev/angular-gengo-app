@@ -1,30 +1,22 @@
-<div class="tabs is-boxed">
-  <ul>
-    <li [ngClass]="{ 'is-active': !inputType }"><a (click)="toggleInputType()">English</a></li>
-    <li [ngClass]="{ 'is-active': inputType }"><a (click)="toggleInputType()">Japanese</a></li>
-  </ul>
-</div>
+<div class="field">
+  <textarea placeholder="Type in English or 日本語" class="textarea"
+  rows="2" required minlength="1" maxlength="142"
+  [(ngModel)]="translation.en"
+  #en='ngModel' autofocus></textarea>
 
-<div *ngIf="!inputType">
-  <div class="field">
-    <input placeholder="Type in English" class="input"
-    [(ngModel)]="translation.en"
-    required minlength="1" maxlength="100"
-    #en='ngModel' autofocus>
+  <div *ngIf="detectJapanese(translation.en); then japaneseDetected else englishInput">
+    <!-- // text renders here -->
   </div>
-
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add Phrase</button>
-  <button class="button is-default" *ngIf="translation.en" (click)="cancelTranslation()">Cancel</button>
 </div>
 
-<div *ngIf="inputType">
-  <div class="field">
-    <input placeholder="Type in Japanese (e.g. 日本)" class="input"
-    [(ngModel)]="translation.ja"
-    required minlength="1" maxlength="100"
-    #ja='ngModel' autofocus>
-  </div>
+<button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add</button>
+<button class="button is-default" *ngIf="translation.en" (click)="cancelTranslation()">Cancel</button>
 
-  <button class="button is-primary" (click)="createTranslation()" [disabled]="!ja.valid">Add Phrase</button>
-  <button class="button is-default" *ngIf="translation.ja" (click)="cancelTranslation()">Cancel</button>
-</div>
+<!-- ng-templates -->
+<ng-template #englishInput>
+  <small>Translating from <span class="has-text-info">English</span></small>
+</ng-template>
+
+<ng-template #japaneseDetected>
+  <small>Translating from <span class="has-text-info">Japanese</span></small>
+</ng-template>

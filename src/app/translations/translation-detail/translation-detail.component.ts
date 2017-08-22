@@ -26,10 +26,16 @@ export class TranslationDetailComponent implements OnInit {
   }
 
   textToSpeech() {
+    // Clear previous utterance
+    window.speechSynthesis.cancel();
+
+    // Create new utterance
     let msg = new SpeechSynthesisUtterance();
     msg.text = this.translation.ja;
+    msg.rate = 0.8; // 0.1 to 10
+    msg.volume = 0.9; // 0 to 1
     msg.lang = 'ja-JP';
-    speechSynthesis.speak(msg);
+    window.speechSynthesis.speak(msg);
   }
 
   // Update translation
