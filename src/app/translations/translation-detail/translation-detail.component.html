@@ -15,7 +15,7 @@
     </div>
 
     <h3>{{ translation.ja || translationMsg }}</h3>
-    <p class="sub-text" *ngIf="translation.en">{{ translation.en }}</p>
+    <p class="sub-text">{{ translation.en || translationMsg }}</p>
 
     <div class="sub-footer">
       <p *ngIf="translation.notes" class="notes">{{ translation.notes }}</p>
