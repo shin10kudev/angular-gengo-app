@@ -26,6 +26,7 @@ exports.translate = functions.database.ref('/translations/{userId}/{translationI
     var text = encodeURIComponent(snapshot.val().ja);
     promises.push(createTranslationPromise(source, target, text, snapshot, userId));
   } else {
+    // Todo return error on client side
     return;
   }
 
@@ -40,14 +41,14 @@ function createTranslateUrl(source, target, text) {
 // Process Translation
 function createTranslationPromise(source, target, text, snapshot, userId) {
   const key = snapshot.key;
-  const translation = {}
+  const translation = {};
 
   return request(createTranslateUrl(source, target, text), {resolveWithFullResponse: true}).then(
       response => {
         if (response.statusCode === 200) {
           const resData = JSON.parse(response.body).data;
 
-          translation[target] = resData.translations[0].translatedText
+          translation[target] = resData.translations[0].translatedText;
 
           return admin.database().ref(`/translations/${userId}/${key}`)
               .update(translation);
