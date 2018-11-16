@@ -1,16 +1,26 @@
 <div class="tabs is-boxed">
   <ul>
-    <li [ngClass]="{ 'is-active': newUser }"><a (click)="toggleForm()">Sign Up</a></li>
-    <li [ngClass]="{ 'is-active': !newUser }"><a (click)="toggleForm()">Log In</a></li>
+    <li [ngClass]="{ 'is-active': newUser }">
+      <a (click)="toggleForm()">Sign Up</a>
+    </li>
+    <li [ngClass]="{ 'is-active': !newUser }">
+      <a (click)="toggleForm()">Log In</a>
+    </li>
   </ul>
 </div>
 
 <!-- Sign Up -->
-<form [formGroup]="userForm"  *ngIf="newUser" (ngSubmit)="signup()">
+<form [formGroup]="userForm" *ngIf="newUser" (ngSubmit)="signup()">
   <div class="field">
     <p class="control has-icons-right">
-      <input type="email" id="email" class="input"
-             formControlName="email" placeholder="Email Address" required>
+      <input
+        type="email"
+        id="email"
+        class="input"
+        formControlName="email"
+        placeholder="Email Address"
+        required
+      />
       <span class="icon is-small is-right">
         <i class="fa fa-envelope"></i>
       </span>
@@ -22,11 +32,15 @@
 
   <div class="field">
     <p class="control has-icons-right">
-      <input type="password" id="password" class="input" placeholder="Password"
-             formControlName="password" required >
-      <span class="icon is-small is-right">
-        <i class="fa fa-lock"></i>
-      </span>
+      <input
+        type="password"
+        id="password"
+        class="input"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <span class="icon is-small is-right"> <i class="fa fa-lock"></i> </span>
     </p>
     <div *ngIf="formErrors.password" class="notification is-danger">
       {{ formErrors.password }}
@@ -35,7 +49,12 @@
 
   <div class="field">
     <p class="control">
-      <button class="button is-full-width" type="submit" [ngClass]="{ 'is-primary': userForm.valid }" [disabled]="!userForm.valid">
+      <button
+        class="button is-fullwidth"
+        type="submit"
+        [ngClass]="{ 'is-primary': userForm.valid }"
+        [disabled]="!userForm.valid"
+      >
         Sign up with Email
       </button>
     </p>
@@ -43,11 +62,17 @@
 </form>
 
 <!-- Log In -->
-<form [formGroup]="userForm"  *ngIf="!newUser" (ngSubmit)="login()">
+<form [formGroup]="userForm" *ngIf="!newUser" (ngSubmit)="login()">
   <div class="field">
     <p class="control has-icons-right">
-      <input type="email" id="email" class="input"
-             formControlName="email" placeholder="Email Address" required>
+      <input
+        type="email"
+        id="email"
+        class="input"
+        formControlName="email"
+        placeholder="Email Address"
+        required
+      />
       <span class="icon is-small is-right">
         <i class="fa fa-envelope"></i>
       </span>
@@ -59,11 +84,15 @@
 
   <div class="field">
     <p class="control has-icons-right">
-      <input type="password" id="password" class="input" placeholder="Password"
-             formControlName="password" required >
-      <span class="icon is-small is-right">
-        <i class="fa fa-lock"></i>
-      </span>
+      <input
+        type="password"
+        id="password"
+        class="input"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <span class="icon is-small is-right"> <i class="fa fa-lock"></i> </span>
     </p>
     <div *ngIf="formErrors.password" class="notification is-danger">
       {{ formErrors.password }}
@@ -72,14 +101,26 @@
 
   <div class="field">
     <p class="control">
-      <button class="button is-full-width" type="submit" [ngClass]="{ 'is-primary': userForm.valid }" [disabled]="!userForm.valid">
+      <button
+        class="button is-fullwidth"
+        type="submit"
+        [ngClass]="{ 'is-primary': userForm.valid }"
+        [disabled]="!userForm.valid"
+      >
         Log in with Email
       </button>
     </p>
   </div>
 
-  <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
-  <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
+  <a
+    *ngIf="!passReset && userForm.controls.email.valid"
+    class="help is-info"
+    (click)="resetPassword()"
+    >Reset Password for {{ userForm.value.email }}?</a
+  >
+  <p *ngIf="passReset" class="help is-info">
+    Reset requested. Check your email instructions.
+  </p>
 </form>
 
 <div style="margin-bottom: 22px"></div>

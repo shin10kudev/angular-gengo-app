@@ -1,6 +1,9 @@
-<div *ngIf="!auth.currentUser; else alreadyLoggedIn">
+<div *ngIf="!auth.currentUser; else: alreadyLoggedIn">
   <p class="field">
-    <button class="button is-full-width is-social-button is-google" (click)="signInWithGoogle()">
+    <button
+      class="button is-fullwidth is-social-button is-google"
+      (click)="signInWithGoogle()"
+    >
       <span class="icon" style="margin-right: 6px">
         <i class="fa fa-google-plus"></i>
       </span>
@@ -9,16 +12,12 @@
   </p>
 
   <div class="or-separator">
-    <span class="content">
-      <span>or</span>
-    </span>
+    <span class="content"> <span>or</span> </span>
   </div>
 
   <user-form></user-form>
 </div>
 
 <ng-template #alreadyLoggedIn>
-  <div class="notification is-info">
-    Hey there! You're already logged in!
-  </div>
+  <div class="notification is-info">Hey there! You're already logged in!</div>
 </ng-template>

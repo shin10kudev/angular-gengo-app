@@ -9,7 +9,6 @@ import { Post } from '../shared/post';
 })
 
 export class PostDetailComponent implements OnInit {
-
   @Input() post: Post;
 
   constructor(private postSvc: PostService) { }

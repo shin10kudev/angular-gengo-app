@@ -1,21 +1,49 @@
 // Button styles
 
 .button {
-  &.is-full-width {
-    width: 100%;
-  }
-
   &.is-social-button {
     color: #fff;
 
     &:hover,
     &:focus {
+      box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.2),
+        0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.1);
       color: #fff;
-      box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.2), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.1);
     }
 
     &.is-google {
       background-color: #dd4b39;
     }
+  }
+}
+
+//
+// Sizing
+//
+
+.button.is-halfwidth {
+  width: 49.5%;
+}
+
+//
+// Use in form inputs to clear content
+//
+
+.reset-x-button {
+  background-color: transparent;
+  border: 0;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 35px;
+  padding: 0 16px;
+  position: absolute;
+  right: 0;
+  top: 1px;
+  z-index: 5;
+
+  &:active,
+  &:focus {
+    outline: none;
   }
 }

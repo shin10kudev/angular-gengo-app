@@ -1,9 +1,10 @@
 // Global styles
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 body {
-  font-family: 'Roboto', sans-serif;
+  color: #484848;
+  font-family: "Roboto", sans-serif;
 }
 
 .footer {
@@ -16,8 +17,8 @@ body {
   overflow: hidden;
 
   img {
-    max-height: 40px;
     margin-right: 5px;
+    max-height: 40px;
   }
 }
 
@@ -59,24 +60,24 @@ body {
 
 // Separator used on login and reg forms
 .or-separator {
+  margin: 28px 0;
   overflow: hidden;
   text-align: center;
-  margin: 28px 0;
 
   .content {
-    position: relative;
     padding: 16px;
+    position: relative;
 
     span {
       color: #a6a6a6;
-      text-transform: uppercase;
       font-size: 12px;
+      text-transform: uppercase;
     }
 
     &::before,
     &::after {
-      border-bottom: 1px solid rgba(#979797, .2);
-      content: '';
+      border-bottom: 1px solid rgba(#979797, 0.2);
+      content: "";
       position: absolute;
       top: 50%;
       width: 5000px;

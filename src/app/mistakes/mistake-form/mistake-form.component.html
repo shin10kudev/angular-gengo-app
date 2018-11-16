@@ -1,9 +1,28 @@
 <div class="field">
-  <input placeholder="What mistake did you make?" class="input"
-  [(ngModel)]="mistake.content"
-  required minlength="1" maxlength="100"
-  #content='ngModel' autofocus>
+  <input
+    class="input is-medium is-rounded"
+    placeholder="Write in Japanese"
+    [(ngModel)]="mistake.content"
+    required
+    minlength="1"
+    maxlength="100"
+    type="text"
+    #content="ngModel"
+    autofocus
+  />
+  <button
+    class="reset-x-button"
+    *ngIf="mistake.content"
+    (click)="cancelMistake()"
+  >
+    X
+  </button>
 </div>
 
-<button class="button is-primary" (click)="createMistake()" [disabled]="!content.valid">Add</button>
-<button class="button is-default" *ngIf="mistake.content" (click)="cancelMistake()">Cancel</button>
+<button
+  class="button is-info is-medium is-fullwidth"
+  (click)="createMistake()"
+  [disabled]="!content.valid"
+>
+  Add a Note
+</button>

@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { AuthService } from "./core/auth.service";
+import { Component } from "@angular/core";
+import "./app.component.scss";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
-
 export class AppComponent {
   constructor() {}
-  title = 'FireStarter app works!';
+  title = "FireStarter app works!";
 }
