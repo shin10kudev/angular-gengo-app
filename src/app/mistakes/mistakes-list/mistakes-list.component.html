@@ -1,4 +1,4 @@
-<div *ngIf="!filter">
+<div>
   <div class="content">
     <h3>Learning Points</h3>
     <p>
@@ -11,40 +11,16 @@
 
   <hr />
 
-  <div *ngIf="filteredMistakes?.length > 1 && !showSpinner">
-    <a (click)="toggleFilters()">Show Filters</a>
-    <hr />
-  </div>
-</div>
-
-<div *ngIf="filter">
   <h3 class="title is-5">Filters</h3>
 
-  <label>Verified?</label>
-  <input
-    type="checkbox"
-    [(ngModel)]="verified"
-    (change)="filterBooleanTrue('verified', verified); unverified = false"
-  />
-
-  <br />
-
-  <label>Unverified?</label>
-  <input
-    type="checkbox"
-    [(ngModel)]="unverified"
-    (change)="filterBooleanFalse('verified', unverified); verified = false"
-  />
-
-  <br />
-
-  <hr />
-
-  <p>
-    Returned Results: <b>{{ mistakesCount }}</b>
-  </p>
-  <a (click)="toggleFilters(); resetFilters()">Clear Filters</a>
-
+  <div class="field">
+    <input
+      type="checkbox"
+      [(ngModel)]="verified"
+      (change)="filterBooleanTrue('verified', verified); unverified = false"
+    />
+    <label>Favorites</label>
+  </div>
   <hr />
 </div>
 

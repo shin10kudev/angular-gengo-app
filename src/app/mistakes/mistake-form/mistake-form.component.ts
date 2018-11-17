@@ -27,6 +27,6 @@ export class MistakeFormComponent implements OnInit {
   }
 
   cancelMistake() {
-    this.mistake = new Mistake(); // reset form
+    this.mistake.title = ""; // reset form
   }
 }

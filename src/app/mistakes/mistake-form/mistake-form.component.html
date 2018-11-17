@@ -5,7 +5,7 @@
 <div class="modal" [class.is-active]="newMistakeModalOpen">
   <div class="modal-background"></div>
   <div class="modal-content box">
-    <div class="field" style="position: relative;">
+    <div class="field parent-wrapper">
       <input
         class="input is-medium is-rounded"
         placeholder="Learning point title"
@@ -20,7 +20,7 @@
       <button
         class="reset-x-button"
         *ngIf="mistake.title"
-        (click)="cancelMistake()"
+        (click)="cancelMistake($event)"
       >
         X
       </button>
