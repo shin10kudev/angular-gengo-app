@@ -1,76 +1,136 @@
-<div class="card-content">
-  <!-- normal-view -->
-  <div *ngIf="!edit">
-    <div class="verify-icon is-pulled-right">
-      <span class="icon" title="Verified correction" *ngIf='mistake.verified' (click)='updateStatus(false)'>
-        <i class="fa fa-star" aria-hidden="true"></i>
+<article class="message is-primary">
+  <div class="message-header">
+    <div class="verify-icon">
+      <span
+        class="icon"
+        title="Verified correction"
+        *ngIf="mistake.verified"
+        (click)="updateStatus(false)"
+      >
+        <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
       </span>
-      <span class="icon" title="Unverified correction" *ngIf='!mistake.verified' (click)='updateStatus(true)'>
-        <i class="fa fa-star-o" aria-hidden="true"></i>
+      <span
+        class="icon"
+        title="Unverified correction"
+        *ngIf="!mistake.verified"
+        (click)="updateStatus(true)"
+      >
+        <i class="far fa-heart" aria-hidden="true"></i>
       </span>
+      <span>{{ mistake.title }}</span>
     </div>
-
-    <h3 class="strike-out">{{ mistake.content || defaultMessage }}</h3>
-    <p class="sub-text" *ngIf="mistake.correction"><b>{{ mistake.correction }}</b></p>
-    <a class="sub-text" *ngIf="!mistake.correction" (click)="toggleEdit()">Add correction</a>
-
-    <div class="sub-footer">
-      <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
-      <p class="sub-text" style="margin-bottom: 0" *ngIf="!edit"><a (click)="toggleEdit()">Add notes</a></p>
-    </div>
-
-    <div class="sub-footer is-clearfix">
-      <div class="error-count is-pulled-left">
-        <span class="icon" (click)='decreaseErrorCount()'>
-          <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
-        </span>
-        <span class="icon" (click)='increaseErrorCount()'>
-          <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
-        </span> |
-        <span>{{ mistake.errorCount }}</span>
+    <div
+      class="dropdown is-right"
+      [class.is-active]="actionDropdownOpen"
+      (click)="toggleDropdown()"
+    >
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu3"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
       </div>
-
-      <div class="is-pulled-right">
-        <span class="icon is-small">
-          <i class="fa fa-clock-o" aria-hidden="true"></i>
-        </span>
-        <span class="date-time">{{ mistake.created_at | date: 'short' }}</span>
+      <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item has-text-grey-dark" (click)="toggleEdit()"
+            >Edit</a
+          >
+          <hr class="dropdown-divider" />
+          <a class="dropdown-item has-text-grey-dark" (click)="deleteMistake()"
+            >Delete</a
+          >
+        </div>
       </div>
     </div>
   </div>
+  <div class="card-content">
+    <!-- normal-view -->
+    <div *ngIf="!edit">
+      <h3 class="strike-out">{{ mistake.content || mistakeIsBlank }}</h3>
+      <div class="sub-footer">
+        <p class="sub-text" *ngIf="mistake.correction">
+          <b>{{ mistake.correction }}</b>
+        </p>
+        <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
+      </div>
 
-  <!-- edit-view -->
-  <div *ngIf="edit">
-    <p style="margin-bottom: 6px"><b>Edit Mistake</b></p>
-    <div class="field">
-      <input placeholder="{{mistake.correction || 'Add correction' }}" class="input"
-      [(ngModel)]="mistake.correction"
-      required minlength="2" maxlength="100"
-      #correction='ngModel'>
+      <div class="sub-footer is-clearfix">
+        <div class="is-pulled-left">
+          <span class="icon is-small">
+            <i class="far fa-clock" aria-hidden="true"></i>
+          </span>
+          <span class="date-time">{{
+            mistake.created_at | date: "fullDate"
+          }}</span>
+        </div>
+        <div class="error-count is-pulled-right">
+          <span>Mistake count: </span>
+          <span class="icon has-text-info" (click)="decreaseErrorCount()">
+            <i class="fas fa-minus-circle" aria-hidden="true"></i>
+          </span>
+          <span class="has-text-grey-dark">{{ mistake.errorCount }}</span>
+          <span class="icon has-text-info" (click)="increaseErrorCount()">
+            <i class="fas fa-plus-circle" aria-hidden="true"></i>
+          </span>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <input placeholder="{{mistake.content || 'Add mistake' }}" class="input"
-      [(ngModel)]="mistake.content"
-      required minlength="2" maxlength="100"
-      #content='ngModel'>
-    </div>
+    <!-- edit-view -->
+    <div *ngIf="edit">
+      <p style="margin-bottom: 6px"><b>Edit Learning Point</b></p>
+      <div class="field">
+        <input
+          type="text"
+          placeholder="{{mistake.correction || 'Add learning point' }}"
+          class="input is-medium"
+          [(ngModel)]="mistake.correction"
+          required
+          minlength="2"
+          maxlength="100"
+          #correction="ngModel"
+        />
+      </div>
 
-    <div class="field">
-      <textarea placeholder="{{mistake.notes || 'Add notes' }}" class="textarea"
-      [(ngModel)]="mistake.notes"
-      required minlength="2" maxlength="500"
-      #notes='ngModel'></textarea>
+      <div class="field">
+        <input
+          type="text"
+          placeholder="{{mistake.content || 'Add mistaken Japanese' }}"
+          class="input is-medium"
+          [(ngModel)]="mistake.content"
+          required
+          minlength="2"
+          maxlength="100"
+          #content="ngModel"
+        />
+      </div>
+
+      <div class="field">
+        <textarea
+          placeholder="{{mistake.notes || 'Add notes' }}"
+          class="textarea is-medium"
+          [(ngModel)]="mistake.notes"
+          required
+          minlength="2"
+          maxlength="1000"
+          rows="10"
+          #notes="ngModel"
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <a class="button is-link is-fullwidth" (click)="updateMistake()"
+          >Update</a
+        >
+        <a class="button is-default is-fullwidth" (click)="toggleEdit()"
+          >Cancel</a
+        >
+      </div>
     </div>
   </div>
-</div>
-
-<div class="card-footer" *ngIf="!edit">
-  <a class="card-footer-item" (click)='deleteMistake()'>Delete</a>
-  <a class="card-footer-item" (click)="toggleEdit()">Edit</a>
-</div>
-
-<div class="card-footer" *ngIf="edit">
-  <a class="card-footer-item" (click)="toggleEdit()">Cancel</a>
-  <a class="card-footer-item" (click)='updateMistake()'>Update</a>
-</div>
+</article>

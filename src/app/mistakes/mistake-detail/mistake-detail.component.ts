@@ -1,27 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
-import * as firebase from 'firebase';
-import { MistakeService } from '../shared/mistake.service';
-import { Mistake } from '../shared/mistake';
+import { Component, OnInit, Input } from "@angular/core";
+import * as firebase from "firebase";
+import { MistakeService } from "../shared/mistake.service";
+import { Mistake } from "../shared/mistake";
 
 @Component({
-  selector: 'mistake-detail',
-  templateUrl: './mistake-detail.component.html',
-  styleUrls: ['./mistake-detail.component.scss']
+  selector: "mistake-detail",
+  templateUrl: "./mistake-detail.component.html",
+  styleUrls: ["./mistake-detail.component.scss"]
 })
-
 export class MistakeDetailComponent implements OnInit {
-
   @Input() mistake: Mistake;
-  defaultMessage: string = "Retrieving data";
+  mistakeIsBlank: string = "Add mistaken Japanese";
+  correctIsBlank: string = "Add correct Japanese";
   edit: boolean = false;
+  actionDropdownOpen: boolean = false;
 
-  constructor(private mistakeSvc: MistakeService) { }
+  constructor(private mistakeSvc: MistakeService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleEdit() {
     this.edit = !this.edit;
+  }
+
+  toggleDropdown() {
+    this.actionDropdownOpen = !this.actionDropdownOpen;
   }
 
   // Update mistake
@@ -49,7 +52,7 @@ export class MistakeDetailComponent implements OnInit {
 
   // Decrease mistake errorCount
   decreaseErrorCount() {
-    if(this.mistake.errorCount === 0) return;
+    if (this.mistake.errorCount === 0) return;
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
     this.mistake.errorCount--;
@@ -58,7 +61,7 @@ export class MistakeDetailComponent implements OnInit {
 
   // Delete mistake
   deleteMistake() {
-    if(this.confirmAction('Are you sure you want to delete this entry?'))
+    if (this.confirmAction("Are you sure you want to delete this entry?"))
       this.mistakeSvc.deleteMistake(this.mistake.$key);
   }
 

@@ -1,22 +1,27 @@
 <div class="content">
   <h3>My Phrases</h3>
-  <p>Enter a phrase you want to learn</p>
+  <p>Enter a phrase you want to remember</p>
 </div>
 
 <translation-form></translation-form>
 
-<hr>
+<hr />
 
-<div *ngFor="let translation of filteredTranslations | reverse" class="card">
-  <translation-detail [translation]='translation'></translation-detail>
+<div *ngFor="let translation of (filteredTranslations | reverse)" class="card">
+  <translation-detail [translation]="translation"></translation-detail>
 </div>
 
 <!-- blank-state -->
-<div *ngIf="filteredTranslations?.length < 1 && !showSpinner" class="blank-state">
+<div
+  *ngIf="filteredTranslations?.length < 1 && !showSpinner"
+  class="blank-state"
+>
   <figure class="image is-128x128 is-centered">
-    <img src="assets/images/pen.svg">
+    <img src="assets/images/pen.svg" />
   </figure>
-  <h5 class="has-text-grey-dark"><b>Looks like you haven't added any translations yet</b></h5>
+  <h5 class="has-text-grey-dark">
+    <b>Looks like you haven't added any translations yet</b>
+  </h5>
   <p class="has-text-gray-light">Why don't you add one?</p>
 </div>
 

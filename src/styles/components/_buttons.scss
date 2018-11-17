@@ -1,6 +1,8 @@
 // Button styles
 
 .button {
+  font-weight: 500;
+
   &.is-social-button {
     color: #fff;
 
@@ -14,6 +16,14 @@
     &.is-google {
       background-color: #dd4b39;
     }
+  }
+}
+
+.is-fullwidth {
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 

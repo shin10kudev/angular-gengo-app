@@ -1,16 +1,19 @@
 <div *ngIf="!filter">
   <div class="content">
-    <h3>Your Memos</h3>
-    <p>Make a note about a common mistake you've made so you don't forget about it in the future!</p>
+    <h3>Learning Points</h3>
+    <p>
+      These are reminders about key points you've learned about Japanese. Add a
+      learning point so you don't make the same mistake twice!
+    </p>
   </div>
 
   <mistake-form></mistake-form>
 
-  <hr>
+  <hr />
 
   <div *ngIf="filteredMistakes?.length > 1 && !showSpinner">
     <a (click)="toggleFilters()">Show Filters</a>
-    <hr>
+    <hr />
   </div>
 </div>
 
@@ -18,37 +21,48 @@
   <h3 class="title is-5">Filters</h3>
 
   <label>Verified?</label>
-  <input type="checkbox"
-         [(ngModel)]="verified"
-         (change)="filterBooleanTrue('verified', verified); unverified=false;">
+  <input
+    type="checkbox"
+    [(ngModel)]="verified"
+    (change)="filterBooleanTrue('verified', verified); unverified = false"
+  />
 
-  <br>
+  <br />
 
   <label>Unverified?</label>
-  <input type="checkbox"
-         [(ngModel)]="unverified"
-         (change)="filterBooleanFalse('verified', unverified); verified=false;">
+  <input
+    type="checkbox"
+    [(ngModel)]="unverified"
+    (change)="filterBooleanFalse('verified', unverified); verified = false"
+  />
 
-  <br>
+  <br />
 
-  <hr>
+  <hr />
 
-  <p>Returned Results: <b>{{ mistakesCount }}</b></p>
+  <p>
+    Returned Results: <b>{{ mistakesCount }}</b>
+  </p>
   <a (click)="toggleFilters(); resetFilters()">Clear Filters</a>
 
-  <hr>
+  <hr />
 </div>
 
-<div *ngFor="let mistake of filteredMistakes | reverse" class="card">
-  <mistake-detail [mistake]='mistake'></mistake-detail>
+<div
+  *ngFor="let mistake of (filteredMistakes | reverse)"
+  class="card message-card"
+>
+  <mistake-detail [mistake]="mistake"></mistake-detail>
 </div>
 
 <!-- blank-state -->
 <div *ngIf="filteredMistakes?.length < 1 && !showSpinner" class="blank-state">
   <figure class="image is-128x128 is-centered">
-    <img src="assets/images/brain.svg">
+    <img src="assets/images/brain.svg" />
   </figure>
-  <h5 class="has-text-grey-dark"><b>Looks like you haven't added any mistakes yet</b></h5>
+  <h5 class="has-text-grey-dark">
+    <b>Looks like you haven't added any mistakes yet</b>
+  </h5>
   <p class="has-text-gray-light">Why don't you add one?</p>
 </div>
 
