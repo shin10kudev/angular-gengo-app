@@ -1,28 +1,42 @@
-<div class="field">
-  <input
-    class="input is-medium is-rounded"
-    placeholder="Learning point title"
-    [(ngModel)]="mistake.title"
-    required
-    minlength="1"
-    maxlength="100"
-    type="text"
-    #content="ngModel"
-    autofocus
-  />
-  <button
-    class="reset-x-button"
-    *ngIf="mistake.content"
-    (click)="cancelMistake()"
-  >
-    X
-  </button>
-</div>
-
-<button
-  class="button is-info is-medium is-fullwidth"
-  (click)="createMistake()"
-  [disabled]="!content.valid"
->
-  Add Learning Point
+<button class="button is-link" (click)="toggleNewMistakeModal()">
+  New Learning Point
 </button>
+
+<div class="modal" [class.is-active]="newMistakeModalOpen">
+  <div class="modal-background"></div>
+  <div class="modal-content box">
+    <div class="field" style="position: relative;">
+      <input
+        class="input is-medium is-rounded"
+        placeholder="Learning point title"
+        [(ngModel)]="mistake.title"
+        required
+        minlength="1"
+        maxlength="100"
+        type="text"
+        #content="ngModel"
+        autofocus
+      />
+      <button
+        class="reset-x-button"
+        *ngIf="mistake.title"
+        (click)="cancelMistake()"
+      >
+        X
+      </button>
+    </div>
+
+    <button
+      class="button is-info is-medium is-fullwidth"
+      (click)="createMistake()"
+      [disabled]="!content.valid"
+    >
+      Add Learning Point
+    </button>
+  </div>
+  <button
+    class="modal-close is-large"
+    aria-label="close"
+    (click)="toggleNewMistakeModal()"
+  ></button>
+</div>

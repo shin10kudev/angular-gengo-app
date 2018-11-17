@@ -112,3 +112,7 @@ body {
     color: $body-font-color;
   }
 }
+
+.message a:not(.button):not(.tag) {
+  color: inherit;
+}

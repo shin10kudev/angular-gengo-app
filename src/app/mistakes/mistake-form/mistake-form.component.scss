@@ -1,0 +1,27 @@
+//
+// Use in form inputs to clear content
+//
+
+.reset-x-button {
+  background-color: transparent;
+  border: 0;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 43px;
+  padding: 0 16px;
+  position: absolute;
+  right: 6px;
+  top: 1px;
+  transition: color 0.2s ease;
+  z-index: 5;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: #ccc;
+  }
+}

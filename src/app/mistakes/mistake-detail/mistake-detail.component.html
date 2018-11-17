@@ -17,7 +17,7 @@
       >
         <i class="far fa-heart" aria-hidden="true"></i>
       </span>
-      <span>{{ mistake.title }}</span>
+      <span>{{ mistake.title || "Add a title" }}</span>
     </div>
     <div
       class="dropdown is-right"
@@ -51,21 +51,31 @@
   <div class="card-content">
     <!-- normal-view -->
     <div *ngIf="!edit">
-      <h3 class="strike-out">{{ mistake.content || mistakeIsBlank }}</h3>
+      <h3 *ngIf="mistake.content" class="strike-out">{{ mistake.content }}</h3>
       <div class="sub-footer">
-        <p class="sub-text" *ngIf="mistake.correction">
+        <p class="sub-text">
           <b>{{ mistake.correction }}</b>
         </p>
-        <p *ngIf="mistake.notes" class="notes">{{ mistake.notes }}</p>
+        <div class="notes is-clearfix">
+          <div *ngIf="mistake.notes">
+            <p>{{ mistake.notes }}</p>
+            <p (click)="toggleEdit()">
+              <a class="has-text-link is-pulled-right">Edit</a>
+            </p>
+          </div>
+          <a *ngIf="!mistake.notes" class="tag" (click)="toggleEdit()"
+            >Add a description...</a
+          >
+        </div>
       </div>
 
       <div class="sub-footer is-clearfix">
         <div class="is-pulled-left">
           <span class="icon is-small">
-            <i class="far fa-clock" aria-hidden="true"></i>
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
           </span>
           <span class="date-time">{{
-            mistake.created_at | date: "fullDate"
+            mistake.created_at | date: "mediumDate"
           }}</span>
         </div>
         <div class="error-count is-pulled-right">
@@ -87,9 +97,9 @@
       <div class="field">
         <input
           type="text"
-          placeholder="{{mistake.correction || 'Add learning point' }}"
+          placeholder="{{mistake.title || 'Learning point title' }}"
           class="input is-medium"
-          [(ngModel)]="mistake.correction"
+          [(ngModel)]="mistake.title"
           required
           minlength="2"
           maxlength="100"
@@ -100,13 +110,26 @@
       <div class="field">
         <input
           type="text"
-          placeholder="{{mistake.content || 'Add mistaken Japanese' }}"
+          placeholder="{{mistake.content || 'What was your mistake?' }}"
           class="input is-medium"
           [(ngModel)]="mistake.content"
           required
           minlength="2"
           maxlength="100"
           #content="ngModel"
+        />
+      </div>
+
+      <div class="field">
+        <input
+          type="text"
+          placeholder="{{mistake.correction || 'What is the correct Japanese?' }}"
+          class="input is-medium"
+          [(ngModel)]="mistake.correction"
+          required
+          minlength="2"
+          maxlength="100"
+          #correction="ngModel"
         />
       </div>
 
@@ -118,7 +141,7 @@
           required
           minlength="2"
           maxlength="1000"
-          rows="10"
+          rows="5"
           #notes="ngModel"
         ></textarea>
       </div>
