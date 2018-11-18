@@ -1,15 +1,17 @@
 <post-form></post-form>
 
-<div *ngFor="let post of filteredPosts | reverse">
-  <post-detail [post]='post'></post-detail>
+<div *ngFor="let post of (filteredPosts | reverse)">
+  <post-detail [post]="post"></post-detail>
 </div>
 
 <!-- blank-state -->
 <div *ngIf="filteredPosts?.length < 1 && !showSpinner" class="blank-state">
-  <figure class="image is-128x128 is-centered">
-    <img src="assets/images/pencil.svg">
+  <figure class="image is-128x128 is-centered is-block">
+    <img src="assets/images/pencil.svg" />
   </figure>
-  <h5 class="has-text-grey-dark"><b>Looks like you haven't added any posts yet</b></h5>
+  <h5 class="has-text-grey-dark">
+    <b>Looks like you haven't added any posts yet</b>
+  </h5>
   <p class="has-text-gray-light">Why don't you add one?</p>
 </div>
 
