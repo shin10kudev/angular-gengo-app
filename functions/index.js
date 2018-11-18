@@ -1,8 +1,11 @@
 "use strict";
+
 var functions = require("firebase-functions");
 const admin = require("firebase-admin");
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp();
 const request = require("request-promise");
+
+const firebaseConfig = functions.config().my_firebase;
 
 // Translate function (Google Translate API)
 // *****************************************************************************************
@@ -11,9 +14,8 @@ const request = require("request-promise");
 // List of output languages.
 exports.translate = functions.database
   .ref("/translations/{userId}/{translationId}")
-  .onCreate(event => {
-    const snapshot = event.data;
-    const userId = event.params.userId;
+  .onCreate((snapshot, context) => {
+    const userId = context.params.userId;
     const promises = [];
 
     if (snapshot.val().en) {
@@ -32,7 +34,6 @@ exports.translate = functions.database
       );
     } else {
       // Todo return error on client side
-      console.log("there was an error");
       return;
     }
 
@@ -42,7 +43,7 @@ exports.translate = functions.database
 // URL to the Google Translate API.
 function createTranslateUrl(source, target, text) {
   return `https://www.googleapis.com/language/translate/v2?key=${
-    functions.config().firebase.apiKey
+    firebaseConfig.api_key
   }&source=${source}&target=${target}&q=${text}`;
 }
 
