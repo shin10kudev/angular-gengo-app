@@ -1,28 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
-import * as firebase from 'firebase';
-import { TranslationService } from '../shared/translation.service';
-import { Translation } from '../shared/translation';
+import { Component, OnInit, Input } from "@angular/core";
+import * as firebase from "firebase";
+import { TranslationService } from "../shared/translation.service";
+import { Translation } from "../shared/translation";
 
 @Component({
-  selector: 'translation-detail',
-  templateUrl: './translation-detail.component.html',
-  styleUrls: ['./translation-detail.component.scss']
+  selector: "translation-detail",
+  templateUrl: "./translation-detail.component.html",
+  styleUrls: ["./translation-detail.component.scss"]
 })
-
 export class TranslationDetailComponent implements OnInit {
-
   @Input() translation: Translation;
 
-  translationMsg: string = "Running translation in the cloud..."
+  translationMsg: string = "Running translation in the cloud...";
   edit: boolean = false;
+  actionDropdownOpen: boolean = false;
 
-  constructor(private translationSvc: TranslationService) { }
+  constructor(private translationSvc: TranslationService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleEdit() {
     this.edit = !this.edit;
+  }
+
+  toggleDropdown() {
+    this.actionDropdownOpen = !this.actionDropdownOpen;
   }
 
   textToSpeech() {
@@ -34,7 +36,7 @@ export class TranslationDetailComponent implements OnInit {
     msg.text = this.translation.ja;
     msg.rate = 0.8; // 0.1 to 10
     msg.volume = 0.9; // 0 to 1
-    msg.lang = 'ja-JP';
+    msg.lang = "ja-JP";
     window.speechSynthesis.speak(msg);
   }
 
@@ -42,7 +44,10 @@ export class TranslationDetailComponent implements OnInit {
   updateTranslation() {
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.translation.updated_at = date;
-    this.translationSvc.updateTranslation(this.translation.$key, this.translation)
+    this.translationSvc.updateTranslation(
+      this.translation.$key,
+      this.translation
+    );
   }
 
   // Update translation status
@@ -50,13 +55,16 @@ export class TranslationDetailComponent implements OnInit {
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.translation.updated_at = date;
     this.translation.verified = value;
-    this.translationSvc.updateTranslation(this.translation.$key, this.translation)
+    this.translationSvc.updateTranslation(
+      this.translation.$key,
+      this.translation
+    );
   }
 
   // Delete translation
   deleteTranslation() {
-    if(this.confirmAction('Are you sure you want to delete this phrase?'))
-      this.translationSvc.deleteTranslation(this.translation.$key)
+    if (this.confirmAction("Are you sure you want to delete this phrase?"))
+      this.translationSvc.deleteTranslation(this.translation.$key);
   }
 
   // Default confirm action

@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { TranslationService } from '../shared/translation.service';
-import { Translation } from '../shared/translation';
+import { Component, OnInit } from "@angular/core";
+import { TranslationService } from "../shared/translation.service";
+import { Translation } from "../shared/translation";
 
 @Component({
-  selector: 'translation-form',
-  templateUrl: './translation-form.component.html',
-  styleUrls: ['./translation-form.component.scss']
+  selector: "translation-form",
+  templateUrl: "./translation-form.component.html",
+  styleUrls: ["./translation-form.component.scss"]
 })
-
 export class TranslationFormComponent {
-
   translation: Translation = new Translation();
   inputType: boolean = false;
 
@@ -18,12 +15,14 @@ export class TranslationFormComponent {
 
   createTranslation() {
     let text = this.translation.en.trim();
-    if(this.isJapanese(text)) {
+
+    if (this.isJapanese(text)) {
       this.translation.ja = text;
-      delete this.translation['en'];
+      delete this.translation["en"];
     } else {
       this.translation.en = text;
     }
+
     this.translationSvc.createTranslation(this.translation);
     this.translation = new Translation(); // reset translation
   }
