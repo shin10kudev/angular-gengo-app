@@ -1,9 +1,9 @@
 // Helper styles
 
 .text-truncate {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .strike-out {
@@ -14,9 +14,9 @@
 
 .hidden {
   display: none;
-  opacity: 0;
   height: 0;
-  padding: 0;
   margin: 0;
+  opacity: 0;
+  padding: 0;
   width: 0;
 }

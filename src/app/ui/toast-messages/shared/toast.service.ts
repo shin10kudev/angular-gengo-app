@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Message } from './message';
+import { Injectable } from "@angular/core";
+import { Message } from "./message";
 
 @Injectable()
 export class ToastService {
-
   messages: any = [];
   toastLife: number = 5000;
 
