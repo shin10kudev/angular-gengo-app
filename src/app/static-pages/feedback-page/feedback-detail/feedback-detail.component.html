@@ -2,8 +2,13 @@
   <div class="media-content">
     <div class="content">
       <p>
-        <small>{{ feedback.created_at | date:'medium' }}<span *ngIf="feedback.edited" class="tag is-white has-text-danger">Edited</span></small>
-        <br>
+        <small
+          >{{ feedback.created_at | date: "medium"
+          }}<span *ngIf="feedback.edited" class="tag is-white has-text-danger"
+            >Edited</span
+          ></small
+        >
+        <br />
       </p>
       <div *ngIf="!edit">
         <p (click)="toggleEdit()">{{ feedback.body }}</p>
@@ -11,24 +16,48 @@
 
       <div *ngIf="edit">
         <div class="field">
-          <textarea placeholder="{{feedback.body }}" class="textarea"
-          [(ngModel)]="feedback.body"
-          required minlength="1" maxlength="100"
-          #body='ngModel'></textarea>
+          <textarea
+            placeholder="{{feedback.body }}"
+            class="textarea"
+            [(ngModel)]="feedback.body"
+            required
+            minlength="1"
+            maxlength="100"
+            #body="ngModel"
+          ></textarea>
         </div>
-        <a class="button is-primary" (click)='updateFeedback()'>Update</a>
-        <a class="button is-default" (click)='toggleEdit()'>Cancel</a>
+        <a class="button is-primary" (click)="updateFeedback()">Update</a>
+        <a class="button is-default" (click)="toggleEdit()">Cancel</a>
       </div>
     </div>
     <div class="level is-mobile">
       <div class="level-left">
         <div class="tags is-grouped">
-          <span class="tag is-light" *ngIf="feedback.category != 'Sending Love'">{{ feedback.category }}</span>
-          <span class="tag is-light" *ngIf="feedback.category == 'Sending Love'">
+          <span
+            class="tag"
+            [ngClass]="{
+              'is-danger': feedback.category == 'Bug',
+              'is-success': feedback.category == 'Feature Request',
+              'is-primary': feedback.category == 'General Feedback',
+              'is-info': feedback.category == 'Question',
+              'is-warning': feedback.category == 'Delete Account',
+              'is-dark': feedback.category == 'Other'
+            }"
+            *ngIf="feedback.category != 'Sending Love'"
+            >{{ feedback.category }}</span
+          >
+          <span
+            class="tag is-light"
+            *ngIf="feedback.category == 'Sending Love'"
+          >
             <span>{{ feedback.category }}</span>
-            <i class="fa fa-heart has-text-danger" aria-hidden="true" style="margin-left: 4px"></i>
+            <i
+              class="fa fa-heart has-text-danger"
+              aria-hidden="true"
+              style="margin-left: 4px"
+            ></i>
           </span>
-          <span class="tag is-light">Status: {{ feedback.status }}</span>
+          <span class="tag is-white">Status - {{ feedback.status }}</span>
         </div>
       </div>
     </div>
@@ -36,7 +65,12 @@
   <div class="media-right">
     <div class="dropdown is-right" [ngClass]="{ 'is-active': showDropdown }">
       <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" (click)="toggleDropdown()">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+          (click)="toggleDropdown()"
+        >
           <span class="icon is-small">
             <i class="fa fa-angle-down" aria-hidden="true"></i>
           </span>
@@ -47,7 +81,7 @@
           <a class="dropdown-item" (click)="toggleEdit(); toggleDropdown()">
             Edit
           </a>
-          <hr class="dropdown-divider">
+          <hr class="dropdown-divider" />
           <a class="dropdown-item" (click)="deleteFeedback(); toggleDropdown()">
             Delete
           </a>

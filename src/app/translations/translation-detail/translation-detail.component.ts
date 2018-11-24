@@ -34,7 +34,7 @@ export class TranslationDetailComponent implements OnInit {
     // Create new utterance
     let msg = new SpeechSynthesisUtterance();
     msg.text = this.translation.ja;
-    msg.rate = 0.8; // 0.1 to 10
+    msg.rate = 0.7; // 0.1 to 10
     msg.volume = 0.9; // 0 to 1
     msg.lang = "ja-JP";
     window.speechSynthesis.speak(msg);

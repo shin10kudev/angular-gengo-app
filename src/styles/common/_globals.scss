@@ -28,10 +28,6 @@ body {
   border-radius: 0px;
 }
 
-.section {
-  padding: 2rem 1rem;
-}
-
 .image {
   &.is-round {
     img {
@@ -115,4 +111,9 @@ body {
 
 .message a:not(.button):not(.tag) {
   color: inherit;
+}
+
+.input.is-medium,
+.textarea.is-medium {
+  font-size: 16px !important;
 }

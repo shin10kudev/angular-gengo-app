@@ -34,58 +34,57 @@
       </div>
     </div>
 
-    <h3>
+    <h3 class="translation__title">
       <span *ngIf="translation.ja">{{ translation.ja }}</span>
       <i
         *ngIf="!translation.ja"
         class="fas fa-spinner fa-spin"
         aria-hidden="true"
       ></i>
+      <button
+        class="button is-hidden-touch"
+        title="Listen"
+        *ngIf="translation.ja"
+        (click)="textToSpeech()"
+      >
+        <span class="icon">
+          <i class="fas fa-volume-up has-text-link" aria-hidden="true"></i>
+        </span>
+      </button>
     </h3>
 
-    <p class="sub-text">{{ translation.en || translationMsg }}</p>
-
+    <p class="translation__phonetics" *ngIf="translation.furigana">
+      {{ translation.furigana }}
+    </p>
+    <p class="translation__meaning">{{ translation.en || translationMsg }}</p>
     <div class="sub-footer">
-      <div *ngIf="translation.notes" class="notes is-clearfix">
-        <p>{{ translation.notes }}</p>
+      <div class="is-clearfix">
+        <div *ngIf="translation.notes" class="content">
+          <h5>Notes</h5>
+          <pre>{{ translation.notes }}</pre>
+        </div>
+        <p *ngIf="!translation.notes"><a class="tag is-light" (click)="toggleEdit()">Add notes</a></p>
         <a class="is-pulled-right" (click)="toggleEdit()">Edit</a>
       </div>
-
-      <p *ngIf="!translation.notes && !edit" class="sub-text is-marginless">
-        <a (click)="toggleEdit()">Add study notes</a>
-      </p>
     </div>
 
     <div class="sub-footer is-clearfix">
-      <div class="is-pulled-left">
-        <span
-          class="icon is-hidden-touch"
-          title="Listen"
-          *ngIf="translation.ja"
-          (click)="textToSpeech()"
-        >
-          <i class="fa fa-microphone has-text-grey" aria-hidden="true"></i>
-        </span>
-        <span class="has-text-grey-light is-hidden-touch" *ngIf="translation.ja"
-          >|</span
-        >
-        <span
-          class="verify-icon icon"
-          title="Translation verified"
-          *ngIf="translation.verified"
-          (click)="updateStatus(false)"
-        >
-          <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
-        </span>
-        <span
-          class="verify-icon icon"
-          title="Verify translation"
-          *ngIf="!translation.verified"
-          (click)="updateStatus(true)"
-        >
-          <i class="far fa-heart" aria-hidden="true"></i>
-        </span>
-      </div>
+      <span
+        class="verify-icon icon"
+        title="Translation verified"
+        *ngIf="translation.verified"
+        (click)="updateStatus(false)"
+      >
+        <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
+      </span>
+      <span
+        class="verify-icon icon"
+        title="Verify translation"
+        *ngIf="!translation.verified"
+        (click)="updateStatus(true)"
+      >
+        <i class="fa fa-heart has-text-grey-light" aria-hidden="true"></i>
+      </span>
 
       <div class="is-pulled-right">
         <span class="icon is-small">
@@ -102,6 +101,7 @@
   <div *ngIf="edit">
     <p style="margin-bottom: 6px"><b>Edit Phrase</b></p>
     <div class="field">
+      <label>Japanese</label>
       <input
         type="text"
         placeholder="{{translation.ja || 'Add Japanese' }}"
@@ -115,6 +115,21 @@
     </div>
 
     <div class="field">
+      <label>Furigana</label>
+      <input
+        type="text"
+        placeholder="{{translation.furigana || 'Add furigana' }}"
+        class="input"
+        [(ngModel)]="translation.furigana"
+        required
+        minlength="2"
+        maxlength="100"
+        #furigana="ngModel"
+      />
+    </div>
+
+    <div class="field">
+      <label>English</label>
       <input
         type="text"
         placeholder="{{translation.en || 'Add English' }}"
@@ -128,6 +143,7 @@
     </div>
 
     <div class="field">
+      <label>Notes</label>
       <textarea
         placeholder="{{translation.notes || 'Add study notes' }}"
         class="textarea"

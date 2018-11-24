@@ -2,6 +2,37 @@
   background-color: #fff;
 }
 
+.mistake {
+  padding: 22px 16px;
+
+  .mistake__text {
+    font-weight: bold;
+  }
+
+  .mistake__icon {
+    background-color: #fff;
+    border-radius: 20px;
+    margin-right: 6px;
+    padding: 10px;
+  }
+
+  &.is-error {
+    background-color: #ffd1c9;
+
+    .mistake__text {
+      color: #ff0200;
+    }
+  }
+
+  &.is-correction {
+    background-color: #f4fed6;
+
+    .mistake__text {
+      color: #79a002;
+    }
+  }
+}
+
 .error-count {
   user-select: none;
 

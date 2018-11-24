@@ -55,21 +55,39 @@
   <div class="card-content">
     <!-- normal-view -->
     <div *ngIf="!edit">
-      <h3 *ngIf="mistake.content" class="strike-out">{{ mistake.content }}</h3>
+      <div class="mistake is-error">
+        <h4 class="mistake__text">
+          <span class="mistake__icon"
+            ><i class="fas fa-times fa-fw" aria-hidden="true"></i
+          ></span>
+          <span class="mistake__title">{{
+            mistake.content || "Add mistake text"
+          }}</span>
+        </h4>
+      </div>
+      <div class="mistake is-correction">
+        <h4 class="mistake__text">
+          <span class="mistake__icon"
+            ><i class="fas fa-check fa-fw" aria-hidden="true"></i
+          ></span>
+          <span class="mistake__title">{{
+            mistake.correction || "Add correct text"
+          }}</span>
+        </h4>
+      </div>
+
       <div class="sub-footer">
-        <p class="sub-text">
-          <b>{{ mistake.correction }}</b>
-        </p>
         <div class="notes is-clearfix">
-          <div *ngIf="mistake.notes">
+          <div class="content" *ngIf="mistake.notes">
+            <h6>Notes</h6>
             <p>{{ mistake.notes }}</p>
-            <p (click)="toggleEdit()">
-              <a class="has-text-link is-pulled-right">Edit</a>
-            </p>
           </div>
           <a *ngIf="!mistake.notes" class="tag" (click)="toggleEdit()"
-            >Add a description...</a
+            >Add notes</a
           >
+          <p (click)="toggleEdit()">
+            <a class="has-text-link is-pulled-right">Edit</a>
+          </p>
         </div>
       </div>
 

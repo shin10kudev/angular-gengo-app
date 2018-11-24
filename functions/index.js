@@ -17,25 +17,21 @@ exports.translate = functions.database
   .onCreate((snapshot, context) => {
     const userId = context.params.userId;
     const promises = [];
+    let source, target, text;
 
     if (snapshot.val().en) {
-      var source = "en";
-      var target = "ja";
-      var text = snapshot.val().en;
-      promises.push(
-        createTranslationPromise(source, target, text, snapshot, userId)
-      );
-    } else if (snapshot.val().ja) {
-      var source = "ja";
-      var target = "en";
-      var text = encodeURIComponent(snapshot.val().ja);
-      promises.push(
-        createTranslationPromise(source, target, text, snapshot, userId)
-      );
+      source = "en";
+      target = "ja";
+      text = snapshot.val().en;
     } else {
-      // Todo return error on client side
-      return;
+      source = "ja";
+      target = "en";
+      text = encodeURIComponent(snapshot.val().ja);
     }
+
+    promises.push(
+      createTranslationPromise(source, target, text, snapshot, userId)
+    );
 
     return Promise.all(promises);
   });

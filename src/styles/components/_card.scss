@@ -3,17 +3,6 @@
 .card {
   margin-bottom: 12px;
 
-  h3 {
-    border-left: 5px solid #f9e13f;
-    font-size: 1.3em;
-    font-weight: bold;
-    line-height: 1.5em;
-    margin-bottom: 10px;
-    max-width: 85%;
-    padding-left: 10px;
-    padding-top: 1px;
-  }
-
   .field:last-child {
     margin-bottom: 12px;
   }
@@ -30,12 +19,4 @@
 
 .verify-icon {
   cursor: pointer;
-
-  .fa-star {
-    color: #ffd600;
-  }
-
-  .fa-star-o {
-    color: #e0e0e0;
-  }
 }
