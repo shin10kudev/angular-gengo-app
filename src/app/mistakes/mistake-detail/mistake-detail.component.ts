@@ -12,7 +12,7 @@ export class MistakeDetailComponent implements OnInit {
   @Input() mistake: Mistake;
   mistakeIsBlank: string = "Add mistaken Japanese";
   correctIsBlank: string = "Add correct Japanese";
-  edit: boolean = false;
+  editMistake: boolean = false;
   actionDropdownOpen: boolean = false;
 
   constructor(private mistakeSvc: MistakeService) {}
@@ -20,7 +20,7 @@ export class MistakeDetailComponent implements OnInit {
   ngOnInit() {}
 
   toggleEdit() {
-    this.edit = !this.edit;
+    this.editMistake = !this.editMistake;
   }
 
   toggleDropdown() {

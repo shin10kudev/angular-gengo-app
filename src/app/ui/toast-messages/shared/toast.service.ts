@@ -17,9 +17,9 @@ export class ToastService {
     const message = new Message(content, style);
     this.messages.push(message);
 
-    // setTimeout(() => {
-    //   this.dismissMessage(message);
-    // }, this.toastLife);
+    setTimeout(() => {
+      this.dismissMessage(message);
+    }, this.toastLife);
   }
 
   dismissMessage(message) {

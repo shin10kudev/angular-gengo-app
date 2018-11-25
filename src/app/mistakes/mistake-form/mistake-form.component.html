@@ -8,8 +8,9 @@
     <div class="field parent-wrapper">
       <div class="content"><h5>New Learning Point</h5></div>
       <div class="field">
-        <label>Title</label>
+        <label class="label" for="mistakeNewTitle">Title</label>
         <input
+          id="mistakeNewTitle"
           class="input is-medium"
           [(ngModel)]="mistake.title"
           required
@@ -21,8 +22,9 @@
         />
       </div>
       <div class="field">
-        <label>Incorrect Japanese</label>
+        <label class="label" for="mistakeNewContent">Incorrect Japanese</label>
         <input
+          id="mistakeNewContent"
           class="input is-medium"
           [(ngModel)]="mistake.content"
           minlength="1"
@@ -33,8 +35,9 @@
         />
       </div>
       <div class="field">
-        <label>Correct Japanese</label>
+        <label class="label" for="mistakeNewCorrection">Correct Japanese</label>
         <input
+          id="mistakeNewCorrection"
           class="input is-medium"
           [(ngModel)]="mistake.correction"
           minlength="1"
@@ -44,19 +47,12 @@
           autofocus
         />
       </div>
-      <button
-        class="reset-x-button"
-        *ngIf="mistake.title"
-        (click)="cancelMistake($event)"
-      >
-        X
-      </button>
     </div>
 
     <button
       class="button is-info is-medium is-fullwidth"
       (click)="createMistake()"
-      [disabled]="!content.valid"
+      [disabled]="!title.valid"
     >
       Add Learning Point
     </button>

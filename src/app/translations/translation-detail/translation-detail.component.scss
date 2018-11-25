@@ -5,14 +5,24 @@
 }
 
 .translation__title {
+  border-left: 8px solid #1e71e3;
   font-size: 1.6em;
   font-weight: bold;
   line-height: 1.5em;
   margin-bottom: 10px;
   max-width: 85%;
+  padding-left: 12px;
 }
 
 .translation__phonetics,
 .translation__meaning {
   margin-bottom: 10px;
+}
+
+.translation__phonetics {
+  color: #aaa;
+}
+
+.translation__notes {
+  background-color: #f4f9fe;
 }

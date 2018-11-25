@@ -1,113 +1,137 @@
 <div class="card-content">
-  <!-- normal view -->
-  <div *ngIf="!edit">
-    <div class="is-pulled-right">
-      <div
-        class="dropdown is-right"
-        [class.is-active]="actionDropdownOpen"
-        (click)="toggleDropdown()"
-      >
-        <div class="dropdown-trigger">
-          <button
-            class="button"
-            aria-haspopup="true"
-            aria-controls="dropdown-menu3"
+  <div class="is-pulled-right">
+    <div
+      class="dropdown is-right"
+      [class.is-active]="actionDropdownOpen"
+      (click)="toggleDropdown()"
+    >
+      <div class="dropdown-trigger">
+        <button
+          class="button"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu3"
+        >
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+        <div class="dropdown-content">
+          <a class="dropdown-item has-text-grey-dark" (click)="toggleEdit()"
+            >Edit</a
           >
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
+          <hr class="dropdown-divider" />
+          <a
+            class="dropdown-item has-text-grey-dark"
+            (click)="deleteTranslation()"
+            >Delete</a
+          >
         </div>
-        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item has-text-grey-dark" (click)="toggleEdit()"
-              >Edit</a
-            >
-            <hr class="dropdown-divider" />
-            <a
-              class="dropdown-item has-text-grey-dark"
-              (click)="deleteTranslation()"
-              >Delete</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="translation__title">
-      <span *ngIf="translation.ja">{{ translation.ja }}</span>
-      <i
-        *ngIf="!translation.ja"
-        class="fas fa-spinner fa-spin"
-        aria-hidden="true"
-      ></i>
-      <button
-        class="button is-hidden-touch"
-        title="Listen"
-        *ngIf="translation.ja"
-        (click)="textToSpeech()"
-      >
-        <span class="icon">
-          <i class="fas fa-volume-up has-text-link" aria-hidden="true"></i>
-        </span>
-      </button>
-    </h3>
-
-    <p class="translation__phonetics" *ngIf="translation.furigana">
-      {{ translation.furigana }}
-    </p>
-    <p class="translation__meaning">{{ translation.en || translationMsg }}</p>
-    <div class="sub-footer">
-      <div class="is-clearfix">
-        <div *ngIf="translation.notes" class="content">
-          <h5>Notes</h5>
-          <pre>{{ translation.notes }}</pre>
-        </div>
-        <p *ngIf="!translation.notes"><a class="tag is-light" (click)="toggleEdit()">Add notes</a></p>
-        <a class="is-pulled-right" (click)="toggleEdit()">Edit</a>
-      </div>
-    </div>
-
-    <div class="sub-footer is-clearfix">
-      <span
-        class="verify-icon icon"
-        title="Translation verified"
-        *ngIf="translation.verified"
-        (click)="updateStatus(false)"
-      >
-        <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
-      </span>
-      <span
-        class="verify-icon icon"
-        title="Verify translation"
-        *ngIf="!translation.verified"
-        (click)="updateStatus(true)"
-      >
-        <i class="fa fa-heart has-text-grey-light" aria-hidden="true"></i>
-      </span>
-
-      <div class="is-pulled-right">
-        <span class="icon is-small">
-          <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        </span>
-        <span class="date-time">{{
-          translation.created_at | date: "mediumDate"
-        }}</span>
       </div>
     </div>
   </div>
 
-  <!-- edit form -->
-  <div *ngIf="edit">
-    <p style="margin-bottom: 6px"><b>Edit Phrase</b></p>
+  <h3 class="translation__title">
+    <span *ngIf="translation.ja">{{ translation.ja }}</span>
+    <i
+      *ngIf="!translation.ja"
+      class="fas fa-spinner fa-spin"
+      aria-hidden="true"
+    ></i>
+    <button
+      class="button is-hidden-touch"
+      title="Listen"
+      *ngIf="translation.ja"
+      (click)="textToSpeech()"
+    >
+      <span class="icon">
+        <i class="fas fa-volume-up has-text-link" aria-hidden="true"></i>
+      </span>
+    </button>
+    <span
+      class="verify-icon icon"
+      title="Translation verified"
+      *ngIf="translation.verified"
+      (click)="updateStatus(false)"
+    >
+      <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
+    </span>
+    <span
+      class="verify-icon icon"
+      title="Verify translation"
+      *ngIf="!translation.verified"
+      (click)="updateStatus(true)"
+    >
+      <i class="fa fa-heart has-text-grey-light" aria-hidden="true"></i>
+    </span>
+  </h3>
+
+  <p class="translation__phonetics" *ngIf="translation.furigana">
+    {{ translation.furigana }}
+  </p>
+  <p class="translation__meaning">
+    <span *ngIf="translation.en"> {{ translation.en }} </span>
+    <a *ngIf="!translation.en" (click)="toggleEdit()">Add meaning...</a>
+  </p>
+
+  <div class="sub-footer">
+    <div class="is-clearfix">
+      <div *ngIf="translation.notes" class="content">
+        <h5>Notes</h5>
+        <pre class="translation__notes">{{ translation.notes }}</pre>
+      </div>
+      <p *ngIf="!translation.notes">
+        <a class="tag is-light" (click)="toggleEdit()">Add notes</a>
+      </p>
+      <a class="is-pulled-right" (click)="toggleEdit()">Edit</a>
+    </div>
+  </div>
+
+  <div class="sub-footer is-clearfix">
+    <div class="is-pulled-left">
+      <div class="tags is-grouped">
+        <span
+          class="tag"
+          *ngIf="translation.category"
+          [ngClass]="{
+            'is-primary': translation.category == 'Any',
+            'is-warning': translation.category == 'Written only',
+            'is-success': translation.category == 'Spoken only',
+            'is-link': translation.category == 'Casual',
+            'is-danger': translation.category == 'Formal'
+          }"
+          >{{ translation.category }}</span
+        >
+      </div>
+    </div>
+
+    <div class="is-pulled-right">
+      <span class="icon is-small">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+      </span>
+      <span class="date-time">{{
+        translation.created_at | date: "mediumDate"
+      }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Translation Modal -->
+<div class="modal" [ngClass]="{ 'is-active': editTranslation }">
+  <div class="modal-background"></div>
+  <div class="modal-content box">
+    <div class="content">
+      <h5><i class="far fa-edit" aria-hidden="true"></i> Edit Phrase</h5>
+    </div>
     <div class="field">
-      <label>Japanese</label>
+      <label class="label" for="translationEditJapanese">Japanese</label>
       <input
+        id="translationEditJapanese"
         type="text"
-        placeholder="{{translation.ja || 'Add Japanese' }}"
+        placeholder="{{ translation.ja }}"
         class="input"
         [(ngModel)]="translation.ja"
-        required
         minlength="2"
         maxlength="100"
         #ja="ngModel"
@@ -115,13 +139,13 @@
     </div>
 
     <div class="field">
-      <label>Furigana</label>
+      <label class="label" for="translationEditFurigana">Furigana</label>
       <input
+        id="translationEditFurigana"
         type="text"
-        placeholder="{{translation.furigana || 'Add furigana' }}"
+        placeholder="{{ translation.furigana }}"
         class="input"
         [(ngModel)]="translation.furigana"
-        required
         minlength="2"
         maxlength="100"
         #furigana="ngModel"
@@ -129,13 +153,13 @@
     </div>
 
     <div class="field">
-      <label>English</label>
+      <label class="label" for="translationEditEnglish">English Meaning</label>
       <input
+        id="translationEditEnglish"
         type="text"
-        placeholder="{{translation.en || 'Add English' }}"
+        placeholder="{{ translation.en }}"
         class="input"
         [(ngModel)]="translation.en"
-        required
         minlength="2"
         maxlength="100"
         #en="ngModel"
@@ -143,9 +167,31 @@
     </div>
 
     <div class="field">
-      <label>Notes</label>
+      <label class="label" for="translationEditCategory">Category</label>
+      <div class="control has-icons-left">
+        <div class="select">
+          <select
+            id="translationEditCategory"
+            minlength="1"
+            [(ngModel)]="translation.category"
+            #category="ngModel"
+          >
+            <option *ngFor="let category of categories" [value]="category">{{
+              category
+            }}</option>
+          </select>
+          <div class="icon is-small is-left">
+            <i class="fas fa-tag" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="translationEditNotes">Notes</label>
       <textarea
-        placeholder="{{translation.notes || 'Add study notes' }}"
+        id="translationEditNotes"
+        placeholder="{{ translation.notes || 'Add notes or example sentences' }}"
         class="textarea"
         [(ngModel)]="translation.notes"
         maxlength="500"
@@ -164,4 +210,9 @@
       </p>
     </div>
   </div>
+  <button
+    class="modal-close is-large"
+    aria-label="close"
+    (click)="toggleEdit()"
+  ></button>
 </div>

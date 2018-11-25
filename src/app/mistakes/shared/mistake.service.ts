@@ -39,7 +39,7 @@ export class MistakeService {
     this.mistakes
       .push(mistake)
       .then(() =>
-        this.toast.sendMessage("Your study point was added!", "success")
+        this.toast.sendMessage("New learning point created!", "success")
       )
       .catch(error => this.handleError(error));
   }
@@ -53,9 +53,7 @@ export class MistakeService {
   deleteMistake(key: string): void {
     this.mistakes
       .remove(key)
-      .then(() =>
-        this.toast.sendMessage("Your study point was deleted.", "info")
-      )
+      .then(() => this.toast.sendMessage("Learning point deleted", "info"))
       .catch(error => this.handleError(error));
   }
 

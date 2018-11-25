@@ -11,16 +11,23 @@ import { Translation } from "../shared/translation";
 export class TranslationDetailComponent implements OnInit {
   @Input() translation: Translation;
 
-  translationMsg: string = "Running translation in the cloud...";
-  edit: boolean = false;
+  editTranslation: boolean = false;
   actionDropdownOpen: boolean = false;
+  categories: any = [
+    "",
+    "Written only",
+    "Spoken only",
+    "Casual",
+    "Formal",
+    "Any"
+  ];
 
   constructor(private translationSvc: TranslationService) {}
 
   ngOnInit() {}
 
   toggleEdit() {
-    this.edit = !this.edit;
+    this.editTranslation = !this.editTranslation;
   }
 
   toggleDropdown() {
