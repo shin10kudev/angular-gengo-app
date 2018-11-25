@@ -57,3 +57,27 @@ body {
     vertical-align: middle;
   }
 }
+
+//
+// modal
+//
+.modal-content {
+  min-height: 100vh;
+  padding: 40px 16px;
+
+  @media (min-width: 768px) {
+    min-height: initial;
+    padding: 1.25rem;
+  }
+}
+
+.modal-close {
+  &::before,
+  &::after {
+    background-color: #000;
+
+    @media (min-width: 768px) {
+      background-color: #fff;
+    }
+  }
+}

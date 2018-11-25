@@ -1,37 +1,57 @@
 <div class="content">
-  <h3>
+  <h2>
     My Posts
-    <button class="button is-primary is-pulled-right" (click)="toggleModal();">Add New</button>
-  </h3>
+    <button class="button is-link is-pulled-right" (click)="toggleModal()">
+      Add New
+    </button>
+  </h2>
+  <p>Write a post to practice the words and phrases you know.</p>
 </div>
 
-<hr>
+<hr />
 
-<loading-spinner *ngIf="currentPost && currentPost?.progress < 100"></loading-spinner>
+<loading-spinner
+  *ngIf="currentPost && currentPost?.progress < 100"
+></loading-spinner>
 
-<div class="modal" [ngClass]="{'is-active': showModal }">
-  <div class="modal-background" (click)="toggleModal();"></div>
+<div class="modal" [ngClass]="{ 'is-active': showModal }">
+  <div class="modal-background" (click)="toggleModal()"></div>
   <div class="modal-content">
     <div class="box">
-      <p style="margin-bottom: 6px"><b>New Post</b></p>
+      <div class="content">
+        <h5><i class="fas fa-pencil-alt" aria-hidden="true"></i> New Post</h5>
+      </div>
       <div class="field">
-        <input placeholder="Post Title (required)" class="input"
-        [(ngModel)]="post.title"
-        required minlength="1" maxlength="23"
-        #title='ngModel' autofocus>
+        <input
+          placeholder="Post Title (required)"
+          class="input"
+          [(ngModel)]="post.title"
+          required
+          minlength="1"
+          maxlength="23"
+          #title="ngModel"
+          autofocus
+        />
       </div>
 
       <div class="field">
-        <textarea placeholder="Post Body (required)" class="textarea"
-        [(ngModel)]="post.body"
-        required minlength="1" maxlength="500"
-        #body='ngModel'></textarea>
+        <textarea
+          placeholder="Post Body (required)"
+          class="textarea"
+          [(ngModel)]="post.body"
+          required
+          minlength="1"
+          maxlength="500"
+          #body="ngModel"
+        ></textarea>
       </div>
 
-      <label style="margin-bottom: 5px; display: block;">
-        <small class="has-text-grey-light">(optional)</small>
-        <input type="file" (change)="detectFiles($event)">
-      </label>
+      <!--
+        <label style="margin-bottom: 5px; display: block;">
+          <small class="has-text-grey-light">(optional)</small>
+          <input type="file" (change)="detectFiles($event)" />
+        </label>
+      -->
 
       <p>
         <small>
@@ -41,26 +61,35 @@
 
       <div *ngIf="translate">
         <div class="field">
-          <textarea placeholder="Translation (optional)" class="textarea"
-          [(ngModel)]="post.translation"
-          required minlength="2" maxlength="500"
-          #translation='ngModel'></textarea>
+          <textarea
+            placeholder="Translation (optional)"
+            class="textarea"
+            [(ngModel)]="post.translation"
+            required
+            minlength="2"
+            maxlength="500"
+            #translation="ngModel"
+          ></textarea>
         </div>
-        <button class="button is-small is-danger" (click)="toggleTranslate(); post.translation = ''">Cancel</button>
+        <button
+          class="button is-small is-danger"
+          (click)="toggleTranslate(); post.translation = ''"
+        >
+          Cancel
+        </button>
       </div>
 
-      <hr>
+      <hr />
 
-      <button class="button is-primary"
-              [disabled]="!body.valid || !title.valid"
-              (click)="createPost()">
+      <button
+        class="button is-link"
+        [disabled]="!body.valid || !title.valid"
+        (click)="createPost()"
+      >
         Create Post
       </button>
-      <button class="button is-default"
-              (click)="toggleModal()">
-        Close
-      </button>
+      <button class="button is-default" (click)="toggleModal()">Close</button>
     </div>
   </div>
-  <button class="modal-close is-large" (click)="toggleModal();"></button>
+  <button class="modal-close is-large" (click)="toggleModal()"></button>
 </div>

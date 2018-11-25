@@ -5,6 +5,10 @@
 .mistake {
   padding: 22px 16px;
 
+  &.last {
+    margin-bottom: 20px;
+  }
+
   .mistake__text {
     font-weight: bold;
   }

@@ -1,17 +1,34 @@
-<button class="button is-link" (click)="toggleNewMistakeModal()">
-  New Learning Point
-</button>
+<div class="content">
+  <h2>
+    Learning Points
+    <button
+      class="button is-link is-pulled-right"
+      (click)="toggleNewMistakeModal()"
+    >
+      Add New
+    </button>
+  </h2>
+  <p>
+    These are reminders about things you've learned in Japanese. Add a learning
+    point so you don't make the same mistake twice!
+  </p>
+</div>
 
 <div class="modal" [class.is-active]="newMistakeModalOpen">
   <div class="modal-background"></div>
   <div class="modal-content box">
     <div class="field parent-wrapper">
-      <div class="content"><h5>New Learning Point</h5></div>
+      <div class="content">
+        <h5>
+          <i class="fas fa-pencil-alt" aria-hidden="true"></i> New Learning
+          Point
+        </h5>
+      </div>
       <div class="field">
         <label class="label" for="mistakeNewTitle">Title</label>
         <input
           id="mistakeNewTitle"
-          class="input is-medium"
+          class="input"
           [(ngModel)]="mistake.title"
           required
           minlength="1"
@@ -25,7 +42,7 @@
         <label class="label" for="mistakeNewContent">Incorrect Japanese</label>
         <input
           id="mistakeNewContent"
-          class="input is-medium"
+          class="input"
           [(ngModel)]="mistake.content"
           minlength="1"
           maxlength="100"
@@ -38,7 +55,7 @@
         <label class="label" for="mistakeNewCorrection">Correct Japanese</label>
         <input
           id="mistakeNewCorrection"
-          class="input is-medium"
+          class="input"
           [(ngModel)]="mistake.correction"
           minlength="1"
           maxlength="100"
@@ -50,11 +67,11 @@
     </div>
 
     <button
-      class="button is-info is-medium is-fullwidth"
+      class="button is-link is-medium is-fullwidth"
       (click)="createMistake()"
       [disabled]="!title.valid"
     >
-      Add Learning Point
+      SAVE
     </button>
   </div>
   <button

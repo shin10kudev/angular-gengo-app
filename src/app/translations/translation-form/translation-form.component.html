@@ -1,22 +1,51 @@
 <div class="field">
-  <textarea placeholder="Type in English or 日本語" class="textarea"
-  rows="2" required minlength="1" maxlength="142"
-  [(ngModel)]="translation.en"
-  #en='ngModel' autofocus></textarea>
+  <textarea
+    placeholder="Type in English or 日本語"
+    class="textarea"
+    rows="2"
+    required
+    minlength="1"
+    maxlength="142"
+    [(ngModel)]="translation.en"
+    #en="ngModel"
+    autofocus
+  ></textarea>
 
-  <div *ngIf="detectJapanese(translation.en); then japaneseDetected else englishInput">
+  <div
+    *ngIf="
+      detectJapanese(translation.en);
+      then: japaneseDetected;
+      else: englishInput
+    "
+  >
     <!-- // text renders here -->
   </div>
 </div>
 
-<button class="button is-primary" (click)="createTranslation()" [disabled]="!en.valid">Add</button>
-<button class="button is-default" *ngIf="translation.en" (click)="cancelTranslation()">Cancel</button>
+<button
+  class="button is-link"
+  (click)="createTranslation()"
+  [disabled]="!en.valid"
+>
+  Add Translation
+</button>
+<button
+  class="button is-default"
+  *ngIf="translation.en"
+  (click)="cancelTranslation()"
+>
+  Cancel
+</button>
 
 <!-- ng-templates -->
 <ng-template #englishInput>
-  <small>Translating from <span class="has-text-info">English</span></small>
+  <p class="help">
+    Translating from <span class="has-text-info">English</span>
+  </p>
 </ng-template>
 
 <ng-template #japaneseDetected>
-  <small>Translating from <span class="has-text-info">Japanese</span></small>
+  <p class="help">
+    Translating from <span class="has-text-info">Japanese</span>
+  </p>
 </ng-template>
