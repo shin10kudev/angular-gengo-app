@@ -1,3 +1,66 @@
-<p>
-  question-form works!
-</p>
+<div class="content">
+  <h2>
+    Questions & Answers
+    <button
+      class="button is-link is-pulled-right"
+      (click)="toggleNewQuestionModal()"
+    >
+      Add New
+    </button>
+  </h2>
+  <p>These are frequently asked questions and their answer.</p>
+</div>
+
+<!-- New Mistake Modal -->
+<div class="modal" [class.is-active]="newQuestionModalOpen">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="field parent-wrapper">
+      <div class="content">
+        <h5>
+          <i class="fas fa-pencil-alt" aria-hidden="true"></i> New Question
+        </h5>
+      </div>
+      <div class="field">
+        <label class="label" for="questionNewQuestion">Question</label>
+        <input
+          id="questionNewQuestion"
+          class="input"
+          [(ngModel)]="question.question_text"
+          required
+          minlength="1"
+          maxlength="100"
+          type="text"
+          #question_text="ngModel"
+          autofocus
+        />
+      </div>
+      <div class="field">
+        <label class="label" for="questionNewAnswer">Answer</label>
+        <input
+          id="questionNewAnswer"
+          class="input"
+          [(ngModel)]="question.answer_text"
+          required
+          minlength="1"
+          maxlength="100"
+          type="text"
+          #answer_text="ngModel"
+        />
+      </div>
+
+      <button
+        class="button is-link is-medium is-fullwidth"
+        [disabled]="!question_text.valid || !answer_text.valid"
+        (click)="createQuestion()"
+      >
+        SAVE
+      </button>
+    </div>
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      (click)="toggleNewQuestionModal()"
+    ></button>
+  </div>
+</div>

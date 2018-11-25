@@ -1,25 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FeedbackService } from '../shared/feedback.service';
-import { Feedback } from '../shared/feedback';
-import * as firebase from 'firebase';
+import { Component, OnInit, Input } from "@angular/core";
+import { FeedbackService } from "../shared/feedback.service";
+import { Feedback } from "../shared/feedback";
+import * as firebase from "firebase";
 
 @Component({
-  selector: 'feedback-detail',
-  templateUrl: './feedback-detail.component.html',
-  styleUrls: ['./feedback-detail.component.scss']
+  selector: "feedback-detail",
+  templateUrl: "./feedback-detail.component.html",
+  styleUrls: ["./feedback-detail.component.scss"]
 })
-
 export class FeedbackDetailComponent implements OnInit {
-
   @Input() feedback: Feedback;
 
   edit: boolean = false;
   showDropdown: boolean = false;
 
-  constructor(private feedbackSvc: FeedbackService) { }
+  constructor(private feedbackSvc: FeedbackService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleEdit() {
     this.edit = !this.edit;
@@ -39,7 +36,7 @@ export class FeedbackDetailComponent implements OnInit {
 
   // Delete feedback
   deleteFeedback() {
-    if(this.confirmAction('Are you sure you want to delete this?'))
+    if (this.confirmAction("Are you sure you want to delete this?"))
       this.feedbackSvc.deleteFeedback(this.feedback.$key);
   }
 

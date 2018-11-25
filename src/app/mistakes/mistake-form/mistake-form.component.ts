@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { MistakeService } from "../shared/mistake.service";
 import { Mistake } from "../shared/mistake";
 

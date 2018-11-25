@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FirebaseListObservable } from "angularfire2/database";
 import { MistakeService } from "../shared/mistake.service";
-import { Mistake } from "../shared/mistake";
 import * as _ from "lodash";
 
 @Component({

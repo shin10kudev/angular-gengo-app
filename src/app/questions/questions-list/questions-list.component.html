@@ -1,3 +1,28 @@
-<p>
-  questions-list works!
-</p>
+<question-form></question-form>
+
+<hr />
+
+<div class="content">
+  <div *ngFor="let question of (questions | async)" class="box">
+    <question-detail [question]="question"></question-detail>
+  </div>
+</div>
+
+<!-- blank-state -->
+<div
+  *ngIf="(questions | async)?.length < 1 && !showSpinner"
+  class="blank-state"
+>
+  <figure class="image is-128x128 is-centered is-block">
+    <img src="assets/images/bubble.svg" />
+  </figure>
+  <h5 class="has-text-grey-dark">
+    <b
+      >Looks like you haven't added <br class="is-hidden-tablet" />
+      any questions & answers yet</b
+    >
+  </h5>
+  <p class="has-text-gray-light">Why not add one?</p>
+</div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>

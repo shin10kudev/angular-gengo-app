@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../shared/post.service';
-import { Post } from '../shared/post';
+import { Component, OnInit } from "@angular/core";
+import { PostService } from "../shared/post.service";
+import { Post } from "../shared/post";
 import * as _ from "lodash";
 
 @Component({
-  selector: 'post-form',
-  templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.scss']
+  selector: "post-form",
+  templateUrl: "./post-form.component.html",
+  styleUrls: ["./post-form.component.scss"]
 })
-
 export class PostFormComponent implements OnInit {
-
   post: Post = new Post();
   selectedFiles: FileList;
   currentPost;

@@ -4,20 +4,26 @@
     ".write": false,
     "mistakes": {
       "$uid": {
-      ".read": "$uid === auth.uid",
-      ".write": "$uid === auth.uid"
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "questions": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
       }
     },
     "posts": {
       "$uid": {
-      ".read": "$uid === auth.uid",
-      ".write": "$uid === auth.uid"
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
       }
     },
     "translations": {
       "$uid": {
-      ".read": "$uid === auth.uid",
-      ".write": "$uid === auth.uid"
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
       }
     },
     "users": {
@@ -25,8 +31,8 @@
     },
     "feedbacks": {
       "$uid": {
-      ".read": "$uid === auth.uid",
-      ".write": "$uid === auth.uid"
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
       }
     }
   }
