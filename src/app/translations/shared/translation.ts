@@ -8,7 +8,7 @@ export class Translation {
   notes: string;
   category: string;
   example_sentences: string;
-  verified: boolean = false;
+  liked: boolean = false;
   created_at: any = firebase.database.ServerValue.TIMESTAMP;
   updated_at: any = firebase.database.ServerValue.TIMESTAMP;
 }

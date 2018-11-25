@@ -38,7 +38,7 @@ export class MistakeDetailComponent implements OnInit {
   updateStatus(value: boolean) {
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.mistake.updated_at = date;
-    this.mistake.verified = value;
+    this.mistake.liked = value;
     this.mistakeSvc.updateMistake(this.mistake.$key, this.mistake);
   }
 

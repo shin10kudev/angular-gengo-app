@@ -18,8 +18,8 @@ export class MistakesListComponent implements OnInit {
   mistakesCount: number;
 
   // Filter-able properties
-  verified: boolean;
-  unverified: boolean;
+  liked: boolean;
+  unliked: boolean;
   errorCount: number;
   content: string;
   correction: string;

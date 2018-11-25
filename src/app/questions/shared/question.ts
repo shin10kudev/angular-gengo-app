@@ -1,13 +1,11 @@
 import * as firebase from "firebase";
 
-export class Mistake {
+export class Question {
   $key: string;
-  title: string;
-  content: string; // wrong japanese
-  correction: string; // correct japanese
+  question: string;
+  answer: string;
+  plus_alpha: string;
   notes: string;
-  liked: boolean = false;
-  errorCount: number = 1;
   updated_at: any = firebase.database.ServerValue.TIMESTAMP;
   created_at: any = firebase.database.ServerValue.TIMESTAMP;
 }

@@ -38,7 +38,7 @@
         *ngIf="auth.currentUser"
         (click)="toggleCollapse()"
       >
-        Translations
+        Phrases
       </a>
       <a
         class="navbar-item is-underlined"
@@ -51,12 +51,12 @@
       </a>
       <a
         class="navbar-item is-underlined"
-        [ngClass]="{ 'is-active': location.path() === '/posts' }"
-        routerLink="/posts"
+        [ngClass]="{ 'is-active': location.path() === '/questions' }"
+        routerLink="/questions"
         *ngIf="auth.currentUser"
         (click)="toggleCollapse()"
       >
-        Posts
+        Questions
       </a>
       <!-- dropdown -->
       <div

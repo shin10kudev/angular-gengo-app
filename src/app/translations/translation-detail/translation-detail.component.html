@@ -52,7 +52,7 @@
     <span
       class="verify-icon icon"
       title="Undo like"
-      *ngIf="translation.verified"
+      *ngIf="translation.liked"
       (click)="updateStatus(false)"
     >
       <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
     <span
       class="verify-icon icon"
       title="Like"
-      *ngIf="!translation.verified"
+      *ngIf="!translation.liked"
       (click)="updateStatus(true)"
     >
       <i class="fa fa-heart has-text-grey-light" aria-hidden="true"></i>

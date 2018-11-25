@@ -62,6 +62,9 @@ import { FeedbackDetailComponent } from './static-pages/feedback-page/feedback-d
 import { SupportPageComponent } from './static-pages/support-page/support-page.component';
 import { ReadmePageComponent } from './static-pages/readme-page/readme-page.component';
 import { AddBookmarkPageComponent } from './static-pages/add-bookmark-page/add-bookmark-page.component';
+import { QuestionsListComponent } from './questions/questions-list/questions-list.component';
+import { QuestionFormComponent } from './questions/question-form/question-form.component';
+import { QuestionDetailComponent } from './questions/question-detail/question-detail.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -91,7 +94,10 @@ export const firebaseConfig = environment.firebaseConfig;
     FeedbackDetailComponent,
     SupportPageComponent,
     AddBookmarkPageComponent,
-    ToastMessagesComponent
+    ToastMessagesComponent,
+    QuestionsListComponent,
+    QuestionFormComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,
