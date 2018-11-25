@@ -51,7 +51,7 @@
     </button>
     <span
       class="verify-icon icon"
-      title="Translation verified"
+      title="Undo like"
       *ngIf="translation.verified"
       (click)="updateStatus(false)"
     >
@@ -59,7 +59,7 @@
     </span>
     <span
       class="verify-icon icon"
-      title="Verify translation"
+      title="Like"
       *ngIf="!translation.verified"
       (click)="updateStatus(true)"
     >

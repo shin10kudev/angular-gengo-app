@@ -13,14 +13,7 @@ export class TranslationDetailComponent implements OnInit {
 
   editTranslation: boolean = false;
   actionDropdownOpen: boolean = false;
-  categories: any = [
-    "",
-    "Written only",
-    "Spoken only",
-    "Casual",
-    "Formal",
-    "Any"
-  ];
+  categories: any = ["", "Any", "Casual", "Formal", "Written only", "Spoken"];
 
   constructor(private translationSvc: TranslationService) {}
 
