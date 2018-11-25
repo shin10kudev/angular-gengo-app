@@ -123,7 +123,7 @@
         <input
           type="text"
           placeholder="{{mistake.title || 'Learning point title' }}"
-          class="input is-medium"
+          class="input"
           [(ngModel)]="mistake.title"
           required
           minlength="2"
@@ -136,7 +136,7 @@
         <input
           type="text"
           placeholder="{{mistake.content || 'What was your mistake?' }}"
-          class="input is-medium"
+          class="input"
           [(ngModel)]="mistake.content"
           required
           minlength="2"
@@ -149,7 +149,7 @@
         <input
           type="text"
           placeholder="{{mistake.correction || 'What is the correct Japanese?' }}"
-          class="input is-medium"
+          class="input"
           [(ngModel)]="mistake.correction"
           required
           minlength="2"
@@ -161,7 +161,7 @@
       <div class="field">
         <textarea
           placeholder="{{mistake.notes || 'Add notes' }}"
-          class="textarea is-medium"
+          class="textarea"
           [(ngModel)]="mistake.notes"
           required
           minlength="2"

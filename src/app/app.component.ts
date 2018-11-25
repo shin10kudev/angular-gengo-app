@@ -8,5 +8,4 @@ import "./app.component.scss";
 })
 export class AppComponent {
   constructor() {}
-  title = "FireStarter app works!";
 }

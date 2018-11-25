@@ -2,8 +2,60 @@
   height: 100%;
   margin-bottom: 100px;
   min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
-.section {
-  padding: 2rem 1rem;
+//
+// Footer styles
+//
+
+.footer {
+  border-top: 1px solid $gray-lightest;
+  padding: 56px 24px;
+  text-align: center;
+}
+
+//
+// or divider
+// used on login and reg forms
+//
+
+.or-separator {
+  margin: 28px 0;
+  overflow: hidden;
+  text-align: center;
+
+  .content {
+    padding: 16px;
+    position: relative;
+
+    span {
+      color: #a6a6a6;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    &::before,
+    &::after {
+      border-bottom: 1px solid rgba(#979797, 0.2);
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 5000px;
+    }
+
+    &::before {
+      right: 100%;
+    }
+
+    &::after {
+      left: 100%;
+    }
+  }
+}
+
+.blank-state {
+  padding-bottom: 70px;
+  padding-top: 50px;
+  text-align: center;
 }
