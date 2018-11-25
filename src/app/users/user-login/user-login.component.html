@@ -1,7 +1,7 @@
 <div *ngIf="!auth.currentUser; else: alreadyLoggedIn">
   <p class="field">
     <button
-      class="button is-fullwidth is-social-button is-google"
+      class="button is-medium is-fullwidth is-social-button is-google"
       (click)="signInWithGoogle()"
     >
       <span class="icon" style="margin-right: 6px">
@@ -19,5 +19,7 @@
 </div>
 
 <ng-template #alreadyLoggedIn>
-  <div class="notification is-info">Hey there! You're already logged in!</div>
+  <div class="notification is-info">
+    Hey there! You're already logged in! <a routerLink="/">Go to Top</a>
+  </div>
 </ng-template>

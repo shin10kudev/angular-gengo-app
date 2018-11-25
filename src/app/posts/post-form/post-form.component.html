@@ -17,79 +17,77 @@
 <div class="modal" [ngClass]="{ 'is-active': showModal }">
   <div class="modal-background" (click)="toggleModal()"></div>
   <div class="modal-content">
-    <div class="box">
-      <div class="content">
-        <h5><i class="fas fa-pencil-alt" aria-hidden="true"></i> New Post</h5>
-      </div>
-      <div class="field">
-        <input
-          placeholder="Post Title (required)"
-          class="input"
-          [(ngModel)]="post.title"
-          required
-          minlength="1"
-          maxlength="23"
-          #title="ngModel"
-          autofocus
-        />
-      </div>
+    <div class="content">
+      <h5><i class="fas fa-pencil-alt" aria-hidden="true"></i> New Post</h5>
+    </div>
+    <div class="field">
+      <input
+        placeholder="Post Title (required)"
+        class="input"
+        [(ngModel)]="post.title"
+        required
+        minlength="1"
+        maxlength="23"
+        #title="ngModel"
+        autofocus
+      />
+    </div>
 
+    <div class="field">
+      <textarea
+        placeholder="Post Body (required)"
+        class="textarea"
+        [(ngModel)]="post.body"
+        required
+        minlength="1"
+        maxlength="500"
+        #body="ngModel"
+      ></textarea>
+    </div>
+
+    <!--
+      <label style="margin-bottom: 5px; display: block;">
+        <small class="has-text-grey-light">(optional)</small>
+        <input type="file" (change)="detectFiles($event)" />
+      </label>
+    -->
+
+    <p>
+      <small>
+        <a (click)="toggleTranslate()" *ngIf="!translate">Add Translation?</a>
+      </small>
+    </p>
+
+    <div *ngIf="translate">
       <div class="field">
         <textarea
-          placeholder="Post Body (required)"
+          placeholder="Translation (optional)"
           class="textarea"
-          [(ngModel)]="post.body"
+          [(ngModel)]="post.translation"
           required
-          minlength="1"
+          minlength="2"
           maxlength="500"
-          #body="ngModel"
+          #translation="ngModel"
         ></textarea>
       </div>
-
-      <!--
-        <label style="margin-bottom: 5px; display: block;">
-          <small class="has-text-grey-light">(optional)</small>
-          <input type="file" (change)="detectFiles($event)" />
-        </label>
-      -->
-
-      <p>
-        <small>
-          <a (click)="toggleTranslate()" *ngIf="!translate">Add Translation?</a>
-        </small>
-      </p>
-
-      <div *ngIf="translate">
-        <div class="field">
-          <textarea
-            placeholder="Translation (optional)"
-            class="textarea"
-            [(ngModel)]="post.translation"
-            required
-            minlength="2"
-            maxlength="500"
-            #translation="ngModel"
-          ></textarea>
-        </div>
-        <button
-          class="button is-small is-danger"
-          (click)="toggleTranslate(); post.translation = ''"
-        >
-          Cancel
-        </button>
-      </div>
-
-      <hr />
-
       <button
-        class="button is-link"
-        [disabled]="!body.valid || !title.valid"
-        (click)="createPost()"
+        class="button is-small is-danger"
+        (click)="toggleTranslate(); post.translation = ''"
       >
-        Create Post
+        Cancel
       </button>
-      <button class="button is-default" (click)="toggleModal()">Close</button>
     </div>
+
+    <hr />
+
+    <button
+      class="button is-link"
+      [disabled]="!body.valid || !title.valid"
+      (click)="createPost()"
+    >
+      Create Post
+    </button>
+    <button class="button is-default" (click)="toggleModal()">Close</button>
   </div>
   <button class="modal-close is-large" (click)="toggleModal()"></button>
 </div>
