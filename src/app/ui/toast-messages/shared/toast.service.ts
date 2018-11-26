@@ -4,7 +4,7 @@ import { Message } from "./message";
 @Injectable()
 export class ToastService {
   messages: any = [];
-  toastLife: number = 5000;
+  toastLife: number = 6000;
 
   constructor() {}
 

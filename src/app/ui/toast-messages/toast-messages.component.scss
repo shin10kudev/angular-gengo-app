@@ -1,3 +1,20 @@
-.notification {
+.toast {
+  border-radius: 0;
+  left: 0;
   padding: 16px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .toast__text {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  > .toast__close {
+    right: 20px;
+    top: 17px;
+  }
 }

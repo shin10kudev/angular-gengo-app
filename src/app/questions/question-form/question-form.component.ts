@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { QuestionService } from "../shared/question.service";
 import { Question } from "../shared/question";
 
@@ -10,6 +10,8 @@ import { Question } from "../shared/question";
 export class QuestionFormComponent implements OnInit {
   question: Question = new Question();
   newQuestionModalOpen: boolean = false;
+
+  @Input() formType: string;
 
   constructor(private questionSvc: QuestionService) {}
 

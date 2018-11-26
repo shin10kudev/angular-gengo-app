@@ -1,13 +1,17 @@
 <div class="wrapper">
-  <aside  *ngFor="let message of messages" style="margin-bottom: 10px">
-    <div class="notification"
-         *ngIf="!message.dismissed"
-         [ngClass]="{'is-info':     message.style=='info',
-                     'is-danger':   message.style=='danger',
-                     'is-warning':   message.style=='warning',
-                     'is-success':  message.style=='success'}">
-      <button class="delete" (click)="dismiss(message)"></button>
-      {{message.content}}
+  <aside *ngFor="let message of messages" style="margin-bottom: 10px">
+    <div
+      class="toast notification"
+      *ngIf="!message.dismissed"
+      [ngClass]="{
+        'is-info': message.style == 'info',
+        'is-danger': message.style == 'danger',
+        'is-warning': message.style == 'warning',
+        'is-success': message.style == 'success'
+      }"
+    >
+      <button class="toast__close delete" (click)="dismiss(message)"></button>
+      <p class="toast__text">{{ message.content }}</p>
     </div>
   </aside>
 </div>
