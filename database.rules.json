@@ -9,8 +9,8 @@
       }
     },
     "questions": {
-      ".indexOn": "timestamp",
       "$uid": {
+        ".indexOn": "timestamp",
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"
       }
