@@ -11,7 +11,7 @@
   <p>These are frequently asked questions and their answer.</p>
 </div>
 
-<!-- New Mistake Modal -->
+<!-- New Question Modal -->
 <div class="modal" [class.is-active]="newQuestionModalOpen">
   <div class="modal-background"></div>
   <div class="modal-content">
@@ -22,7 +22,9 @@
         </h5>
       </div>
       <div class="field">
-        <label class="label" for="questionNewQuestion">Question</label>
+        <label class="label" for="questionNewQuestion"
+          >Question <small class="has-text-danger">*</small></label
+        >
         <input
           id="questionNewQuestion"
           class="input"
@@ -36,7 +38,9 @@
         />
       </div>
       <div class="field">
-        <label class="label" for="questionNewAnswer">Answer</label>
+        <label class="label" for="questionNewAnswer"
+          >Answer <small class="has-text-danger">*</small></label
+        >
         <input
           id="questionNewAnswer"
           class="input"
@@ -47,6 +51,68 @@
           type="text"
           #answer_text="ngModel"
         />
+      </div>
+
+      <div class="content" *ngIf="!showAdditionalInputs">
+        <a (click)="toggleAdditionalInputs()">
+          <i class="fa fa-plus" aria-hidden="true"></i> Add more details
+        </a>
+      </div>
+
+      <div class="content" *ngIf="showAdditionalInputs">
+        <div class="field">
+          <a class="has-text-danger" (click)="toggleAdditionalInputs()">
+            <i class="far fa-trash-alt" aria-hidden="true"></i> Remove
+            additional details
+          </a>
+        </div>
+
+        <div class="field">
+          <label class="label" for="questionNewAdditionalAnswer"
+            >Additional Answer
+            <small class="has-text-grey-light">(optional)</small></label
+          >
+          <input
+            id="questionNewAdditionalAnswer"
+            class="input"
+            [(ngModel)]="question.additional_answer"
+            minlength="1"
+            maxlength="100"
+            type="text"
+            #additional_answer="ngModel"
+          />
+        </div>
+
+        <div class="field">
+          <label class="label" for="questionNewNotes"
+            >Notes <small class="has-text-grey-light">(optional)</small></label
+          >
+          <textarea
+            id="questionNewNotes"
+            placeholder="{{ question.notes || 'Add notes' }}"
+            class="textarea"
+            [(ngModel)]="question.notes"
+            minlength="2"
+            maxlength="1000"
+            rows="5"
+            #notes="ngModel"
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label class="label" for="questionNewTopic"
+            >Topic <small class="has-text-grey-light">(optional)</small></label
+          >
+          <input
+            id="questionNewTopic"
+            class="input"
+            [(ngModel)]="question.topic"
+            minlength="1"
+            maxlength="100"
+            type="text"
+            #topic="ngModel"
+          />
+        </div>
       </div>
 
       <button

@@ -1,23 +1,8 @@
 <article class="message is-primary">
   <div class="message-header">
-    <div class="verify-icon">
-      <span
-        class="icon"
-        title="Liked"
-        *ngIf="mistake.liked"
-        (click)="updateStatus(false)"
-      >
-        <i class="fa fa-heart has-text-danger" aria-hidden="true"></i>
-      </span>
-      <span
-        class="icon"
-        title="Undo like"
-        *ngIf="!mistake.liked"
-        (click)="updateStatus(true)"
-      >
-        <i class="far fa-heart" aria-hidden="true"></i>
-      </span>
+    <div>
       <span *ngIf="mistake.title">{{ mistake.title }}</span>
+
       <span *ngIf="!mistake.title">{{
         mistake.created_at | date: "mediumDate"
       }}</span>
@@ -53,7 +38,6 @@
   </div>
 
   <div class="card-content">
-    <!-- normal-view -->
     <div class="mistake is-error">
       <h4 class="mistake__text">
         <span class="mistake__icon"
@@ -97,16 +81,44 @@
     </div>
 
     <div class="sub-footer is-clearfix">
-      <!-- Mistake count -->
-      <div class="error-count is-pulled-left">
-        <span>Count: </span>
-        <span class="icon has-text-info" (click)="decreaseErrorCount()">
-          <i class="fas fa-minus-circle" aria-hidden="true"></i>
-        </span>
-        <span class="has-text-grey-dark">{{ mistake.errorCount }}</span>
-        <span class="icon has-text-info" (click)="increaseErrorCount()">
-          <i class="fas fa-plus-circle" aria-hidden="true"></i>
-        </span>
+      <div class="is-pulled-left">
+        <!-- Like -->
+        <div
+          *ngIf="!mistake.liked"
+          class="like-icon"
+          (click)="updateMistakeLike(true)"
+        >
+          <span class="icon" title="Undo like">
+            <i class="fa fa-heart has-text-grey-light" aria-hidden="true"></i>
+          </span>
+          <span>Like</span>
+        </div>
+
+        <!-- Unlike -->
+        <div
+          *ngIf="mistake.liked"
+          class="like-icon has-text-danger"
+          (click)="updateMistakeLike(false)"
+        >
+          <span class="icon" title="Liked">
+            <i class="fa fa-heart animated tada" aria-hidden="true"></i>
+          </span>
+          <span class="animated slideInLeft">Liked</span>
+        </div>
+
+        <!-- Mistake count -->
+        <!--
+          <div class="error-count">
+            <span>Count: </span>
+            <span class="icon has-text-info" (click)="decreaseErrorCount()">
+              <i class="fas fa-minus-circle" aria-hidden="true"></i>
+            </span>
+            <span class="has-text-grey-dark">{{ mistake.errorCount }}</span>
+            <span class="icon has-text-info" (click)="increaseErrorCount()">
+              <i class="fas fa-plus-circle" aria-hidden="true"></i>
+            </span>
+          </div>
+        -->
       </div>
 
       <!-- Created at -->

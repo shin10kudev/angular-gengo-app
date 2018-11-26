@@ -51,7 +51,7 @@ export class TranslationDetailComponent implements OnInit {
   }
 
   // Update translation status
-  updateStatus(value: boolean) {
+  updateTranslationLike(value: boolean) {
     let date = firebase.database.ServerValue.TIMESTAMP;
     this.translation.updated_at = date;
     this.translation.liked = value;

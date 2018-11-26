@@ -3,7 +3,7 @@
 <hr />
 
 <div class="content">
-  <div *ngFor="let question of (questions | async)" class="box">
+  <div *ngFor="let question of (questions | async)">
     <question-detail [question]="question"></question-detail>
   </div>
 </div>

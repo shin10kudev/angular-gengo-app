@@ -3,14 +3,16 @@
   <div class="media">
     <figure class="media-left">
       <p class="image is-round is-64x64">
-        <img [src]="auth.currentUser.photoURL || 'assets/images/default-user.svg'" width=64px>
+        <img
+          [src]="auth.currentUser.photoURL || 'assets/images/default_user.svg'"
+          width="64px"
+        />
       </p>
     </figure>
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ auth.currentUserDisplayName }}</strong>
-          <br>
+          <strong>{{ auth.currentUserDisplayName }}</strong> <br />
           <small><a (click)="signout()">Sign out</a></small>
         </p>
       </div>

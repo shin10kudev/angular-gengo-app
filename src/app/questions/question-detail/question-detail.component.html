@@ -1,5 +1,228 @@
-<div class="content">
-  <h3>Q: {{ question.question_text }}</h3>
-  <h3>A: {{ question.answer_text }}</h3>
-  <button class="button is-danger" (click)="deleteQuestion()">Delete</button>
+<div class="question__card">
+  <!-- HEADER -->
+  <div class="question__header is-clearfix">
+    <div *ngIf="question.topic" class="content is-pulled-left">
+      <h3 class="question__topic">{{ question.topic || "Add topic..." }}</h3>
+    </div>
+    <div class="is-pulled-right">
+      <div
+        class="dropdown is-right"
+        [class.is-active]="showQuestionDropdown"
+        (click)="toggleDropdown()"
+      >
+        <div class="dropdown-trigger">
+          <button
+            class="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu3"
+          >
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+          <div class="dropdown-content">
+            <a
+              class="dropdown-item has-text-grey-dark"
+              (click)="toggleEditQuestionModal()"
+              >Edit</a
+            >
+            <hr class="dropdown-divider" />
+            <a
+              class="dropdown-item has-text-grey-dark"
+              (click)="deleteQuestion()"
+              >Delete</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- BODY -->
+  <div class="question__body">
+    <div class="q__item is-not-user">
+      <figure class="q__item-image image is-64x64">
+        <img
+          src="assets/images/user_man.svg"
+          class="is-rounded"
+          width="64"
+          height="64"
+        />
+      </figure>
+      <div class="q__item-text">{{ question.question_text }}</div>
+    </div>
+    <div class="q__item is-user" [class.is-first]="question.additional_answer">
+      <div class="q__item-text">{{ question.answer_text }}</div>
+    </div>
+    <div *ngIf="question.additional_answer" class="q__item is-user is-last">
+      <div class="q__item-text">{{ question.additional_answer }}</div>
+    </div>
+    <!-- NOTES -->
+    <div class="question__notes box is-clearfix">
+      <h5>Notes</h5>
+      <p *ngIf="question.notes">{{ question.notes }}</p>
+      <span *ngIf="!question.notes">
+        <a (click)="toggleEditQuestionModal()" class="tag is-light"
+          >Add notes...</a
+        >
+      </span>
+      <div class="has-text-right">
+        <a (click)="toggleEditQuestionModal()">Edit</a>
+      </div>
+    </div>
+  </div>
+  <div class="question__footer is-clearfix">
+    <div class="is-pulled-left">
+      <!-- Like -->
+      <div
+        *ngIf="!question.liked"
+        class="like-icon"
+        (click)="updateQuestionLike(true)"
+      >
+        <span class="icon" title="Undo like">
+          <i class="fa fa-heart has-text-grey-light" aria-hidden="true"></i>
+        </span>
+        <span>Like</span>
+      </div>
+
+      <!-- Unlike -->
+      <div
+        *ngIf="question.liked"
+        class="like-icon has-text-danger"
+        (click)="updateQuestionLike(false)"
+      >
+        <span class="icon" title="Liked">
+          <i class="fa fa-heart animated tada" aria-hidden="true"></i>
+        </span>
+        <span class="animated slideInLeft">Liked</span>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="is-pulled-right">
+      <span class="icon is-small">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+      </span>
+      <span>{{ question.created_at | date: "mediumDate" }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Question Modal -->
+<div class="modal" [class.is-active]="editQuestionModalOpen">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="field parent-wrapper">
+      <div class="content">
+        <h5>
+          <i class="fas fa-pencil-alt" aria-hidden="true"></i> New Question
+        </h5>
+      </div>
+      <div class="field">
+        <label class="label" for="questionNewQuestion"
+          >Question <small class="has-text-danger">*</small></label
+        >
+        <input
+          id="questionNewQuestion"
+          class="input"
+          [(ngModel)]="question.question_text"
+          required
+          minlength="1"
+          maxlength="100"
+          type="text"
+          #question_text="ngModel"
+          autofocus
+        />
+      </div>
+      <div class="field">
+        <label class="label" for="questionNewAnswer"
+          >Answer <small class="has-text-danger">*</small></label
+        >
+        <input
+          id="questionNewAnswer"
+          class="input"
+          [(ngModel)]="question.answer_text"
+          required
+          minlength="1"
+          maxlength="100"
+          type="text"
+          #answer_text="ngModel"
+        />
+      </div>
+
+      <div class="content" *ngIf="!showAdditionalInputs">
+        <a (click)="toggleAdditionalInputs()">
+          <i class="fa fa-plus" aria-hidden="true"></i> Show more details
+        </a>
+      </div>
+
+      <div class="content" *ngIf="showAdditionalInputs">
+        <div class="field">
+          <a class="has-text-danger" (click)="toggleAdditionalInputs()">
+            <i class="far fa-eye-slash" aria-hidden="true"></i> Hide details
+          </a>
+        </div>
+
+        <div class="field">
+          <label class="label" for="questionNewAdditionalAnswer"
+            >Additional Answer
+            <small class="has-text-grey-light">(optional)</small></label
+          >
+          <input
+            id="questionNewAdditionalAnswer"
+            class="input"
+            [(ngModel)]="question.additional_answer"
+            minlength="1"
+            maxlength="100"
+            type="text"
+            #additional_answer="ngModel"
+          />
+        </div>
+
+        <div class="field">
+          <label class="label" for="questionNewNotes"
+            >Notes <small class="has-text-grey-light">(optional)</small></label
+          >
+          <textarea
+            id="questionNewNotes"
+            placeholder="{{ question.notes || 'Add notes' }}"
+            class="textarea"
+            [(ngModel)]="question.notes"
+            minlength="2"
+            maxlength="1000"
+            rows="5"
+            #notes="ngModel"
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label class="label" for="questionNewTopic"
+            >Topic <small class="has-text-grey-light">(optional)</small></label
+          >
+          <input
+            id="questionNewTopic"
+            class="input"
+            [(ngModel)]="question.topic"
+            minlength="1"
+            maxlength="100"
+            type="text"
+            #topic="ngModel"
+          />
+        </div>
+      </div>
+
+      <button
+        class="button is-link is-medium is-fullwidth"
+        [disabled]="!question_text.valid || !answer_text.valid"
+        (click)="updateQuestion()"
+      >
+        SAVE
+      </button>
+    </div>
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      (click)="toggleEditQuestionModal()"
+    ></button>
+  </div>
 </div>

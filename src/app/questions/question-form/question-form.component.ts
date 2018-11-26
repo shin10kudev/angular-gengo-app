@@ -10,6 +10,7 @@ import { Question } from "../shared/question";
 export class QuestionFormComponent implements OnInit {
   question: Question = new Question();
   newQuestionModalOpen: boolean = false;
+  showAdditionalInputs: boolean = false;
 
   @Input() formType: string;
 
@@ -19,6 +20,17 @@ export class QuestionFormComponent implements OnInit {
 
   toggleNewQuestionModal() {
     this.newQuestionModalOpen = !this.newQuestionModalOpen;
+  }
+
+  toggleAdditionalInputs() {
+    this.showAdditionalInputs = !this.showAdditionalInputs;
+    this.resetAdditionalInputs();
+  }
+
+  resetAdditionalInputs() {
+    this.question.topic = null;
+    this.question.additional_answer = null;
+    this.question.notes = null;
   }
 
   createQuestion() {

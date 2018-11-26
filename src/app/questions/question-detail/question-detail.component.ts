@@ -10,16 +10,20 @@ import * as firebase from "firebase";
 })
 export class QuestionDetailComponent implements OnInit {
   @Input() question: Question;
-
-  editQuestion: boolean = false;
+  editQuestionModalOpen: boolean = false;
   showQuestionDropdown: boolean = false;
+  showAdditionalInputs: boolean = false;
 
   constructor(private questionSvc: QuestionService) {}
 
   ngOnInit() {}
 
-  toggleQuestionEdit() {
-    this.editQuestion = !this.editQuestion;
+  toggleEditQuestionModal() {
+    this.editQuestionModalOpen = !this.editQuestionModalOpen;
+  }
+
+  toggleAdditionalInputs() {
+    this.showAdditionalInputs = !this.showAdditionalInputs;
   }
 
   toggleDropdown() {

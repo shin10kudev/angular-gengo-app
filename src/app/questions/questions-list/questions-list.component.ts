@@ -16,7 +16,8 @@ export class QuestionsListComponent implements OnInit {
 
   ngOnInit() {
     this.questions = this.questionSvc.getQuestionsList({
-      limitToLast: 20
+      limitToLast: 20,
+      orderByChild: "timestamp"
     });
     this.questions.subscribe(() => (this.showSpinner = false));
   }
