@@ -2,10 +2,6 @@
   <div class="message-header">
     <div>
       <span *ngIf="mistake.title">{{ mistake.title }}</span>
-
-      <span *ngIf="!mistake.title">{{
-        mistake.created_at | date: "mediumDate"
-      }}</span>
     </div>
     <div
       class="dropdown is-right"
@@ -25,11 +21,11 @@
       </div>
       <div class="dropdown-menu" id="dropdown-menu3" role="menu">
         <div class="dropdown-content">
-          <a class="dropdown-item has-text-grey-dark" (click)="toggleEdit()"
+          <a class="dropdown-item" (click)="toggleEdit()"
             >Edit</a
           >
           <hr class="dropdown-divider" />
-          <a class="dropdown-item has-text-grey-dark" (click)="deleteMistake()"
+          <a class="dropdown-item" (click)="deleteMistake()"
             >Delete</a
           >
         </div>

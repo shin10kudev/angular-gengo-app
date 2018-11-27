@@ -28,16 +28,19 @@ export class TranslationDetailComponent implements OnInit {
   }
 
   textToSpeech() {
+    const synth = window.speechSynthesis;
+
     // Clear previous utterance
-    window.speechSynthesis.cancel();
+    synth.cancel();
 
     // Create new utterance
-    let msg = new SpeechSynthesisUtterance();
-    msg.text = this.translation.ja;
-    msg.rate = 0.7; // 0.1 to 10
-    msg.volume = 0.9; // 0 to 1
-    msg.lang = "ja-JP";
-    window.speechSynthesis.speak(msg);
+    let utterance = new SpeechSynthesisUtterance();
+    utterance.text = this.translation.ja;
+    utterance.rate = 0.7; // 0.1 to 10
+    utterance.volume = 0.9; // 0 to 1
+    utterance.lang = "ja-JP";
+
+    synth.speak(utterance);
   }
 
   // Update translation

@@ -1,6 +1,6 @@
-.message.is-primary {
-  background-color: #fff;
-}
+//
+// Mistake styles
+//
 
 .mistake {
   padding: 22px 16px;
@@ -37,10 +37,15 @@
   }
 }
 
-.error-count {
-  user-select: none;
+//
+// Bulma overrides
+//
 
-  .icon {
-    cursor: pointer;
-  }
+.message.is-primary {
+  background-color: #fff;
+}
+
+.dropdown-item {
+  color: #484848 !important;
+  text-decoration: none !important;
 }
