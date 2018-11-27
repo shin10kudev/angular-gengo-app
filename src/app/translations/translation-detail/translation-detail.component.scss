@@ -4,9 +4,12 @@
   }
 }
 
+$translation-primary-color: #1e71e3;
+$translation-accent-color: #f4f9fe;
+
 .translation__title {
-  border-left: 8px solid #1e71e3;
-  font-size: 1.6em;
+  border-left: 6px solid $translation-primary-color;
+  font-size: 24px;
   font-weight: bold;
   line-height: 1.5em;
   margin-bottom: 10px;
@@ -24,5 +27,6 @@
 }
 
 .translation__notes {
-  background-color: #f4f9fe;
+  background-color: $translation-accent-color;
+  padding: 28px 22px;
 }

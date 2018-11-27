@@ -6,7 +6,7 @@ export class Translation {
   en: string;
   furigana: string;
   notes: string;
-  category: string;
+  category: string = "General";
   example_sentences: string;
   liked: boolean = false;
   created_at: any = firebase.database.ServerValue.TIMESTAMP;

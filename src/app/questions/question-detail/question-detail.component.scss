@@ -11,6 +11,8 @@ $question-base-margin: 1.5rem;
 }
 
 .question__header {
+  margin-bottom: 10px;
+
   .question__topic {
     margin: 0;
   }
@@ -31,6 +33,7 @@ $q-item-primary-bg-color: #2a8bf2;
 $q-item-primary-text-color: #fff;
 
 .q__item {
+  display: flex;
   margin-bottom: $question-base-margin;
 
   .q__item-image,
@@ -45,17 +48,12 @@ $q-item-primary-text-color: #fff;
 
   .q__item-text {
     background-color: $q-item-default-bg-color;
-    border-radius: 50px;
+    border-radius: 12px;
     color: $q-item-default-text-color;
-    padding: 10px 16px;
-  }
+    padding: 5px 8px 6px;
 
-  //
-  // is-not-user variation
-  //
-  &.is-not-user {
-    .q__item-text {
-      border-bottom-left-radius: 10px;
+    @media (min-width: 768px) {
+      padding: 10px 16px;
     }
   }
 
@@ -64,21 +62,25 @@ $q-item-primary-text-color: #fff;
   //
 
   &.is-user {
+    justify-content: flex-end;
     text-align: right;
 
     .q__item-text {
       background-color: $q-item-primary-bg-color;
-      border-bottom-right-radius: 10px;
       color: $q-item-primary-text-color;
     }
 
     &.is-first {
       margin-bottom: 4px;
+
+      .q__item-text {
+        border-bottom-right-radius: 0;
+      }
     }
 
     &.is-last {
       .q__item-text {
-        border-top-right-radius: 10px;
+        border-top-right-radius: 0;
       }
     }
   }
