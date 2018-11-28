@@ -5,7 +5,7 @@
 .mistake {
   padding: 22px 16px;
 
-  &.last {
+  &.is-last {
     margin-bottom: 20px;
   }
 
@@ -47,5 +47,6 @@
 
 .dropdown-item {
   color: #484848 !important;
+  font-weight: normal;
   text-decoration: none !important;
 }

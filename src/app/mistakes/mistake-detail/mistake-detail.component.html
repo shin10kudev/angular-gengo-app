@@ -21,13 +21,9 @@
       </div>
       <div class="dropdown-menu" id="dropdown-menu3" role="menu">
         <div class="dropdown-content">
-          <a class="dropdown-item" (click)="toggleEdit()"
-            >Edit</a
-          >
+          <a class="dropdown-item" (click)="toggleEdit()">Edit</a>
           <hr class="dropdown-divider" />
-          <a class="dropdown-item" (click)="deleteMistake()"
-            >Delete</a
-          >
+          <a class="dropdown-item" (click)="deleteMistake()">Delete</a>
         </div>
       </div>
     </div>
@@ -47,7 +43,8 @@
         </span>
       </h4>
     </div>
-    <div class="mistake last is-correction">
+
+    <div class="mistake is-correction is-last">
       <h4 class="mistake__text">
         <span class="mistake__icon"
           ><i class="fas fa-check fa-fw" aria-hidden="true"></i
@@ -139,23 +136,11 @@
         <i class="far fa-edit" aria-hidden="true"></i> Edit Learning Point
       </h5>
     </div>
-    <div class="field">
-      <label class="label" for="mistakeEditTitle">Title</label>
-      <input
-        id="mistakeEditTitle"
-        type="text"
-        placeholder="{{ mistake.title }}"
-        class="input"
-        [(ngModel)]="mistake.title"
-        required
-        minlength="2"
-        maxlength="100"
-        #correction="ngModel"
-      />
-    </div>
 
     <div class="field">
-      <label class="label" for="mistakeEditContent">Mistake</label>
+      <label class="label" for="mistakeEditContent"
+        >Mistake <small class="has-text-danger">*</small></label
+      >
       <input
         id="mistakeEditContent"
         type="text"
@@ -163,51 +148,69 @@
         class="input"
         [(ngModel)]="mistake.content"
         required
-        minlength="2"
+        minlength="1"
         maxlength="100"
         #content="ngModel"
       />
     </div>
 
     <div class="field">
-      <label class="label" for="mistakeEditCorrection">Correction</label>
+      <label class="label" for="mistakeEditCorrection"
+        >Correction <small class="has-text-danger">*</small></label
+      >
       <input
         id="mistakeEditCorrection"
         type="text"
-        placeholder="{{mistake.correction || 'What is the correct Japanese?' }}"
+        placeholder="{{ mistake.correction || 'What is the correct Japanese?' }}"
         class="input"
         [(ngModel)]="mistake.correction"
         required
-        minlength="2"
+        minlength="1"
         maxlength="100"
         #correction="ngModel"
       />
     </div>
 
     <div class="field">
-      <label class="label" for="mistakeEditNotes">Notes</label>
+      <label class="label" for="mistakeEditTitle"
+        >Title <small class="has-text-grey-light">(optional)</small></label
+      >
+      <input
+        id="mistakeEditTitle"
+        type="text"
+        placeholder="{{ mistake.title }}"
+        class="input"
+        [(ngModel)]="mistake.title"
+        minlength="1"
+        maxlength="100"
+        #correction="ngModel"
+      />
+    </div>
+
+    <div class="field">
+      <label class="label" for="mistakeEditNotes"
+        >Notes <small class="has-text-grey-light">(optional)</small></label
+      >
       <textarea
         id="mistakeEditNotes"
         placeholder="{{ mistake.notes || 'Add notes' }}"
         class="textarea"
         [(ngModel)]="mistake.notes"
-        required
-        minlength="2"
+        minlength="1"
         maxlength="1000"
         rows="5"
         #notes="ngModel"
       ></textarea>
     </div>
 
-    <div class="field field is-grouped">
-      <p class="control">
-        <a class="button is-link" (click)="updateMistake()"
-          >Update Learning Point</a
-        >
-      </p>
-      <p class="control">
-        <a class="button is-default" (click)="toggleEdit()">Cancel</a>
-      </p>
+    <div class="field">
+      <button
+        class="button is-fullwidth is-medium is-link"
+        [disabled]="!content.valid || !correction.valid"
+        (click)="updateMistake()"
+      >
+        SAVE
+      </button>
     </div>
   </div>
   <button

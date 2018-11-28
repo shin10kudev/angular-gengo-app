@@ -21,6 +21,32 @@
           <i class="fas fa-pencil-alt" aria-hidden="true"></i> New Question
         </h5>
       </div>
+
+      <div class="field">
+        <label for="questionNewSpeaker" class="label"
+          >Who's talking? <small class="has-text-danger">*</small></label
+        >
+
+        <div class="control" class="p-selector">
+          <label class="radio" *ngFor="let speaker of speakers">
+            <img
+              src="assets/images/people/{{speaker}}.svg"
+              class="p-selector__image is-rounded"
+              width="48"
+              height="48"
+            />
+            <input
+              type="radio"
+              class="p-selector__input"
+              [(ngModel)]="question.speaker"
+              name="speaker"
+              value="{{speaker}}"
+            />
+            {{ speaker | titlecase }}</label
+          >
+        </div>
+      </div>
+
       <div class="field">
         <label class="label" for="questionNewQuestion"
           >Question <small class="has-text-danger">*</small></label
@@ -55,15 +81,14 @@
 
       <div class="content" *ngIf="!showAdditionalInputs">
         <a (click)="toggleAdditionalInputs()">
-          <i class="fa fa-plus" aria-hidden="true"></i> Add more details
+          <i class="fa fa-plus" aria-hidden="true"></i> Add details
         </a>
       </div>
 
       <div class="content" *ngIf="showAdditionalInputs">
         <div class="field">
           <a class="has-text-danger" (click)="toggleAdditionalInputs()">
-            <i class="far fa-trash-alt" aria-hidden="true"></i> Remove
-            additional details
+            <i class="fa fa-trash-alt" aria-hidden="true"></i> Remove details
           </a>
         </div>
 

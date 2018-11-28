@@ -7,6 +7,7 @@ export class Question {
   answer_text: string;
   additional_answer: string;
   notes: string;
+  speaker: string = "man";
   liked: boolean = false;
   created_at: any = firebase.database.ServerValue.TIMESTAMP;
   updated_at: any = firebase.database.ServerValue.TIMESTAMP;

@@ -25,52 +25,62 @@
           Point
         </h5>
       </div>
+
       <div class="field">
-        <label class="label" for="mistakeNewTitle">Title</label>
-        <input
-          id="mistakeNewTitle"
-          class="input"
-          [(ngModel)]="mistake.title"
-          required
-          minlength="1"
-          maxlength="100"
-          type="text"
-          #title="ngModel"
-          autofocus
-        />
-      </div>
-      <div class="field">
-        <label class="label" for="mistakeNewContent">Incorrect Japanese</label>
+        <label class="label" for="mistakeNewContent"
+          >Mistake <small class="has-text-danger">*</small></label
+        >
         <input
           id="mistakeNewContent"
           class="input"
           [(ngModel)]="mistake.content"
+          placeholder="What was your mistake?"
           minlength="1"
           maxlength="100"
           type="text"
           #content="ngModel"
+          required
           autofocus
         />
       </div>
+
       <div class="field">
-        <label class="label" for="mistakeNewCorrection">Correct Japanese</label>
+        <label class="label" for="mistakeNewCorrection"
+          >Correction <small class="has-text-danger">*</small></label
+        >
         <input
           id="mistakeNewCorrection"
           class="input"
           [(ngModel)]="mistake.correction"
+          placeholder="What is the correct Japanese?"
           minlength="1"
           maxlength="100"
           type="text"
+          required
           #correction="ngModel"
-          autofocus
         />
       </div>
     </div>
 
+    <div class="field">
+      <label class="label" for="mistakeNewTitle"
+        >Title <small class="has-text-grey-light">(optional)</small></label
+      >
+      <input
+        id="mistakeNewTitle"
+        class="input"
+        [(ngModel)]="mistake.title"
+        minlength="1"
+        maxlength="100"
+        type="text"
+        #title="ngModel"
+      />
+    </div>
+
     <button
       class="button is-link is-medium is-fullwidth"
+      [disabled]="!content.valid || !correction.valid"
       (click)="createMistake()"
-      [disabled]="!title.valid"
     >
       SAVE
     </button>

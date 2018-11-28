@@ -33,6 +33,7 @@ $q-item-primary-bg-color: #2a8bf2;
 $q-item-primary-text-color: #fff;
 
 .q__item {
+  align-items: flex-end;
   display: flex;
   margin-bottom: $question-base-margin;
 

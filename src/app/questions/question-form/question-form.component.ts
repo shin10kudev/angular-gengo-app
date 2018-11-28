@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { QuestionService } from "../shared/question.service";
 import { Question } from "../shared/question";
+import { speakers } from "../shared/speakers";
 
 @Component({
   selector: "question-form",
@@ -11,10 +12,13 @@ export class QuestionFormComponent implements OnInit {
   question: Question = new Question();
   newQuestionModalOpen: boolean = false;
   showAdditionalInputs: boolean = false;
+  speakers: any;
 
   @Input() formType: string;
 
-  constructor(private questionSvc: QuestionService) {}
+  constructor(private questionSvc: QuestionService) {
+    this.speakers = speakers; // imported from ../shared/speakers.ts
+  }
 
   ngOnInit() {}
 

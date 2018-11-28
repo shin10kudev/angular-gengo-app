@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import * as firebase from "firebase";
 import { TranslationService } from "../shared/translation.service";
 import { Translation } from "../shared/translation";
+import { categories } from "../shared/categories";
 
 @Component({
   selector: "translation-detail",
@@ -10,12 +11,13 @@ import { Translation } from "../shared/translation";
 })
 export class TranslationDetailComponent implements OnInit {
   @Input() translation: Translation;
-
   editTranslation: boolean = false;
   actionDropdownOpen: boolean = false;
-  categories: any = ["", "General", "Casual", "Formal", "Written", "Spoken"];
+  categories: any;
 
-  constructor(private translationSvc: TranslationService) {}
+  constructor(private translationSvc: TranslationService) {
+    this.categories = categories; // imported from ../shared/categories.ts
+  }
 
   ngOnInit() {}
 

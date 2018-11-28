@@ -44,7 +44,7 @@
     <div class="q__item">
       <figure class="q__item-image image is-64x64">
         <img
-          src="assets/images/user_man.svg"
+          src="assets/images/people/{{ question.speaker || 'man' }}.svg"
           class="is-rounded"
           width="64"
           height="64"
@@ -114,10 +114,9 @@
   <div class="modal-content">
     <div class="field parent-wrapper">
       <div class="content">
-        <h5>
-          <i class="fas fa-pencil-alt" aria-hidden="true"></i> New Question
-        </h5>
+        <h5><i class="far fa-edit" aria-hidden="true"></i> Edit Question</h5>
       </div>
+
       <div class="field">
         <label class="label" for="questionNewQuestion"
           >Question <small class="has-text-danger">*</small></label
@@ -134,6 +133,7 @@
           autofocus
         />
       </div>
+
       <div class="field">
         <label class="label" for="questionNewAnswer"
           >Answer <small class="has-text-danger">*</small></label
@@ -150,9 +150,33 @@
         />
       </div>
 
+      <div class="field">
+        <label class="label" for="questionEditSpeaker"
+          >Who's talking? <small class="has-text-danger">*</small></label
+        >
+        <div class="control has-icons-left">
+          <div class="select">
+            <select
+              id="questionEditSpeaker"
+              minlength="1"
+              required
+              [(ngModel)]="question.speaker"
+              #speaker="ngModel"
+            >
+              <option *ngFor="let speaker of speakers" [value]="speaker">{{
+                speaker | titlecase
+              }}</option>
+            </select>
+            <div class="icon is-small is-left">
+              <i class="fas fa-user-circle" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="content" *ngIf="!showAdditionalInputs">
         <a (click)="toggleAdditionalInputs()">
-          <i class="fa fa-plus" aria-hidden="true"></i> Show more details
+          <i class="fa fa-plus" aria-hidden="true"></i> Show details
         </a>
       </div>
 
@@ -213,7 +237,9 @@
 
       <button
         class="button is-link is-medium is-fullwidth"
-        [disabled]="!question_text.valid || !answer_text.valid"
+        [disabled]="
+          !question_text.valid || !answer_text.valid || !speaker.valid
+        "
         (click)="updateQuestion()"
       >
         SAVE
