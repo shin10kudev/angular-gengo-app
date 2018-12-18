@@ -30,6 +30,13 @@
   </div>
 
   <div class="card-content">
+    <p class="date-time">
+      <span class="icon is-small">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+      </span>
+      <span>{{ mistake.created_at | date: "mediumDate" }}</span>
+    </p>
+
     <div class="mistake is-error">
       <h4 class="mistake__text">
         <span class="mistake__icon"
@@ -67,9 +74,6 @@
         <a *ngIf="!mistake.notes" class="tag" (click)="toggleEdit()"
           >Add notes</a
         >
-        <p (click)="toggleEdit()">
-          <a class="has-text-link is-pulled-right">Edit</a>
-        </p>
       </div>
     </div>
 
@@ -116,12 +120,12 @@
 
       <!-- Created at -->
       <div class="is-pulled-right">
-        <span class="icon is-small">
-          <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        </span>
-        <span class="date-time">{{
-          mistake.created_at | date: "mediumDate"
-        }}</span>
+        <a class="has-text-link" (click)="toggleEdit()"
+          ><span class="icon is-small">
+            <i class="far fa-edit" aria-hidden="true"></i>
+          </span>
+          Edit</a
+        >
       </div>
     </div>
   </div>

@@ -23,31 +23,6 @@
       </div>
 
       <div class="field">
-        <label for="questionNewSpeaker" class="label"
-          >Who's talking? <small class="has-text-danger">*</small></label
-        >
-
-        <div class="control" class="p-selector">
-          <label class="radio" *ngFor="let speaker of speakers">
-            <img
-              src="assets/images/people/{{speaker}}.svg"
-              class="p-selector__image is-rounded"
-              width="48"
-              height="48"
-            />
-            <input
-              type="radio"
-              class="p-selector__input"
-              [(ngModel)]="question.speaker"
-              name="speaker"
-              value="{{speaker}}"
-            />
-            {{ speaker | titlecase }}</label
-          >
-        </div>
-      </div>
-
-      <div class="field">
         <label class="label" for="questionNewQuestion"
           >Question <small class="has-text-danger">*</small></label
         >
@@ -77,6 +52,35 @@
           type="text"
           #answer_text="ngModel"
         />
+      </div>
+
+      <div class="field">
+        <label class="label" for="questionEditSpeaker"
+          >Who's talking? <small class="has-text-danger">*</small></label
+        >
+        <div class="control has-icons-left">
+          <div class="select">
+            <select
+              id="questionEditSpeaker"
+              minlength="1"
+              required
+              [(ngModel)]="question.speaker"
+              #speaker="ngModel"
+            >
+              <option *ngFor="let speaker of speakers" [value]="speaker">{{
+                speaker | titlecase
+              }}</option>
+            </select>
+            <div class="icon is-small is-left">
+              <img
+                src="assets/images/people/{{question.speaker}}.svg"
+                class="is-rounded"
+                width="24"
+                height="24"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="content" *ngIf="!showAdditionalInputs">

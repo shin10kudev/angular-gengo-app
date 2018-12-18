@@ -22,7 +22,7 @@ export class TranslationsListComponent implements OnInit {
 
   ngOnInit() {
     this.translationSvc
-      .getTranslationsList({ limitToLast: 30 })
+      .getTranslationsList({ limitToLast: 100 })
       .subscribe(translations => {
         this.translations = translations;
         this.applyFilters();

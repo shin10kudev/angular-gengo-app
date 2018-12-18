@@ -27,6 +27,21 @@
       </div>
 
       <div class="field">
+        <label class="label" for="mistakeNewTitle"
+          >Title <small class="has-text-grey-light">(optional)</small></label
+        >
+        <input
+          id="mistakeNewTitle"
+          class="input"
+          [(ngModel)]="mistake.title"
+          minlength="1"
+          maxlength="100"
+          type="text"
+          #title="ngModel"
+        />
+      </div>
+
+      <div class="field">
         <label class="label" for="mistakeNewContent"
           >Mistake <small class="has-text-danger">*</small></label
         >
@@ -63,18 +78,19 @@
     </div>
 
     <div class="field">
-      <label class="label" for="mistakeNewTitle"
-        >Title <small class="has-text-grey-light">(optional)</small></label
+      <label class="label" for="mistakeEditNotes"
+        >Notes <small class="has-text-grey-light">(optional)</small></label
       >
-      <input
-        id="mistakeNewTitle"
-        class="input"
-        [(ngModel)]="mistake.title"
+      <textarea
+        id="mistakeEditNotes"
+        placeholder="{{ mistake.notes || 'Add notes' }}"
+        class="textarea"
+        [(ngModel)]="mistake.notes"
         minlength="1"
-        maxlength="100"
-        type="text"
-        #title="ngModel"
-      />
+        maxlength="1000"
+        rows="5"
+        #notes="ngModel"
+      ></textarea>
     </div>
 
     <button

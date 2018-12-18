@@ -1,5 +1,4 @@
 export const categories: any = [
-  "",
   "General",
   "Casual",
   "Formal",

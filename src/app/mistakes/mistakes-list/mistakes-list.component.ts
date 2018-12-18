@@ -29,11 +29,13 @@ export class MistakesListComponent implements OnInit {
   showSpinner: boolean = true;
 
   ngOnInit() {
-    this.mistakeSvc.getMistakesList({ limitToLast: 20 }).subscribe(mistakes => {
-      this.mistakes = mistakes;
-      this.applyFilters();
-      this.showSpinner = false;
-    });
+    this.mistakeSvc
+      .getMistakesList({ limitToLast: 100 })
+      .subscribe(mistakes => {
+        this.mistakes = mistakes;
+        this.applyFilters();
+        this.showSpinner = false;
+      });
   }
 
   private applyFilters() {
