@@ -47,16 +47,12 @@
     <span class="icon is-small">
       <i class="far fa-calendar-alt" aria-hidden="true"></i>
     </span>
-    <span>{{ translation.created_at | date: "mediumDate" }}</span>
+    <span>{{ translation.created_at | date: 'mediumDate' }}</span>
   </p>
 
   <h3 class="translation__title">
     <span *ngIf="translation.ja">{{ translation.ja }}</span>
-    <i
-      *ngIf="!translation.ja"
-      class="fas fa-spinner fa-spin"
-      aria-hidden="true"
-    ></i>
+    <a *ngIf="!translation.ja" (click)="toggleEdit()">Add meaning...</a>
 
     <!-- Like -->
     <span
@@ -130,10 +126,10 @@
 
 <!-- Edit Translation Modal -->
 <div class="modal" [ngClass]="{ 'is-active': editTranslation }">
-  <div class="modal-background"></div>
+  <div class="modal-background" (click)="toggleEdit()"></div>
   <div class="modal-content">
     <div class="content">
-      <h5><i class="far fa-edit" aria-hidden="true"></i> Edit Phrase</h5>
+      <h5><i class="far fa-edit" aria-hidden="true"></i> Edit phrase</h5>
     </div>
     <div class="field">
       <label class="label" for="translationEditJapanese">Japanese</label>
@@ -212,7 +208,9 @@
       <label class="label" for="translationEditNotes">Notes</label>
       <textarea
         id="translationEditNotes"
-        placeholder="{{ translation.notes || 'Add notes or example sentences' }}"
+        placeholder="{{
+          translation.notes || 'Add notes or example sentences'
+        }}"
         class="textarea"
         [(ngModel)]="translation.notes"
         maxlength="500"

@@ -11,13 +11,13 @@
       [(ngModel)]="liked"
       (change)="filterBooleanTrue('liked', liked); unliked = false"
     />
-    <label>Show Favorites</label>
+    <label>Show favorites</label>
   </div>
   <hr />
 </div>
 
 <div
-  *ngFor="let mistake of (filteredMistakes | reverse)"
+  *ngFor="let mistake of filteredMistakes | reverse"
   class="card message-card"
 >
   <mistake-detail [mistake]="mistake"></mistake-detail>

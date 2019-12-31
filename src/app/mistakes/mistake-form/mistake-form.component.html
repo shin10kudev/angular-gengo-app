@@ -1,11 +1,11 @@
 <div class="content">
   <h2>
-    Learning Points
+    Common mistakes
     <button
       class="button is-link is-pulled-right"
       (click)="toggleNewMistakeModal()"
     >
-      Add New
+      Add new
     </button>
   </h2>
   <p>
@@ -16,13 +16,13 @@
 
 <!-- New Mistake Modal -->
 <div class="modal" [class.is-active]="newMistakeModalOpen">
-  <div class="modal-background"></div>
+  <div class="modal-background" (click)="toggleNewMistakeModal()"></div>
   <div class="modal-content">
     <div class="field parent-wrapper">
       <div class="content">
         <h5>
-          <i class="fas fa-pencil-alt" aria-hidden="true"></i> New Learning
-          Point
+          <i class="fas fa-pencil-alt" aria-hidden="true"></i> New common
+          mistake
         </h5>
       </div>
 
