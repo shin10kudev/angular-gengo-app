@@ -102,8 +102,9 @@
           class="tag"
           *ngIf="translation.category"
           [ngClass]="{
-            'is-primary': translation.category == 'General',
+            'is-default': translation.category == 'General',
             'is-link': translation.category == 'Casual',
+            'is-primary': translation.category == 'Polite',
             'is-danger': translation.category == 'Formal',
             'is-warning': translation.category == 'Written',
             'is-success': translation.category == 'Spoken'
@@ -192,8 +193,9 @@
               class="fas fa-tag"
               aria-hidden="true"
               [ngClass]="{
-                'has-text-primary': translation.category == 'General',
+                'has-text-default': translation.category == 'General',
                 'has-text-link': translation.category == 'Casual',
+                'has-text-primary': translation.category == 'Polite',
                 'has-text-danger': translation.category == 'Formal',
                 'has-text-warning': translation.category == 'Written',
                 'has-text-success': translation.category == 'Spoken'

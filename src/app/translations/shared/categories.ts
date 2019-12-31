@@ -1,7 +1,8 @@
 export const categories: any = [
-  "General",
-  "Casual",
-  "Formal",
-  "Written",
-  "Spoken"
+  'General',
+  'Casual',
+  'Polite',
+  'Formal',
+  'Written',
+  'Spoken',
 ];
