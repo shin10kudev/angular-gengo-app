@@ -1,19 +1,18 @@
-import { Component, OnInit, Input } from "@angular/core";
-import * as firebase from "firebase";
-import { MistakeService } from "../shared/mistake.service";
-import { Mistake } from "../shared/mistake";
+import { Component, OnInit, Input } from '@angular/core';
+import * as firebase from 'firebase';
+import { MistakeService } from '../shared/mistake.service';
+import { Mistake } from '../shared/mistake';
 
 @Component({
-  selector: "mistake-detail",
-  templateUrl: "./mistake-detail.component.html",
-  styleUrls: ["./mistake-detail.component.scss"]
+  selector: 'mistake-detail',
+  templateUrl: './mistake-detail.component.html',
+  styleUrls: ['./mistake-detail.component.scss'],
 })
 export class MistakeDetailComponent implements OnInit {
   @Input() mistake: Mistake;
-  mistakeIsBlank: string = "Add mistaken Japanese";
-  correctIsBlank: string = "Add correct Japanese";
+  mistakeIsBlank: string = 'Add mistaken Japanese';
+  correctIsBlank: string = 'Add correct Japanese';
   editMistake: boolean = false;
-  actionDropdownOpen: boolean = false;
 
   constructor(private mistakeSvc: MistakeService) {}
 
@@ -21,10 +20,6 @@ export class MistakeDetailComponent implements OnInit {
 
   toggleEdit() {
     this.editMistake = !this.editMistake;
-  }
-
-  toggleDropdown() {
-    this.actionDropdownOpen = !this.actionDropdownOpen;
   }
 
   // Update mistake
@@ -61,7 +56,7 @@ export class MistakeDetailComponent implements OnInit {
 
   // Delete mistake
   deleteMistake() {
-    if (this.confirmAction("Are you sure you want to delete this entry?"))
+    if (this.confirmAction('Are you sure you want to delete this entry?'))
       this.mistakeSvc.deleteMistake(this.mistake.$key);
   }
 

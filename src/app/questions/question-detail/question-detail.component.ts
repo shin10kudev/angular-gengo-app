@@ -1,18 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { QuestionService } from "../shared/question.service";
-import { Question } from "../shared/question";
-import { speakers } from "../shared/speakers";
-import * as firebase from "firebase";
+import { Component, OnInit, Input } from '@angular/core';
+import { QuestionService } from '../shared/question.service';
+import { Question } from '../shared/question';
+import { speakers } from '../shared/speakers';
+import * as firebase from 'firebase';
 
 @Component({
-  selector: "question-detail",
-  templateUrl: "./question-detail.component.html",
-  styleUrls: ["./question-detail.component.scss"]
+  selector: 'question-detail',
+  templateUrl: './question-detail.component.html',
+  styleUrls: ['./question-detail.component.scss'],
 })
 export class QuestionDetailComponent implements OnInit {
   @Input() question: Question;
   editQuestionModalOpen: boolean = false;
-  showQuestionDropdown: boolean = false;
   showAdditionalInputs: boolean = false;
   speakers: any;
 
@@ -28,10 +27,6 @@ export class QuestionDetailComponent implements OnInit {
 
   toggleAdditionalInputs() {
     this.showAdditionalInputs = !this.showAdditionalInputs;
-  }
-
-  toggleDropdown() {
-    this.showQuestionDropdown = !this.showQuestionDropdown;
   }
 
   // Update question
@@ -51,7 +46,7 @@ export class QuestionDetailComponent implements OnInit {
 
   // Delete question
   deleteQuestion() {
-    if (this.confirmAction("Are you sure you want to delete this question?"))
+    if (this.confirmAction('Are you sure you want to delete this question?'))
       this.questionSvc.deleteQuestion(this.question.$key);
   }
 

@@ -1,18 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
-import * as firebase from "firebase";
-import { TranslationService } from "../shared/translation.service";
-import { Translation } from "../shared/translation";
-import { categories } from "../shared/categories";
+import { Component, OnInit, Input } from '@angular/core';
+import * as firebase from 'firebase';
+import { TranslationService } from '../shared/translation.service';
+import { Translation } from '../shared/translation';
+import { categories } from '../shared/categories';
 
 @Component({
-  selector: "translation-detail",
-  templateUrl: "./translation-detail.component.html",
-  styleUrls: ["./translation-detail.component.scss"]
+  selector: 'translation-detail',
+  templateUrl: './translation-detail.component.html',
+  styleUrls: ['./translation-detail.component.scss'],
 })
 export class TranslationDetailComponent implements OnInit {
   @Input() translation: Translation;
   editTranslation: boolean = false;
-  actionDropdownOpen: boolean = false;
   categories: any;
 
   constructor(private translationSvc: TranslationService) {
@@ -23,10 +22,6 @@ export class TranslationDetailComponent implements OnInit {
 
   toggleEdit() {
     this.editTranslation = !this.editTranslation;
-  }
-
-  toggleDropdown() {
-    this.actionDropdownOpen = !this.actionDropdownOpen;
   }
 
   textToSpeech() {
@@ -40,7 +35,7 @@ export class TranslationDetailComponent implements OnInit {
     utterance.text = this.translation.ja;
     utterance.rate = 0.7; // 0.1 to 10
     utterance.volume = 0.9; // 0 to 1
-    utterance.lang = "ja-JP";
+    utterance.lang = 'ja-JP';
 
     synth.speak(utterance);
   }
@@ -51,7 +46,7 @@ export class TranslationDetailComponent implements OnInit {
     this.translation.updated_at = date;
     this.translationSvc.updateTranslation(
       this.translation.$key,
-      this.translation
+      this.translation,
     );
   }
 
@@ -62,13 +57,13 @@ export class TranslationDetailComponent implements OnInit {
     this.translation.liked = value;
     this.translationSvc.updateTranslation(
       this.translation.$key,
-      this.translation
+      this.translation,
     );
   }
 
   // Delete translation
   deleteTranslation() {
-    if (this.confirmAction("Are you sure you want to delete this phrase?"))
+    if (this.confirmAction('Are you sure you want to delete this phrase?'))
       this.translationSvc.deleteTranslation(this.translation.$key);
   }
 

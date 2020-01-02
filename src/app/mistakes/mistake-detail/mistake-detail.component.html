@@ -1,32 +1,12 @@
-<article class="message is-primary">
+<article class="message is-info">
   <div class="message-header">
-    <div>
-      <span *ngIf="mistake.title">{{ mistake.title }}</span>
-    </div>
-    <div
-      class="dropdown is-right"
-      [class.is-active]="actionDropdownOpen"
-      (click)="toggleDropdown()"
-    >
-      <div class="dropdown-trigger">
-        <button
-          class="button"
-          aria-haspopup="true"
-          aria-controls="dropdown-menu3"
-        >
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-        <div class="dropdown-content">
-          <a class="dropdown-item" (click)="toggleEdit()">Edit</a>
-          <hr class="dropdown-divider" />
-          <a class="dropdown-item" (click)="deleteMistake()">Delete</a>
-        </div>
-      </div>
-    </div>
+    <div *ngIf="mistake.title">{{ mistake.title }}</div>
+    <button
+      class="delete"
+      aria-label="delete"
+      title="Delete"
+      (click)="deleteMistake()"
+    ></button>
   </div>
 
   <div class="card-content">
@@ -136,9 +116,7 @@
   <div class="modal-background" (click)="toggleEdit()"></div>
   <div class="modal-content">
     <div class="content">
-      <h5>
-        <i class="far fa-edit" aria-hidden="true"></i> Edit common mistake
-      </h5>
+      <h5><i class="far fa-edit" aria-hidden="true"></i> Edit mistake</h5>
     </div>
 
     <div class="field">

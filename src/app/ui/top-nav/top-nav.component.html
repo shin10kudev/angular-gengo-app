@@ -40,15 +40,7 @@
       >
         Phrases
       </a>
-      <a
-        class="navbar-item is-underlined"
-        [ngClass]="{ 'is-active': location.path() === '/mistakes' }"
-        routerLink="/mistakes"
-        *ngIf="auth.currentUser"
-        (click)="toggleCollapse()"
-      >
-        Common mistakes
-      </a>
+
       <a
         class="navbar-item is-underlined"
         [ngClass]="{ 'is-active': location.path() === '/questions' }"
@@ -57,6 +49,15 @@
         (click)="toggleCollapse()"
       >
         Questions
+      </a>
+      <a
+        class="navbar-item is-underlined"
+        [ngClass]="{ 'is-active': location.path() === '/mistakes' }"
+        routerLink="/mistakes"
+        *ngIf="auth.currentUser"
+        (click)="toggleCollapse()"
+      >
+        Mistakes
       </a>
       <!-- dropdown -->
       <div
