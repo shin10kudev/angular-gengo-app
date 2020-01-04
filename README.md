@@ -79,3 +79,34 @@ And finally `npm start`
 - `npm install`
 - `firebase login`
 - `firebase deploy --only functions`
+
+## Deploy
+
+To deploy using firebase-tools, you will need to login. If you have an expired token, you can run `firebase logout`, then `firebase login`, which will allow you to login with refreshed access token.
+
+The project is already set up to use aliases for the staging and production environments. To swithc, run:
+
+```
+$ firebase use <alias>
+```
+
+You can check your project aliases using the following command:
+
+```
+$ firebase projects:list
+```
+
+**Staging**
+
+```
+$ firebase use staging
+$ firebase deploy
+```
+
+**Prod**
+
+```
+$ npm run build
+$ firebase use prod
+$ firebase deploy
+```
