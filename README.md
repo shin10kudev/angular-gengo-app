@@ -44,7 +44,8 @@ Create an account at https://firebase.google.com/
 - `cd gengo-app`
 - `npm install`
 
-Create the environment files below in `src/environments/`.
+Create the environment files below in `src/environments/`. For information on how this works see: [Development and Production Environments for Angular Firebase Projects
+](https://angularfirebase.com/lessons/development-and-production-environments-for-angular-firebase-projects/)
 
 #### environment.ts
 
@@ -106,7 +107,7 @@ $ firebase deploy
 **Prod**
 
 ```
-$ npm run build
 $ firebase use prod
+$ npm run build-prod
 $ firebase deploy
 ```
